@@ -75,7 +75,7 @@ namespace LetterOfOffer_18.Tabs
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
             // Create new RichTextBox and Delete button
-            var newRichTextBox = new RichTextBox() { Width = 500, Height = 160, DetectUrls = true };
+            var newRichTextBox = new RichTextBox() { Width = 520, Height = 160, DetectUrls = true, BorderStyle = BorderStyle.None };
             var deleteButton = new Button() {
                 Image = Properties.Resources.icons8_delete_15__1_,
                 BackgroundImageLayout = ImageLayout.Zoom,
@@ -207,7 +207,7 @@ namespace LetterOfOffer_18.Tabs
                                 var idLabel = new System.Windows.Forms.Label() { Text = reader["ID"].ToString(), Width = 0, Height = 20 };
 
                                 // Create a new RichTextBox and Delete button
-                                var newRichTextBox = new RichTextBox() { Width = 500, Height = 160 };
+                                var newRichTextBox = new RichTextBox() { Width = 520, Height = 160, BorderStyle = BorderStyle.None };
                                 var deleteButton = new Button()
                                 {
                                     Image = Properties.Resources.icons8_delete_15__1_,

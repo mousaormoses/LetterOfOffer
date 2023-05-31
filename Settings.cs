@@ -20,7 +20,7 @@ namespace LetterOfOffer_18
         public Settings()
         {
             InitializeComponent();
-
+            this.Load += new System.EventHandler(this.Form_Load);
             try
             {
                 string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
@@ -44,6 +44,36 @@ namespace LetterOfOffer_18
                     using (var command = new SQLiteCommand(createTableSql, conn))
                     {
                         command.ExecuteNonQuery();
+                    }
+
+                    string createTableQuery = @"
+                    CREATE TABLE IF NOT EXISTS signatures (
+                        id TEXT PRIMARY KEY,
+                        textBoxSign TEXT,
+                        richTextSign TEXT
+                    )";
+
+                    string[] ids = { "S1", "S2", "S3", "S4" };
+
+
+                    using (var command = new SQLiteCommand(createTableQuery, conn))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    // Pre-fill the four records
+                    for (int i = 0; i < 4; i++)
+                    {
+                        string insertQuery = @"
+                            INSERT OR IGNORE INTO signatures (id, textBoxSign, richTextSign)
+                            VALUES (@id, '', '')
+                        ";
+
+                        using (var command = new SQLiteCommand(insertQuery, conn))
+                        {
+                            command.Parameters.AddWithValue("@id", ids[i]);
+                            command.ExecuteNonQuery();
+                        }
                     }
                 }
             }
@@ -141,11 +171,13 @@ namespace LetterOfOffer_18
                         }
                     }
                 }
+                MessageBox.Show("Keys saved successfully!");
             }
             catch (Exception ex)
             {
                 // Log or display the exception as needed
                 Console.WriteLine(ex.ToString());
+                MessageBox.Show("An error occurred while saving signatures.");
             }
         }
 
@@ -364,11 +396,13 @@ namespace LetterOfOffer_18
                         command.ExecuteNonQuery();
                     }
                 }
+                MessageBox.Show("Header and Footer saved successfully!");
             }
             catch (Exception ex)
             {
                 // Log or display the exception as needed
                 Console.WriteLine(ex.ToString());
+                MessageBox.Show("An error occurred while saving signatures.");
             }
         }
 
@@ -381,7 +415,7 @@ namespace LetterOfOffer_18
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string sourceFilePath = openFileDialog.FileName;
-                string destinationFilePath = "MyDatabase.sqlite";
+                string destinationFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
 
                 // Make sure the source file exists before trying to copy it
                 if (System.IO.File.Exists(sourceFilePath))
@@ -396,6 +430,7 @@ namespace LetterOfOffer_18
             }
         }
 
+
         private void ExportBtn_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -405,7 +440,7 @@ namespace LetterOfOffer_18
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string sourceFilePath = "MyDatabase.sqlite";
+                string sourceFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
                 string destinationFilePath = saveFileDialog.FileName;
 
                 // Make sure the source file exists before trying to copy it
@@ -421,12 +456,161 @@ namespace LetterOfOffer_18
             }
         }
 
+
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
         private void richTextFooter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sign1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sign2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sign3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sign4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextSign1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextSign2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextSign3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextSign4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSign_Click(object sender, EventArgs e)
+        {
+            string[] textBoxSigns = { sign1.Text, sign2.Text, sign3.Text, sign4.Text };
+            string[] richSigns = { richTextSign1.Rtf, richTextSign2.Rtf, richTextSign3.Rtf, richTextSign4.Rtf };
+
+            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+
+            // Ensure the directory exists
+            Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+
+            // Use the dbPath variable when creating your SQLite connection
+            string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+            try
+            {
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        string updateQuery = @"
+                    UPDATE signatures 
+                    SET textBoxSign = @textBoxSign, richTextSign = @richTextSign
+                    WHERE id = @id
+                ";
+
+                        using (var command = new SQLiteCommand(updateQuery, conn))
+                        {
+                            command.Parameters.AddWithValue("@textBoxSign", textBoxSigns[i]);
+                            command.Parameters.AddWithValue("@richTextSign", richSigns[i]);
+                            command.Parameters.AddWithValue("@id", "S" + (i + 1));  // S1, S2, S3, S4
+
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
+
+                MessageBox.Show("Signatures saved successfully!");
+            }
+            catch (Exception ex)
+            {
+                // Log or display the exception as needed
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("An error occurred while saving signatures.");
+            }
+        }
+
+
+
+
+
+        private void Signature_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+
+                // Ensure the directory exists
+                Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+
+                // Use the dbPath variable when creating your SQLite connection
+                string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+                TextBox[] textBoxes = { sign1, sign2, sign3, sign4 };
+                RichTextBox[] richTexts = { richTextSign1, richTextSign2, richTextSign3, richTextSign4 };
+
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string selectQuery = "SELECT * FROM signatures;";
+
+                    using (var command = new SQLiteCommand(selectQuery, conn))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            int i = 0;
+                            while (reader.Read() && i < textBoxes.Length)
+                            {
+                                textBoxes[i].Text = reader["textBoxSign"].ToString();
+                                richTexts[i].Rtf = reader["richTextSign"].ToString();
+
+                                i++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                // Log or display the exception as needed
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+
+        private void richTextHeader_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -84,6 +84,17 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Signature = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
+            this.buttonSign = new System.Windows.Forms.Button();
+            this.richTextSign1 = new System.Windows.Forms.RichTextBox();
+            this.sign1 = new System.Windows.Forms.TextBox();
+            this.sign2 = new System.Windows.Forms.TextBox();
+            this.richTextSign2 = new System.Windows.Forms.RichTextBox();
+            this.sign4 = new System.Windows.Forms.TextBox();
+            this.richTextSign4 = new System.Windows.Forms.RichTextBox();
+            this.sign3 = new System.Windows.Forms.TextBox();
+            this.richTextSign3 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.Header.SuspendLayout();
             this.Keys.SuspendLayout();
@@ -91,10 +102,12 @@
             this.Help.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.Signature.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.Signature);
             this.tabControl1.Controls.Add(this.Header);
             this.tabControl1.Controls.Add(this.Keys);
             this.tabControl1.Controls.Add(this.Import);
@@ -126,6 +139,7 @@
             // 
             // label18
             // 
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label18.Location = new System.Drawing.Point(8, 179);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(100, 29);
@@ -135,6 +149,7 @@
             // 
             // label17
             // 
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label17.Location = new System.Drawing.Point(8, 14);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(100, 29);
@@ -172,6 +187,7 @@
             this.richTextHeader.Size = new System.Drawing.Size(450, 122);
             this.richTextHeader.TabIndex = 0;
             this.richTextHeader.Text = "";
+            this.richTextHeader.TextChanged += new System.EventHandler(this.richTextHeader_TextChanged);
             // 
             // Keys
             // 
@@ -249,7 +265,7 @@
             // 
             // label16
             // 
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label16.Location = new System.Drawing.Point(11, 243);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
@@ -372,7 +388,7 @@
             // 
             // label15
             // 
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label15.Location = new System.Drawing.Point(11, 328);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
@@ -383,7 +399,7 @@
             // 
             // label14
             // 
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label14.Location = new System.Drawing.Point(11, 307);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
@@ -394,7 +410,7 @@
             // 
             // label13
             // 
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label13.Location = new System.Drawing.Point(11, 286);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
@@ -405,7 +421,7 @@
             // 
             // label12
             // 
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label12.Location = new System.Drawing.Point(11, 265);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
@@ -416,7 +432,7 @@
             // 
             // label11
             // 
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label11.Location = new System.Drawing.Point(11, 222);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
@@ -427,7 +443,7 @@
             // 
             // label10
             // 
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label10.Location = new System.Drawing.Point(11, 201);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
@@ -438,7 +454,7 @@
             // 
             // label9
             // 
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label9.Location = new System.Drawing.Point(11, 180);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
@@ -449,7 +465,7 @@
             // 
             // label8
             // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label8.Location = new System.Drawing.Point(11, 159);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
@@ -460,7 +476,7 @@
             // 
             // label7
             // 
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label7.Location = new System.Drawing.Point(11, 138);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
@@ -471,7 +487,7 @@
             // 
             // label6
             // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label6.Location = new System.Drawing.Point(11, 117);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
@@ -482,7 +498,7 @@
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label5.Location = new System.Drawing.Point(11, 96);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
@@ -493,7 +509,7 @@
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label4.Location = new System.Drawing.Point(11, 75);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
@@ -504,7 +520,7 @@
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label3.Location = new System.Drawing.Point(11, 54);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
@@ -515,7 +531,7 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label2.Location = new System.Drawing.Point(11, 33);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
@@ -545,7 +561,7 @@
             // label25
             // 
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(18, 156);
+            this.label25.Location = new System.Drawing.Point(18, 148);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(448, 25);
             this.label25.TabIndex = 7;
@@ -555,7 +571,7 @@
             // label24
             // 
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(18, 131);
+            this.label24.Location = new System.Drawing.Point(18, 123);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(448, 25);
             this.label24.TabIndex = 6;
@@ -565,7 +581,7 @@
             // label23
             // 
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(18, 106);
+            this.label23.Location = new System.Drawing.Point(18, 98);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(448, 25);
             this.label23.TabIndex = 5;
@@ -575,7 +591,7 @@
             // label22
             // 
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(18, 81);
+            this.label22.Location = new System.Drawing.Point(18, 73);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(448, 25);
             this.label22.TabIndex = 4;
@@ -585,7 +601,7 @@
             // label21
             // 
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(18, 56);
+            this.label21.Location = new System.Drawing.Point(18, 48);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(448, 25);
             this.label21.TabIndex = 3;
@@ -595,7 +611,7 @@
             // label20
             // 
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(15, 28);
+            this.label20.Location = new System.Drawing.Point(8, 14);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(451, 28);
             this.label20.TabIndex = 2;
@@ -644,18 +660,19 @@
             // richTextBox1
             // 
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Enabled = false;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(11, 40);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(447, 226);
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(447, 333);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // label26
             // 
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(5, 20);
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label26.Location = new System.Drawing.Point(5, 15);
             this.label26.Margin = new System.Windows.Forms.Padding(0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(171, 20);
@@ -696,6 +713,118 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // Signature
+            // 
+            this.Signature.Controls.Add(this.sign4);
+            this.Signature.Controls.Add(this.richTextSign4);
+            this.Signature.Controls.Add(this.sign3);
+            this.Signature.Controls.Add(this.richTextSign3);
+            this.Signature.Controls.Add(this.sign2);
+            this.Signature.Controls.Add(this.richTextSign2);
+            this.Signature.Controls.Add(this.sign1);
+            this.Signature.Controls.Add(this.richTextSign1);
+            this.Signature.Controls.Add(this.label27);
+            this.Signature.Controls.Add(this.buttonSign);
+            this.Signature.Location = new System.Drawing.Point(4, 22);
+            this.Signature.Name = "Signature";
+            this.Signature.Size = new System.Drawing.Size(466, 381);
+            this.Signature.TabIndex = 4;
+            this.Signature.Text = "Signature";
+            this.Signature.UseVisualStyleBackColor = true;
+            this.Signature.Click += new System.EventHandler(this.Signature_Click);
+            // 
+            // label27
+            // 
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label27.Location = new System.Drawing.Point(8, 14);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(100, 29);
+            this.label27.TabIndex = 9;
+            this.label27.Text = "Signature";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonSign
+            // 
+            this.buttonSign.BackColor = System.Drawing.Color.Black;
+            this.buttonSign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonSign.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonSign.Location = new System.Drawing.Point(350, 350);
+            this.buttonSign.Name = "buttonSign";
+            this.buttonSign.Size = new System.Drawing.Size(108, 26);
+            this.buttonSign.TabIndex = 7;
+            this.buttonSign.Text = "Save";
+            this.buttonSign.UseVisualStyleBackColor = false;
+            this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
+            // 
+            // richTextSign1
+            // 
+            this.richTextSign1.Location = new System.Drawing.Point(8, 72);
+            this.richTextSign1.Name = "richTextSign1";
+            this.richTextSign1.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign1.TabIndex = 11;
+            this.richTextSign1.Text = "";
+            this.richTextSign1.TextChanged += new System.EventHandler(this.richTextSign1_TextChanged);
+            // 
+            // sign1
+            // 
+            this.sign1.Location = new System.Drawing.Point(8, 46);
+            this.sign1.Name = "sign1";
+            this.sign1.Size = new System.Drawing.Size(221, 20);
+            this.sign1.TabIndex = 13;
+            this.sign1.TextChanged += new System.EventHandler(this.sign1_TextChanged);
+            // 
+            // sign2
+            // 
+            this.sign2.Location = new System.Drawing.Point(237, 46);
+            this.sign2.Name = "sign2";
+            this.sign2.Size = new System.Drawing.Size(221, 20);
+            this.sign2.TabIndex = 15;
+            this.sign2.TextChanged += new System.EventHandler(this.sign2_TextChanged);
+            // 
+            // richTextSign2
+            // 
+            this.richTextSign2.Location = new System.Drawing.Point(237, 73);
+            this.richTextSign2.Name = "richTextSign2";
+            this.richTextSign2.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign2.TabIndex = 14;
+            this.richTextSign2.Text = "";
+            this.richTextSign2.TextChanged += new System.EventHandler(this.richTextSign2_TextChanged);
+            // 
+            // sign4
+            // 
+            this.sign4.Location = new System.Drawing.Point(237, 211);
+            this.sign4.Name = "sign4";
+            this.sign4.Size = new System.Drawing.Size(221, 20);
+            this.sign4.TabIndex = 19;
+            this.sign4.TextChanged += new System.EventHandler(this.sign4_TextChanged);
+            // 
+            // richTextSign4
+            // 
+            this.richTextSign4.Location = new System.Drawing.Point(237, 237);
+            this.richTextSign4.Name = "richTextSign4";
+            this.richTextSign4.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign4.TabIndex = 18;
+            this.richTextSign4.Text = "";
+            this.richTextSign4.TextChanged += new System.EventHandler(this.richTextSign4_TextChanged);
+            // 
+            // sign3
+            // 
+            this.sign3.Location = new System.Drawing.Point(8, 211);
+            this.sign3.Name = "sign3";
+            this.sign3.Size = new System.Drawing.Size(221, 20);
+            this.sign3.TabIndex = 17;
+            this.sign3.TextChanged += new System.EventHandler(this.sign3_TextChanged);
+            // 
+            // richTextSign3
+            // 
+            this.richTextSign3.Location = new System.Drawing.Point(8, 237);
+            this.richTextSign3.Name = "richTextSign3";
+            this.richTextSign3.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign3.TabIndex = 16;
+            this.richTextSign3.Text = "";
+            this.richTextSign3.TextChanged += new System.EventHandler(this.richTextSign3_TextChanged);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -719,6 +848,8 @@
             this.Help.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Signature.ResumeLayout(false);
+            this.Signature.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -780,5 +911,16 @@
         private System.Windows.Forms.TabPage Help;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TabPage Signature;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button buttonSign;
+        private System.Windows.Forms.TextBox sign4;
+        private System.Windows.Forms.RichTextBox richTextSign4;
+        private System.Windows.Forms.TextBox sign3;
+        private System.Windows.Forms.RichTextBox richTextSign3;
+        private System.Windows.Forms.TextBox sign2;
+        private System.Windows.Forms.RichTextBox richTextSign2;
+        private System.Windows.Forms.TextBox sign1;
+        private System.Windows.Forms.RichTextBox richTextSign1;
     }
 }

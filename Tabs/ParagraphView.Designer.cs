@@ -36,6 +36,7 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -43,9 +44,9 @@
             // panelParagraph
             // 
             this.panelParagraph.AutoScroll = true;
-            this.panelParagraph.Location = new System.Drawing.Point(5, 57);
+            this.panelParagraph.Location = new System.Drawing.Point(5, 81);
             this.panelParagraph.Name = "panelParagraph";
-            this.panelParagraph.Size = new System.Drawing.Size(570, 438);
+            this.panelParagraph.Size = new System.Drawing.Size(570, 414);
             this.panelParagraph.TabIndex = 10;
             this.panelParagraph.Paint += new System.Windows.Forms.PaintEventHandler(this.panelParagraph_Paint);
             // 
@@ -105,11 +106,13 @@
             // 
             this.listView1.AllowColumnReorder = true;
             this.listView1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 29);
+            this.listView1.Location = new System.Drawing.Point(0, 34);
+            this.listView1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(137, 464);
             this.listView1.TabIndex = 0;
@@ -121,25 +124,36 @@
             // 
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.listView1);
-            this.panel1.Location = new System.Drawing.Point(581, 57);
+            this.panel1.Location = new System.Drawing.Point(581, 47);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(137, 493);
+            this.panel1.Size = new System.Drawing.Size(137, 503);
             this.panel1.TabIndex = 38;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(-1, 0);
+            this.label1.Location = new System.Drawing.Point(0, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 26);
+            this.label1.Size = new System.Drawing.Size(133, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "Keys";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(132, 26);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Paragraphs";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ParagraphView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
@@ -163,5 +177,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }

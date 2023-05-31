@@ -168,6 +168,7 @@ namespace LetterOfOffer_18.Tabs
         private void FormView_Load(object sender, EventArgs e)
         {
             PopulateTableNames();
+            load_signatures();
 
 
             try
@@ -434,10 +435,41 @@ namespace LetterOfOffer_18.Tabs
         {
             EditWishlistItems(security_FormBox);
         }
-        private void comboBox8_SelectedIndexChanged(object sender, EventArgs e)
+        private void load_signatures()
         {
-            EditWishlistItems(signature_FormBox);
+            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+
+            // Use the dbPath variable when creating your SQLite connection
+            string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+            try
+            {
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string selectQuery = "SELECT textBoxSign FROM signatures;";
+
+                    using (var command = new SQLiteCommand(selectQuery, conn))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            signature_FormBox.Items.Clear();
+                            while (reader.Read())
+                            {
+                                signature_FormBox.Items.Add(reader["textBoxSign"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or display the exception as needed
+                Console.WriteLine(ex.ToString());
+            }
         }
+
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
@@ -468,7 +500,6 @@ namespace LetterOfOffer_18.Tabs
                 // Retrieve the content from the selected table
                 List<string> contentList = RetrieveContentFromTable(tableNameWithPrefix);
 
-                // Replace placeholders with actual values
                 string fullName = fullName_FormBox.Text;  
                 string ex = ex_FormBox.Text; 
                 string sector = sector_FormBox.Text; 
@@ -482,8 +513,9 @@ namespace LetterOfOffer_18.Tabs
                 string address = address_FormBox.Text;  
                 string province = province_FormBox.Text; 
                 string city = city_FormBox.Text;  
-                string postal = postal_FormBox.Text;  
-                string signature = signature_FormBox.Text;  
+                string postal = postal_FormBox.Text;
+                string textBoxSign = signature_FormBox.Text;
+                string signature = RetrieveRichTextSignatureForTextBoxSign(signature_FormBox.Text);
 
                 string keyBoxName = RetrieveSpecificKeyValueFromTable("keys", "keyBoxName");
                 string keyBoxEX = RetrieveSpecificKeyValueFromTable("keys", "keyBoxEX");
@@ -541,19 +573,19 @@ namespace LetterOfOffer_18.Tabs
                 Document doc = wordApp.Documents.Add();
 
                 string headerText = RetrieveHeaderFooterContent("header");
-                if (headerText == null)
-                {
-                    throw new ArgumentNullException(nameof(headerText), "headerText cannot be null");
-                }
-
                 string footerText = RetrieveHeaderFooterContent("footer");
-                if (footerText == null)
+                // Before trying to add a header, check if the headerText is not null or empty.
+                if (!string.IsNullOrEmpty(headerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
                 {
-                    throw new ArgumentNullException(nameof(footerText), "footerText cannot be null");
+                    AddHeader(doc, headerText);
                 }
 
-                AddHeader(doc, headerText);
-                AddFooter(doc, footerText);
+                // Do the same for the footer.
+                if (!string.IsNullOrEmpty(footerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
+                {
+                    AddFooter(doc, footerText);
+                }
+
 
 
 
@@ -661,7 +693,8 @@ namespace LetterOfOffer_18.Tabs
                 string province = province_FormBox.Text;
                 string city = city_FormBox.Text;
                 string postal = postal_FormBox.Text;
-                string signature = signature_FormBox.Text;
+                string textBoxSign = signature_FormBox.Text;
+                string signature = RetrieveRichTextSignatureForTextBoxSign(signature_FormBox.Text);
 
                 string keyBoxName = RetrieveSpecificKeyValueFromTable("keys", "keyBoxName");
                 string keyBoxEX = RetrieveSpecificKeyValueFromTable("keys", "keyBoxEX");
@@ -720,8 +753,18 @@ namespace LetterOfOffer_18.Tabs
 
                 string headerText = RetrieveHeaderFooterContent("header");
                 string footerText = RetrieveHeaderFooterContent("footer");
-                AddHeader(doc, headerText);
-                AddFooter(doc, footerText);
+                // Before trying to add a header, check if the headerText is not null or empty.
+                if (!string.IsNullOrEmpty(headerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
+                {
+                    AddHeader(doc, headerText);
+                }
+
+                // Do the same for the footer.
+                if (!string.IsNullOrEmpty(footerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
+                {
+                    AddFooter(doc, footerText);
+                }
+
 
 
                 // Insert each content item into the Word document
@@ -793,9 +836,47 @@ namespace LetterOfOffer_18.Tabs
             }
         }
 
+        private string RetrieveRichTextSignatureForTextBoxSign(string textBoxSign)
+        {
+            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+            string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+            string richTextSign = "";
+
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string selectQuery = "SELECT richTextSign FROM signatures WHERE textBoxSign = @textBoxSign;";
+
+                using (var command = new SQLiteCommand(selectQuery, conn))
+                {
+                    command.Parameters.AddWithValue("@textBoxSign", textBoxSign);
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            richTextSign = reader["richTextSign"].ToString();
+                        }
+                    }
+                }
+            }
+
+            return richTextSign;
+        }
+
+
 
         private void AddHeader(Document doc, string headerText)
         {
+            if (string.IsNullOrEmpty(headerText))
+            {
+                // If headerText is null or empty, we assign a default value.
+                // Or you can simply return from here, if you don't want to add anything.
+                headerText = "Default Header";
+            }
+
             foreach (Section section in doc.Sections)
             {
                 HeadersFooters headers = section.Headers;
@@ -827,6 +908,8 @@ namespace LetterOfOffer_18.Tabs
                 }
             }
         }
+
+
 
 
 
@@ -1012,6 +1095,11 @@ namespace LetterOfOffer_18.Tabs
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void signature_FormBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

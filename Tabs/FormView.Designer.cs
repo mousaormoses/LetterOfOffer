@@ -33,7 +33,6 @@
             this.panelTemp = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.startDate_FormBox = new System.Windows.Forms.DateTimePicker();
-            this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.btnSalaryTo = new System.Windows.Forms.Button();
             this.btnLanguage = new System.Windows.Forms.Button();
@@ -110,7 +109,6 @@
             // 
             this.panelTemp.Controls.Add(this.label17);
             this.panelTemp.Controls.Add(this.startDate_FormBox);
-            this.panelTemp.Controls.Add(this.button12);
             this.panelTemp.Controls.Add(this.button11);
             this.panelTemp.Controls.Add(this.btnSalaryTo);
             this.panelTemp.Controls.Add(this.btnLanguage);
@@ -180,18 +178,6 @@
             this.startDate_FormBox.TabIndex = 6;
             this.startDate_FormBox.Value = new System.DateTime(2023, 5, 24, 23, 44, 0, 0);
             this.startDate_FormBox.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // button12
-            // 
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Image = global::LetterOfOffer_18.Properties.Resources.icons8_list_13;
-            this.button12.Location = new System.Drawing.Point(669, 374);
-            this.button12.Margin = new System.Windows.Forms.Padding(2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(23, 26);
-            this.button12.TabIndex = 44;
-            this.button12.UseVisualStyleBackColor = true;
             // 
             // button11
             // 
@@ -440,7 +426,7 @@
             this.signature_FormBox.Name = "signature_FormBox";
             this.signature_FormBox.Size = new System.Drawing.Size(549, 29);
             this.signature_FormBox.TabIndex = 16;
-            this.signature_FormBox.SelectedIndexChanged += new System.EventHandler(this.comboBox8_SelectedIndexChanged);
+            this.signature_FormBox.SelectedIndexChanged += new System.EventHandler(this.signature_FormBox_SelectedIndexChanged);
             // 
             // province_FormBox
             // 
@@ -762,7 +748,6 @@
         private System.Windows.Forms.Button pdfButton;
         private System.Windows.Forms.Button wordButton;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button btnSalaryTo;
         private System.Windows.Forms.Button btnLanguage;
