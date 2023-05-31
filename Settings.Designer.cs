@@ -30,6 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Signature = new System.Windows.Forms.TabPage();
+            this.sign4 = new System.Windows.Forms.TextBox();
+            this.richTextSign4 = new System.Windows.Forms.RichTextBox();
+            this.sign3 = new System.Windows.Forms.TextBox();
+            this.richTextSign3 = new System.Windows.Forms.RichTextBox();
+            this.sign2 = new System.Windows.Forms.TextBox();
+            this.richTextSign2 = new System.Windows.Forms.RichTextBox();
+            this.sign1 = new System.Windows.Forms.TextBox();
+            this.richTextSign1 = new System.Windows.Forms.RichTextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.buttonSign = new System.Windows.Forms.Button();
             this.Header = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -69,6 +80,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.ImageUpload = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
             this.Import = new System.Windows.Forms.TabPage();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -84,25 +99,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Signature = new System.Windows.Forms.TabPage();
-            this.label27 = new System.Windows.Forms.Label();
-            this.buttonSign = new System.Windows.Forms.Button();
-            this.richTextSign1 = new System.Windows.Forms.RichTextBox();
-            this.sign1 = new System.Windows.Forms.TextBox();
-            this.sign2 = new System.Windows.Forms.TextBox();
-            this.richTextSign2 = new System.Windows.Forms.RichTextBox();
-            this.sign4 = new System.Windows.Forms.TextBox();
-            this.richTextSign4 = new System.Windows.Forms.RichTextBox();
-            this.sign3 = new System.Windows.Forms.TextBox();
-            this.richTextSign3 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
+            this.Signature.SuspendLayout();
             this.Header.SuspendLayout();
             this.Keys.SuspendLayout();
+            this.ImageUpload.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.Import.SuspendLayout();
             this.Help.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.Signature.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -110,6 +116,7 @@
             this.tabControl1.Controls.Add(this.Signature);
             this.tabControl1.Controls.Add(this.Header);
             this.tabControl1.Controls.Add(this.Keys);
+            this.tabControl1.Controls.Add(this.ImageUpload);
             this.tabControl1.Controls.Add(this.Import);
             this.tabControl1.Controls.Add(this.Help);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -119,6 +126,118 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(474, 407);
             this.tabControl1.TabIndex = 0;
+            // 
+            // Signature
+            // 
+            this.Signature.Controls.Add(this.sign4);
+            this.Signature.Controls.Add(this.richTextSign4);
+            this.Signature.Controls.Add(this.sign3);
+            this.Signature.Controls.Add(this.richTextSign3);
+            this.Signature.Controls.Add(this.sign2);
+            this.Signature.Controls.Add(this.richTextSign2);
+            this.Signature.Controls.Add(this.sign1);
+            this.Signature.Controls.Add(this.richTextSign1);
+            this.Signature.Controls.Add(this.label27);
+            this.Signature.Controls.Add(this.buttonSign);
+            this.Signature.Location = new System.Drawing.Point(4, 22);
+            this.Signature.Name = "Signature";
+            this.Signature.Size = new System.Drawing.Size(466, 381);
+            this.Signature.TabIndex = 4;
+            this.Signature.Text = "Signature";
+            this.Signature.UseVisualStyleBackColor = true;
+            this.Signature.Click += new System.EventHandler(this.Signature_Click);
+            // 
+            // sign4
+            // 
+            this.sign4.Location = new System.Drawing.Point(237, 211);
+            this.sign4.Name = "sign4";
+            this.sign4.Size = new System.Drawing.Size(221, 20);
+            this.sign4.TabIndex = 19;
+            this.sign4.TextChanged += new System.EventHandler(this.sign4_TextChanged);
+            // 
+            // richTextSign4
+            // 
+            this.richTextSign4.Location = new System.Drawing.Point(237, 237);
+            this.richTextSign4.Name = "richTextSign4";
+            this.richTextSign4.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign4.TabIndex = 18;
+            this.richTextSign4.Text = "";
+            this.richTextSign4.TextChanged += new System.EventHandler(this.richTextSign4_TextChanged);
+            // 
+            // sign3
+            // 
+            this.sign3.Location = new System.Drawing.Point(8, 211);
+            this.sign3.Name = "sign3";
+            this.sign3.Size = new System.Drawing.Size(221, 20);
+            this.sign3.TabIndex = 17;
+            this.sign3.TextChanged += new System.EventHandler(this.sign3_TextChanged);
+            // 
+            // richTextSign3
+            // 
+            this.richTextSign3.Location = new System.Drawing.Point(8, 237);
+            this.richTextSign3.Name = "richTextSign3";
+            this.richTextSign3.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign3.TabIndex = 16;
+            this.richTextSign3.Text = "";
+            this.richTextSign3.TextChanged += new System.EventHandler(this.richTextSign3_TextChanged);
+            // 
+            // sign2
+            // 
+            this.sign2.Location = new System.Drawing.Point(237, 46);
+            this.sign2.Name = "sign2";
+            this.sign2.Size = new System.Drawing.Size(221, 20);
+            this.sign2.TabIndex = 15;
+            this.sign2.TextChanged += new System.EventHandler(this.sign2_TextChanged);
+            // 
+            // richTextSign2
+            // 
+            this.richTextSign2.Location = new System.Drawing.Point(237, 73);
+            this.richTextSign2.Name = "richTextSign2";
+            this.richTextSign2.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign2.TabIndex = 14;
+            this.richTextSign2.Text = "";
+            this.richTextSign2.TextChanged += new System.EventHandler(this.richTextSign2_TextChanged);
+            // 
+            // sign1
+            // 
+            this.sign1.Location = new System.Drawing.Point(8, 46);
+            this.sign1.Name = "sign1";
+            this.sign1.Size = new System.Drawing.Size(221, 20);
+            this.sign1.TabIndex = 13;
+            this.sign1.TextChanged += new System.EventHandler(this.sign1_TextChanged);
+            // 
+            // richTextSign1
+            // 
+            this.richTextSign1.Location = new System.Drawing.Point(8, 72);
+            this.richTextSign1.Name = "richTextSign1";
+            this.richTextSign1.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign1.TabIndex = 11;
+            this.richTextSign1.Text = "";
+            this.richTextSign1.TextChanged += new System.EventHandler(this.richTextSign1_TextChanged);
+            // 
+            // label27
+            // 
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label27.Location = new System.Drawing.Point(8, 14);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(100, 29);
+            this.label27.TabIndex = 9;
+            this.label27.Text = "Signature";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonSign
+            // 
+            this.buttonSign.BackColor = System.Drawing.Color.Black;
+            this.buttonSign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonSign.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonSign.Location = new System.Drawing.Point(350, 350);
+            this.buttonSign.Name = "buttonSign";
+            this.buttonSign.Size = new System.Drawing.Size(108, 26);
+            this.buttonSign.TabIndex = 7;
+            this.buttonSign.Text = "Save";
+            this.buttonSign.UseVisualStyleBackColor = false;
+            this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
             // 
             // Header
             // 
@@ -541,6 +660,51 @@
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // ImageUpload
+            // 
+            this.ImageUpload.Controls.Add(this.pictureBox2);
+            this.ImageUpload.Controls.Add(this.button2);
+            this.ImageUpload.Controls.Add(this.label28);
+            this.ImageUpload.Location = new System.Drawing.Point(4, 22);
+            this.ImageUpload.Name = "ImageUpload";
+            this.ImageUpload.Size = new System.Drawing.Size(466, 381);
+            this.ImageUpload.TabIndex = 5;
+            this.ImageUpload.Text = "Image";
+            this.ImageUpload.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(8, 61);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(449, 278);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Black;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(350, 350);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(108, 26);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Upload";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label28
+            // 
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(8, 14);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(451, 28);
+            this.label28.TabIndex = 3;
+            this.label28.Text = "Upload a new image";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Import
             // 
             this.Import.Controls.Add(this.label25);
@@ -713,118 +877,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // Signature
-            // 
-            this.Signature.Controls.Add(this.sign4);
-            this.Signature.Controls.Add(this.richTextSign4);
-            this.Signature.Controls.Add(this.sign3);
-            this.Signature.Controls.Add(this.richTextSign3);
-            this.Signature.Controls.Add(this.sign2);
-            this.Signature.Controls.Add(this.richTextSign2);
-            this.Signature.Controls.Add(this.sign1);
-            this.Signature.Controls.Add(this.richTextSign1);
-            this.Signature.Controls.Add(this.label27);
-            this.Signature.Controls.Add(this.buttonSign);
-            this.Signature.Location = new System.Drawing.Point(4, 22);
-            this.Signature.Name = "Signature";
-            this.Signature.Size = new System.Drawing.Size(466, 381);
-            this.Signature.TabIndex = 4;
-            this.Signature.Text = "Signature";
-            this.Signature.UseVisualStyleBackColor = true;
-            this.Signature.Click += new System.EventHandler(this.Signature_Click);
-            // 
-            // label27
-            // 
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label27.Location = new System.Drawing.Point(8, 14);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(100, 29);
-            this.label27.TabIndex = 9;
-            this.label27.Text = "Signature";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // buttonSign
-            // 
-            this.buttonSign.BackColor = System.Drawing.Color.Black;
-            this.buttonSign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonSign.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonSign.Location = new System.Drawing.Point(350, 350);
-            this.buttonSign.Name = "buttonSign";
-            this.buttonSign.Size = new System.Drawing.Size(108, 26);
-            this.buttonSign.TabIndex = 7;
-            this.buttonSign.Text = "Save";
-            this.buttonSign.UseVisualStyleBackColor = false;
-            this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
-            // 
-            // richTextSign1
-            // 
-            this.richTextSign1.Location = new System.Drawing.Point(8, 72);
-            this.richTextSign1.Name = "richTextSign1";
-            this.richTextSign1.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign1.TabIndex = 11;
-            this.richTextSign1.Text = "";
-            this.richTextSign1.TextChanged += new System.EventHandler(this.richTextSign1_TextChanged);
-            // 
-            // sign1
-            // 
-            this.sign1.Location = new System.Drawing.Point(8, 46);
-            this.sign1.Name = "sign1";
-            this.sign1.Size = new System.Drawing.Size(221, 20);
-            this.sign1.TabIndex = 13;
-            this.sign1.TextChanged += new System.EventHandler(this.sign1_TextChanged);
-            // 
-            // sign2
-            // 
-            this.sign2.Location = new System.Drawing.Point(237, 46);
-            this.sign2.Name = "sign2";
-            this.sign2.Size = new System.Drawing.Size(221, 20);
-            this.sign2.TabIndex = 15;
-            this.sign2.TextChanged += new System.EventHandler(this.sign2_TextChanged);
-            // 
-            // richTextSign2
-            // 
-            this.richTextSign2.Location = new System.Drawing.Point(237, 73);
-            this.richTextSign2.Name = "richTextSign2";
-            this.richTextSign2.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign2.TabIndex = 14;
-            this.richTextSign2.Text = "";
-            this.richTextSign2.TextChanged += new System.EventHandler(this.richTextSign2_TextChanged);
-            // 
-            // sign4
-            // 
-            this.sign4.Location = new System.Drawing.Point(237, 211);
-            this.sign4.Name = "sign4";
-            this.sign4.Size = new System.Drawing.Size(221, 20);
-            this.sign4.TabIndex = 19;
-            this.sign4.TextChanged += new System.EventHandler(this.sign4_TextChanged);
-            // 
-            // richTextSign4
-            // 
-            this.richTextSign4.Location = new System.Drawing.Point(237, 237);
-            this.richTextSign4.Name = "richTextSign4";
-            this.richTextSign4.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign4.TabIndex = 18;
-            this.richTextSign4.Text = "";
-            this.richTextSign4.TextChanged += new System.EventHandler(this.richTextSign4_TextChanged);
-            // 
-            // sign3
-            // 
-            this.sign3.Location = new System.Drawing.Point(8, 211);
-            this.sign3.Name = "sign3";
-            this.sign3.Size = new System.Drawing.Size(221, 20);
-            this.sign3.TabIndex = 17;
-            this.sign3.TextChanged += new System.EventHandler(this.sign3_TextChanged);
-            // 
-            // richTextSign3
-            // 
-            this.richTextSign3.Location = new System.Drawing.Point(8, 237);
-            this.richTextSign3.Name = "richTextSign3";
-            this.richTextSign3.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign3.TabIndex = 16;
-            this.richTextSign3.Text = "";
-            this.richTextSign3.TextChanged += new System.EventHandler(this.richTextSign3_TextChanged);
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -841,15 +893,17 @@
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.Settings_Load);
             this.tabControl1.ResumeLayout(false);
+            this.Signature.ResumeLayout(false);
+            this.Signature.PerformLayout();
             this.Header.ResumeLayout(false);
             this.Keys.ResumeLayout(false);
             this.Keys.PerformLayout();
+            this.ImageUpload.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.Import.ResumeLayout(false);
             this.Help.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.Signature.ResumeLayout(false);
-            this.Signature.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -922,5 +976,9 @@
         private System.Windows.Forms.RichTextBox richTextSign2;
         private System.Windows.Forms.TextBox sign1;
         private System.Windows.Forms.RichTextBox richTextSign1;
+        private System.Windows.Forms.TabPage ImageUpload;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

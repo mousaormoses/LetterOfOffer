@@ -29,7 +29,7 @@ namespace LetterOfOffer_18.Tabs
             try
             {
 
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -80,9 +80,11 @@ namespace LetterOfOffer_18.Tabs
             itemsTextBox.Text = string.Join(Environment.NewLine, comboBox.Items.Cast<string>());
 
             // Create a Button for saving the modified items
-            Button saveButton = new Button() { 
-                Text = "Save", 
-                Left = 20, Top = itemsTextBox.Bottom + 20,
+            Button saveButton = new Button()
+            {
+                Text = "Save",
+                Left = 20,
+                Top = itemsTextBox.Bottom + 20,
                 Width = 100,
                 BackColor = System.Drawing.Color.Black,
                 ForeColor = System.Drawing.Color.White,
@@ -107,7 +109,7 @@ namespace LetterOfOffer_18.Tabs
                 try
                 {
 
-                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                     // Ensure the directory exists
                     Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -174,7 +176,7 @@ namespace LetterOfOffer_18.Tabs
             try
             {
                 // Create the tables if they don't exist
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -207,7 +209,7 @@ namespace LetterOfOffer_18.Tabs
             try
             {
                 // Load the items from the corresponding tables in the database and populate the combo boxes
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -272,7 +274,7 @@ namespace LetterOfOffer_18.Tabs
             try
             {
                 // Establish a connection to the SQLite database
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -437,7 +439,7 @@ namespace LetterOfOffer_18.Tabs
         }
         private void load_signatures()
         {
-            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
             // Use the dbPath variable when creating your SQLite connection
             string connectionString = "Data Source=" + dbPath + ";Version=3;";
@@ -500,19 +502,19 @@ namespace LetterOfOffer_18.Tabs
                 // Retrieve the content from the selected table
                 List<string> contentList = RetrieveContentFromTable(tableNameWithPrefix);
 
-                string fullName = fullName_FormBox.Text;  
-                string ex = ex_FormBox.Text; 
-                string sector = sector_FormBox.Text; 
-                string position = position_FormBox.Text;  
-                string startDate = startDate_FormBox.Text;  
-                string language = language_FormBox.Text;  
-                string salaryFrom = salaryFrom_FormBox.Text;  
-                string salaryTo = salaryTo_FormBox.Text;  
-                string hr = hr_FormBox.Text;  
-                string security = security_FormBox.Text; 
-                string address = address_FormBox.Text;  
-                string province = province_FormBox.Text; 
-                string city = city_FormBox.Text;  
+                string fullName = fullName_FormBox.Text;
+                string ex = ex_FormBox.Text;
+                string sector = sector_FormBox.Text;
+                string position = position_FormBox.Text;
+                string startDate = startDate_FormBox.Text;
+                string language = language_FormBox.Text;
+                string salaryFrom = salaryFrom_FormBox.Text;
+                string salaryTo = salaryTo_FormBox.Text;
+                string hr = hr_FormBox.Text;
+                string security = security_FormBox.Text;
+                string address = address_FormBox.Text;
+                string province = province_FormBox.Text;
+                string city = city_FormBox.Text;
                 string postal = postal_FormBox.Text;
                 string textBoxSign = signature_FormBox.Text;
                 string signature = RetrieveRichTextSignatureForTextBoxSign(signature_FormBox.Text);
@@ -838,7 +840,7 @@ namespace LetterOfOffer_18.Tabs
 
         private string RetrieveRichTextSignatureForTextBoxSign(string textBoxSign)
         {
-            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
             string connectionString = "Data Source=" + dbPath + ";Version=3;";
 
             string richTextSign = "";
@@ -961,7 +963,7 @@ namespace LetterOfOffer_18.Tabs
             string content = "";
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -1002,7 +1004,7 @@ namespace LetterOfOffer_18.Tabs
             string keyValue = "";
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -1045,7 +1047,7 @@ namespace LetterOfOffer_18.Tabs
             List<string> contentList = new List<string>();
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));

@@ -23,7 +23,7 @@ namespace LetterOfOffer_18
             this.Load += new System.EventHandler(this.Form_Load);
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -86,7 +86,7 @@ namespace LetterOfOffer_18
 
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -140,7 +140,7 @@ namespace LetterOfOffer_18
         {
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -282,7 +282,7 @@ namespace LetterOfOffer_18
 
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -368,7 +368,7 @@ namespace LetterOfOffer_18
         {
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -415,7 +415,7 @@ namespace LetterOfOffer_18
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string sourceFilePath = openFileDialog.FileName;
-                string destinationFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string destinationFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Make sure the source file exists before trying to copy it
                 if (System.IO.File.Exists(sourceFilePath))
@@ -440,7 +440,7 @@ namespace LetterOfOffer_18
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string sourceFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string sourceFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
                 string destinationFilePath = saveFileDialog.FileName;
 
                 // Make sure the source file exists before trying to copy it
@@ -512,7 +512,7 @@ namespace LetterOfOffer_18
             string[] textBoxSigns = { sign1.Text, sign2.Text, sign3.Text, sign4.Text };
             string[] richSigns = { richTextSign1.Rtf, richTextSign2.Rtf, richTextSign3.Rtf, richTextSign4.Rtf };
 
-            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
             // Ensure the directory exists
             Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -568,7 +568,7 @@ namespace LetterOfOffer_18
         {
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -614,5 +614,64 @@ namespace LetterOfOffer_18
         {
 
         }
+
+
+        private Form1 mainForm;
+
+        public Settings(Form1 form1)
+        {
+            InitializeComponent();
+            mainForm = form1; // get the reference to the Form1
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            openFileDialog.FilterIndex = 1;
+            openFileDialog.Multiselect = false;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Create the directory if it doesn't exist
+                string directoryPath = Path.Combine(Application.StartupPath, "Images");
+                Directory.CreateDirectory(directoryPath);
+
+                string path = Path.Combine(directoryPath, "userImage.jpg");
+                using (var img = Image.FromFile(openFileDialog.FileName))
+                {
+                    img.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
+
+                // Update the image on main form
+                using (var bmpTemp = new Bitmap(path))
+                {
+                    Image imgOld = mainForm.pictureBox1.Image;
+                    mainForm.pictureBox1.Image = new Bitmap(bmpTemp);
+                    if (imgOld != null)
+                    {
+                        imgOld.Dispose();
+                    }
+
+                }
+
+                using (var bmpTemp = new Bitmap(path))
+                {
+                    Image imgOld = pictureBox2.Image;
+                    pictureBox2.Image = new Bitmap(bmpTemp);
+                    if (imgOld != null)
+                    {
+                        imgOld.Dispose();
+                    }
+                }
+
+            }
+        }
+
+
+
+
+
+
     }
 }

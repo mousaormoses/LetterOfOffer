@@ -29,7 +29,7 @@ namespace LetterOfOffer_18.Tabs
         {
             if (!File.Exists("MyDatabase.sqlite"))
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -76,10 +76,13 @@ namespace LetterOfOffer_18.Tabs
         {
             // Create new RichTextBox and Delete button
             var newRichTextBox = new RichTextBox() { Width = 520, Height = 160, DetectUrls = true, BorderStyle = BorderStyle.None };
-            var deleteButton = new Button() {
+            var deleteButton = new Button()
+            {
                 Image = Properties.Resources.icons8_delete_15__1_,
                 BackgroundImageLayout = ImageLayout.Zoom,
-                Left = newRichTextBox.Width + 10, Width = 35 };
+                Left = newRichTextBox.Width + 10,
+                Width = 35
+            };
 
             newRichTextBox.LinkClicked += new LinkClickedEventHandler(newRichTextBox_LinkClicked);
             newRichTextBox.KeyDown += new KeyEventHandler(newRichTextBox_KeyDown);
@@ -94,7 +97,7 @@ namespace LetterOfOffer_18.Tabs
             try
             {
                 // Add paragraph to the SQLite database
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -130,7 +133,7 @@ namespace LetterOfOffer_18.Tabs
                 try
                 {
                     // Remove from the database
-                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                     // Ensure the directory exists
                     Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -173,7 +176,7 @@ namespace LetterOfOffer_18.Tabs
 
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -337,7 +340,7 @@ namespace LetterOfOffer_18.Tabs
             try
             {
                 // Open the SQLite connection.
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -413,7 +416,7 @@ namespace LetterOfOffer_18.Tabs
             {
                 try
                 {
-                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                     // Ensure the directory exists
                     Directory.CreateDirectory(Path.GetDirectoryName(dbPath));

@@ -16,11 +16,31 @@ namespace LetterOfOffer_18
         public Form1()
         {
             InitializeComponent();
+            // Create the directory if it doesn't exist
+            string directoryPath = Path.Combine(System.Windows.Forms.Application.StartupPath, "Images");
+            Directory.CreateDirectory(directoryPath);
+
+            string path = Path.Combine(directoryPath, "userImage.jpg");
+            if (File.Exists(path))
+            {
+                // Create a new Bitmap from the file and set it to the PictureBox, disposing the old image
+                using (var bmpTemp = new Bitmap(path))
+                {
+                    Image imgOld = pictureBox1.Image;
+                    pictureBox1.Image = new Bitmap(bmpTemp);
+                    if (imgOld != null)
+                    {
+                        imgOld.Dispose();
+                    }
+                }
+            }
+
+
 
             try
             {
                 // Connect to the SQLite database
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -48,6 +68,15 @@ namespace LetterOfOffer_18
                 Console.WriteLine(ex.ToString());
             }
         }
+
+        public void ChangeImage(string imagePath)
+        {
+            if (File.Exists(imagePath))
+            {
+                pictureBox1.Image = Image.FromFile(imagePath);
+            }
+        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -116,8 +145,27 @@ namespace LetterOfOffer_18
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            Settings settings = new Settings();
+            Settings settings = new Settings(this);
             settings.ShowDialog();
+
+        }
+
+        private void OpenSettings()
+        {
+            Settings settingsForm = new Settings(this);
+            settingsForm.Show();
+        }
+
+        public void SetImage(Image image)
+        {
+            pictureBox1.Image = image;
+            pictureBox1.Refresh();
+        }
+
+
+        public void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
