@@ -1,4 +1,4 @@
-﻿namespace LetterOfOffer_18
+﻿namespace LetterOfOffer
 {
     partial class Settings
     {
@@ -99,6 +99,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Signature.SuspendLayout();
             this.Header.SuspendLayout();
@@ -152,7 +153,7 @@
             this.sign4.Location = new System.Drawing.Point(237, 211);
             this.sign4.Name = "sign4";
             this.sign4.Size = new System.Drawing.Size(221, 20);
-            this.sign4.TabIndex = 19;
+            this.sign4.TabIndex = 7;
             this.sign4.TextChanged += new System.EventHandler(this.sign4_TextChanged);
             // 
             // richTextSign4
@@ -160,7 +161,7 @@
             this.richTextSign4.Location = new System.Drawing.Point(237, 237);
             this.richTextSign4.Name = "richTextSign4";
             this.richTextSign4.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign4.TabIndex = 18;
+            this.richTextSign4.TabIndex = 8;
             this.richTextSign4.Text = "";
             this.richTextSign4.TextChanged += new System.EventHandler(this.richTextSign4_TextChanged);
             // 
@@ -169,7 +170,7 @@
             this.sign3.Location = new System.Drawing.Point(8, 211);
             this.sign3.Name = "sign3";
             this.sign3.Size = new System.Drawing.Size(221, 20);
-            this.sign3.TabIndex = 17;
+            this.sign3.TabIndex = 5;
             this.sign3.TextChanged += new System.EventHandler(this.sign3_TextChanged);
             // 
             // richTextSign3
@@ -177,7 +178,7 @@
             this.richTextSign3.Location = new System.Drawing.Point(8, 237);
             this.richTextSign3.Name = "richTextSign3";
             this.richTextSign3.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign3.TabIndex = 16;
+            this.richTextSign3.TabIndex = 6;
             this.richTextSign3.Text = "";
             this.richTextSign3.TextChanged += new System.EventHandler(this.richTextSign3_TextChanged);
             // 
@@ -186,7 +187,7 @@
             this.sign2.Location = new System.Drawing.Point(237, 46);
             this.sign2.Name = "sign2";
             this.sign2.Size = new System.Drawing.Size(221, 20);
-            this.sign2.TabIndex = 15;
+            this.sign2.TabIndex = 3;
             this.sign2.TextChanged += new System.EventHandler(this.sign2_TextChanged);
             // 
             // richTextSign2
@@ -194,7 +195,7 @@
             this.richTextSign2.Location = new System.Drawing.Point(237, 73);
             this.richTextSign2.Name = "richTextSign2";
             this.richTextSign2.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign2.TabIndex = 14;
+            this.richTextSign2.TabIndex = 4;
             this.richTextSign2.Text = "";
             this.richTextSign2.TextChanged += new System.EventHandler(this.richTextSign2_TextChanged);
             // 
@@ -203,7 +204,7 @@
             this.sign1.Location = new System.Drawing.Point(8, 46);
             this.sign1.Name = "sign1";
             this.sign1.Size = new System.Drawing.Size(221, 20);
-            this.sign1.TabIndex = 13;
+            this.sign1.TabIndex = 1;
             this.sign1.TextChanged += new System.EventHandler(this.sign1_TextChanged);
             // 
             // richTextSign1
@@ -211,7 +212,7 @@
             this.richTextSign1.Location = new System.Drawing.Point(8, 72);
             this.richTextSign1.Name = "richTextSign1";
             this.richTextSign1.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign1.TabIndex = 11;
+            this.richTextSign1.TabIndex = 2;
             this.richTextSign1.Text = "";
             this.richTextSign1.TextChanged += new System.EventHandler(this.richTextSign1_TextChanged);
             // 
@@ -234,7 +235,7 @@
             this.buttonSign.Location = new System.Drawing.Point(350, 350);
             this.buttonSign.Name = "buttonSign";
             this.buttonSign.Size = new System.Drawing.Size(108, 26);
-            this.buttonSign.TabIndex = 7;
+            this.buttonSign.TabIndex = 9;
             this.buttonSign.Text = "Save";
             this.buttonSign.UseVisualStyleBackColor = false;
             this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
@@ -707,6 +708,7 @@
             // 
             // Import
             // 
+            this.Import.Controls.Add(this.label29);
             this.Import.Controls.Add(this.label25);
             this.Import.Controls.Add(this.label24);
             this.Import.Controls.Add(this.label23);
@@ -725,7 +727,7 @@
             // label25
             // 
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(18, 148);
+            this.label25.Location = new System.Drawing.Point(18, 173);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(448, 25);
             this.label25.TabIndex = 7;
@@ -735,7 +737,7 @@
             // label24
             // 
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(18, 123);
+            this.label24.Location = new System.Drawing.Point(18, 148);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(448, 25);
             this.label24.TabIndex = 6;
@@ -858,17 +860,17 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 0);
+            this.label1.Location = new System.Drawing.Point(50, 2);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 57);
+            this.label1.Size = new System.Drawing.Size(183, 55);
             this.label1.TabIndex = 1;
             this.label1.Text = "Settings";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::LetterOfOffer_18.Properties.Resources.icons8_settings_30;
+            this.pictureBox1.Image = global::LetterOfOffer.Properties.Resources.icons8_settings_30;
             this.pictureBox1.Location = new System.Drawing.Point(0, 2);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
@@ -876,6 +878,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // label29
+            // 
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(18, 123);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(448, 25);
+            this.label29.TabIndex = 8;
+            this.label29.Text = "- Signature";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Settings
             // 
@@ -980,5 +992,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label29;
     }
 }

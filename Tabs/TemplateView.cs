@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace LetterOfOffer_18.Tabs
+namespace LetterOfOffer.Tabs
 {
     public partial class TemplateView : UserControl
     {
@@ -76,9 +76,16 @@ namespace LetterOfOffer_18.Tabs
                                 // Remove the "template_" prefix from the table name
                                 string displayTableName = tableName.Substring("template_".Length);
                                 // Create a label for the table name
-                                var nameLabel = new Label() { Text = displayTableName, Width = 180, Top = yPos, Left = 10 };
-                                nameLabel.TextAlign = ContentAlignment.MiddleLeft;
-
+                                var nameLabel = new Label()
+                                {
+                                    Text = displayTableName,
+                                    Width = 180,
+                                    Height = buttonHeight,
+                                    Top = yPos,
+                                    Left = 10,
+                                    TextAlign = ContentAlignment.MiddleLeft,
+                                    Image = null, // Set the Image property to null
+                                };
                                 // Set the button's top position to be the same as the label
                                 buttonTop = yPos;
 

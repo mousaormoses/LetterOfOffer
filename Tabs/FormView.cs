@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
 
-namespace LetterOfOffer_18.Tabs
+namespace LetterOfOffer.Tabs
 {
     public partial class FormView : UserControl
     {

@@ -1,4 +1,4 @@
-﻿namespace LetterOfOffer_18.Tabs
+﻿namespace LetterOfOffer.Tabs
 {
     partial class ParagraphView
     {

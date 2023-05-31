@@ -1,4 +1,4 @@
-﻿using LetterOfOffer_18.Tabs;
+﻿using LetterOfOffer.Tabs;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -13,13 +13,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LetterOfOffer_18
+namespace LetterOfOffer
 {
     public partial class Settings : Form
     {
-        public Settings()
+
+        private Form1 mainForm;
+        public Settings(Form1 form1)
         {
             InitializeComponent();
+            mainForm = form1; // get the reference to the Form1
+
             this.Load += new System.EventHandler(this.Form_Load);
             try
             {
@@ -46,35 +50,7 @@ namespace LetterOfOffer_18
                         command.ExecuteNonQuery();
                     }
 
-                    string createTableQuery = @"
-                    CREATE TABLE IF NOT EXISTS signatures (
-                        id TEXT PRIMARY KEY,
-                        textBoxSign TEXT,
-                        richTextSign TEXT
-                    )";
-
-                    string[] ids = { "S1", "S2", "S3", "S4" };
-
-
-                    using (var command = new SQLiteCommand(createTableQuery, conn))
-                    {
-                        command.ExecuteNonQuery();
-                    }
-
-                    // Pre-fill the four records
-                    for (int i = 0; i < 4; i++)
-                    {
-                        string insertQuery = @"
-                            INSERT OR IGNORE INTO signatures (id, textBoxSign, richTextSign)
-                            VALUES (@id, '', '')
-                        ";
-
-                        using (var command = new SQLiteCommand(insertQuery, conn))
-                        {
-                            command.Parameters.AddWithValue("@id", ids[i]);
-                            command.ExecuteNonQuery();
-                        }
-                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -273,6 +249,60 @@ namespace LetterOfOffer_18
                 {
                     textbox.Text = keyValue.Value;
                 }
+            }
+
+
+            try
+            {
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+
+                // Ensure the directory exists
+                Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+
+                // Use the dbPath variable when creating your SQLite connection
+                string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+
+                    string createTableQuery = @"
+                    CREATE TABLE IF NOT EXISTS signatures (
+                        id TEXT PRIMARY KEY,
+                        textBoxSign TEXT,
+                        richTextSign TEXT
+                    )";
+
+                    string[] ids = { "S1", "S2", "S3", "S4" };
+
+
+                    using (var command = new SQLiteCommand(createTableQuery, conn))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    // Pre-fill the four records
+                    for (int i = 0; i < 4; i++)
+                    {
+                        string insertQuery = @"
+                            INSERT OR IGNORE INTO signatures (id, textBoxSign, richTextSign)
+                            VALUES (@id, '', '')
+                        ";
+
+                        using (var command = new SQLiteCommand(insertQuery, conn))
+                        {
+                            command.Parameters.AddWithValue("@id", ids[i]);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or display the exception as needed
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("An error occurred while saving signatures.");
             }
         }
 
@@ -616,62 +646,58 @@ namespace LetterOfOffer_18
         }
 
 
-        private Form1 mainForm;
 
-        public Settings(Form1 form1)
-        {
-            InitializeComponent();
-            mainForm = form1; // get the reference to the Form1
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            openFileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
-            openFileDialog.FilterIndex = 1;
-            openFileDialog.Multiselect = false;
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                // Create the directory if it doesn't exist
-                string directoryPath = Path.Combine(Application.StartupPath, "Images");
-                Directory.CreateDirectory(directoryPath);
+                System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+                openFileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.Multiselect = false;
 
-                string path = Path.Combine(directoryPath, "userImage.jpg");
-                using (var img = Image.FromFile(openFileDialog.FileName))
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    img.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
-                }
+                    // Create the directory if it doesn't exist
+                    string directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LetterOfOffer", "Images");
+                    Directory.CreateDirectory(directoryPath);
 
-                // Update the image on main form
-                using (var bmpTemp = new Bitmap(path))
-                {
-                    Image imgOld = mainForm.pictureBox1.Image;
-                    mainForm.pictureBox1.Image = new Bitmap(bmpTemp);
-                    if (imgOld != null)
+                    string path = Path.Combine(directoryPath, "LetterOfOffer.jpg");
+                    using (var img = Image.FromFile(openFileDialog.FileName))
                     {
-                        imgOld.Dispose();
+                        img.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    }
+
+                    // Update the image on main form
+                    using (var bmpTemp = new Bitmap(path))
+                    {
+                        Image imgOld = mainForm.pictureBox1.Image;
+                        mainForm.pictureBox1.Image = new Bitmap(bmpTemp);
+                        if (imgOld != null)
+                        {
+                            imgOld.Dispose();
+                        }
+
+                    }
+
+                    using (var bmpTemp = new Bitmap(path))
+                    {
+                        Image imgOld = pictureBox2.Image;
+                        pictureBox2.Image = new Bitmap(bmpTemp);
+                        if (imgOld != null)
+                        {
+                            imgOld.Dispose();
+                        }
                     }
 
                 }
-
-                using (var bmpTemp = new Bitmap(path))
-                {
-                    Image imgOld = pictureBox2.Image;
-                    pictureBox2.Image = new Bitmap(bmpTemp);
-                    if (imgOld != null)
-                    {
-                        imgOld.Dispose();
-                    }
-                }
-
+            }
+            catch (Exception ex)
+            {
+                // Show a message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
-
-
     }
 }

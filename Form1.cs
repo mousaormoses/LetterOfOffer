@@ -6,9 +6,9 @@ using System.Linq;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Word;
 using System.Data.SQLite;
-using LetterOfOffer_18.Tabs;
+using LetterOfOffer.Tabs;
 
-namespace LetterOfOffer_18
+namespace LetterOfOffer
 {
     public partial class Form1 : Form
     {
@@ -16,26 +16,6 @@ namespace LetterOfOffer_18
         public Form1()
         {
             InitializeComponent();
-            // Create the directory if it doesn't exist
-            string directoryPath = Path.Combine(System.Windows.Forms.Application.StartupPath, "Images");
-            Directory.CreateDirectory(directoryPath);
-
-            string path = Path.Combine(directoryPath, "userImage.jpg");
-            if (File.Exists(path))
-            {
-                // Create a new Bitmap from the file and set it to the PictureBox, disposing the old image
-                using (var bmpTemp = new Bitmap(path))
-                {
-                    Image imgOld = pictureBox1.Image;
-                    pictureBox1.Image = new Bitmap(bmpTemp);
-                    if (imgOld != null)
-                    {
-                        imgOld.Dispose();
-                    }
-                }
-            }
-
-
 
             try
             {
@@ -69,19 +49,31 @@ namespace LetterOfOffer_18
             }
         }
 
-        public void ChangeImage(string imagePath)
-        {
-            if (File.Exists(imagePath))
-            {
-                pictureBox1.Image = Image.FromFile(imagePath);
-            }
-        }
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
             FormView panel = new FormView();
             addUserControl(panel);
+
+            // Create the directory if it doesn't exist
+            string directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LetterOfOffer", "Images");
+            Directory.CreateDirectory(directoryPath);
+
+            string path = Path.Combine(directoryPath, "LetterOfOffer.jpg");
+            if (File.Exists(path))
+            {
+                // Create a new Bitmap from the file and set it to the PictureBox, disposing the old image
+                using (var bmpTemp = new Bitmap(path))
+                {
+                    Image imgOld = pictureBox1.Image;
+                    pictureBox1.Image = new Bitmap(bmpTemp);
+                    if (imgOld != null)
+                    {
+                        imgOld.Dispose();
+                    }
+                }
+            }
+
         }
 
         private void addUserControl(UserControl userControl)

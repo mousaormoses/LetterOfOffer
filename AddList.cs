@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LetterOfOffer_18
+namespace LetterOfOffer
 {
 
     public partial class AddList : Form

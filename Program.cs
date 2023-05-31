@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LetterOfOffer_18
+namespace LetterOfOffer
 {
     internal static class Program
     {

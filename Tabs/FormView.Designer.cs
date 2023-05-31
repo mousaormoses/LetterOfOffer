@@ -1,4 +1,4 @@
-﻿namespace LetterOfOffer_18.Tabs
+﻿namespace LetterOfOffer.Tabs
 {
     partial class FormView
     {
@@ -31,7 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelTemp = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.startDate_FormBox = new System.Windows.Forms.DateTimePicker();
             this.button11 = new System.Windows.Forms.Button();
             this.btnSalaryTo = new System.Windows.Forms.Button();
@@ -42,16 +42,16 @@
             this.btnSector = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.city_FormBox = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.postal_FormBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.postal_FormBox = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.address_FormBox = new System.Windows.Forms.TextBox();
             this.security_FormBox = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.salaryTo_FormBox = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.language_FormBox = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.salaryTo_FormBox = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.language_FormBox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.signature_FormBox = new System.Windows.Forms.ComboBox();
             this.province_FormBox = new System.Windows.Forms.ComboBox();
             this.hr_FormBox = new System.Windows.Forms.ComboBox();
@@ -61,14 +61,14 @@
             this.position_FormBox = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.fullName_FormBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pdfButton = new System.Windows.Forms.Button();
@@ -107,7 +107,7 @@
             // 
             // panelTemp
             // 
-            this.panelTemp.Controls.Add(this.label17);
+            this.panelTemp.Controls.Add(this.label7);
             this.panelTemp.Controls.Add(this.startDate_FormBox);
             this.panelTemp.Controls.Add(this.button11);
             this.panelTemp.Controls.Add(this.btnSalaryTo);
@@ -118,16 +118,16 @@
             this.panelTemp.Controls.Add(this.btnSector);
             this.panelTemp.Controls.Add(this.button3);
             this.panelTemp.Controls.Add(this.city_FormBox);
-            this.panelTemp.Controls.Add(this.label16);
-            this.panelTemp.Controls.Add(this.postal_FormBox);
             this.panelTemp.Controls.Add(this.label15);
+            this.panelTemp.Controls.Add(this.postal_FormBox);
+            this.panelTemp.Controls.Add(this.label16);
             this.panelTemp.Controls.Add(this.address_FormBox);
             this.panelTemp.Controls.Add(this.security_FormBox);
-            this.panelTemp.Controls.Add(this.label14);
-            this.panelTemp.Controls.Add(this.salaryTo_FormBox);
-            this.panelTemp.Controls.Add(this.label13);
-            this.panelTemp.Controls.Add(this.language_FormBox);
             this.panelTemp.Controls.Add(this.label12);
+            this.panelTemp.Controls.Add(this.salaryTo_FormBox);
+            this.panelTemp.Controls.Add(this.label10);
+            this.panelTemp.Controls.Add(this.language_FormBox);
+            this.panelTemp.Controls.Add(this.label8);
             this.panelTemp.Controls.Add(this.signature_FormBox);
             this.panelTemp.Controls.Add(this.province_FormBox);
             this.panelTemp.Controls.Add(this.hr_FormBox);
@@ -137,14 +137,14 @@
             this.panelTemp.Controls.Add(this.position_FormBox);
             this.panelTemp.Controls.Add(this.comboBox1);
             this.panelTemp.Controls.Add(this.fullName_FormBox);
-            this.panelTemp.Controls.Add(this.label7);
-            this.panelTemp.Controls.Add(this.label8);
-            this.panelTemp.Controls.Add(this.label9);
-            this.panelTemp.Controls.Add(this.label10);
+            this.panelTemp.Controls.Add(this.label17);
+            this.panelTemp.Controls.Add(this.label14);
+            this.panelTemp.Controls.Add(this.label13);
             this.panelTemp.Controls.Add(this.label11);
+            this.panelTemp.Controls.Add(this.label9);
+            this.panelTemp.Controls.Add(this.label4);
             this.panelTemp.Controls.Add(this.label6);
             this.panelTemp.Controls.Add(this.label5);
-            this.panelTemp.Controls.Add(this.label4);
             this.panelTemp.Controls.Add(this.label3);
             this.panelTemp.Controls.Add(this.label2);
             this.panelTemp.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -155,18 +155,18 @@
             this.panelTemp.TabIndex = 3;
             this.panelTemp.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTemp_Paint);
             // 
-            // label17
+            // label7
             // 
-            this.label17.AutoSize = true;
-            this.label17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label17.Location = new System.Drawing.Point(26, 196);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label17.Size = new System.Drawing.Size(92, 33);
-            this.label17.TabIndex = 46;
-            this.label17.Text = "Start Date";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label7.AutoSize = true;
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.Location = new System.Drawing.Point(26, 196);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.label7.Size = new System.Drawing.Size(92, 33);
+            this.label7.TabIndex = 46;
+            this.label7.Text = "Start Date";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // startDate_FormBox
             // 
@@ -183,7 +183,7 @@
             // 
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Image = global::LetterOfOffer_18.Properties.Resources.icons8_list_13;
+            this.button11.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
             this.button11.Location = new System.Drawing.Point(669, 268);
             this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
@@ -196,7 +196,7 @@
             // 
             this.btnSalaryTo.FlatAppearance.BorderSize = 0;
             this.btnSalaryTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalaryTo.Image = global::LetterOfOffer_18.Properties.Resources.icons8_list_13;
+            this.btnSalaryTo.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
             this.btnSalaryTo.Location = new System.Drawing.Point(669, 233);
             this.btnSalaryTo.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalaryTo.Name = "btnSalaryTo";
@@ -209,7 +209,7 @@
             // 
             this.btnLanguage.FlatAppearance.BorderSize = 0;
             this.btnLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLanguage.Image = global::LetterOfOffer_18.Properties.Resources.icons8_list_13;
+            this.btnLanguage.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
             this.btnLanguage.Location = new System.Drawing.Point(669, 198);
             this.btnLanguage.Margin = new System.Windows.Forms.Padding(2);
             this.btnLanguage.Name = "btnLanguage";
@@ -222,7 +222,7 @@
             // 
             this.btnHR.FlatAppearance.BorderSize = 0;
             this.btnHR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHR.Image = global::LetterOfOffer_18.Properties.Resources.icons8_list_13;
+            this.btnHR.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
             this.btnHR.Location = new System.Drawing.Point(331, 269);
             this.btnHR.Margin = new System.Windows.Forms.Padding(2);
             this.btnHR.Name = "btnHR";
@@ -235,7 +235,7 @@
             // 
             this.btnSalaryFrom.FlatAppearance.BorderSize = 0;
             this.btnSalaryFrom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalaryFrom.Image = global::LetterOfOffer_18.Properties.Resources.icons8_list_13;
+            this.btnSalaryFrom.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
             this.btnSalaryFrom.Location = new System.Drawing.Point(331, 234);
             this.btnSalaryFrom.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalaryFrom.Name = "btnSalaryFrom";
@@ -248,7 +248,7 @@
             // 
             this.btnEXlevel.FlatAppearance.BorderSize = 0;
             this.btnEXlevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEXlevel.Image = global::LetterOfOffer_18.Properties.Resources.icons8_list_13;
+            this.btnEXlevel.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
             this.btnEXlevel.Location = new System.Drawing.Point(668, 94);
             this.btnEXlevel.Margin = new System.Windows.Forms.Padding(2);
             this.btnEXlevel.Name = "btnEXlevel";
@@ -261,7 +261,7 @@
             // 
             this.btnSector.FlatAppearance.BorderSize = 0;
             this.btnSector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSector.Image = global::LetterOfOffer_18.Properties.Resources.icons8_list_13;
+            this.btnSector.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
             this.btnSector.Location = new System.Drawing.Point(669, 163);
             this.btnSector.Margin = new System.Windows.Forms.Padding(2);
             this.btnSector.Name = "btnSector";
@@ -274,7 +274,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::LetterOfOffer_18.Properties.Resources.icons8_list_13;
+            this.button3.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
             this.button3.Location = new System.Drawing.Point(239, 339);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
@@ -293,18 +293,18 @@
             this.city_FormBox.TabIndex = 14;
             this.city_FormBox.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
-            // label16
+            // label15
             // 
-            this.label16.AutoSize = true;
-            this.label16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label16.Location = new System.Drawing.Point(265, 335);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label16.Size = new System.Drawing.Size(51, 33);
-            this.label16.TabIndex = 31;
-            this.label16.Text = "City";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label15.AutoSize = true;
+            this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label15.Location = new System.Drawing.Point(265, 335);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.label15.Size = new System.Drawing.Size(51, 33);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "City";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // postal_FormBox
             // 
@@ -316,19 +316,19 @@
             this.postal_FormBox.TabIndex = 15;
             this.postal_FormBox.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
-            // label15
+            // label16
             // 
-            this.label15.AutoSize = true;
-            this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label15.Location = new System.Drawing.Point(441, 335);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label15.Size = new System.Drawing.Size(105, 33);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "Postal Code";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label15.Click += new System.EventHandler(this.label15_Click);
+            this.label16.AutoSize = true;
+            this.label16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label16.Location = new System.Drawing.Point(441, 335);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.label16.Size = new System.Drawing.Size(105, 33);
+            this.label16.TabIndex = 29;
+            this.label16.Text = "Postal Code";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label16.Click += new System.EventHandler(this.label15_Click);
             // 
             // address_FormBox
             // 
@@ -352,19 +352,19 @@
             this.security_FormBox.TabIndex = 11;
             this.security_FormBox.SelectedIndexChanged += new System.EventHandler(this.comboBox11_SelectedIndexChanged);
             // 
-            // label14
+            // label12
             // 
-            this.label14.AutoSize = true;
-            this.label14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label14.Location = new System.Drawing.Point(346, 265);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label14.Size = new System.Drawing.Size(120, 33);
-            this.label14.TabIndex = 26;
-            this.label14.Text = "Security Level";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label14.Click += new System.EventHandler(this.label14_Click);
+            this.label12.AutoSize = true;
+            this.label12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label12.Location = new System.Drawing.Point(346, 265);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.label12.Size = new System.Drawing.Size(120, 33);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "Security Level";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label12.Click += new System.EventHandler(this.label14_Click);
             // 
             // salaryTo_FormBox
             // 
@@ -378,18 +378,18 @@
             this.salaryTo_FormBox.TabIndex = 9;
             this.salaryTo_FormBox.SelectedIndexChanged += new System.EventHandler(this.comboBox10_SelectedIndexChanged);
             // 
-            // label13
+            // label10
             // 
-            this.label13.AutoSize = true;
-            this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label13.Location = new System.Drawing.Point(377, 229);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label13.Size = new System.Drawing.Size(86, 33);
-            this.label13.TabIndex = 24;
-            this.label13.Text = "Salary To";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label10.AutoSize = true;
+            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label10.Location = new System.Drawing.Point(377, 229);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.label10.Size = new System.Drawing.Size(86, 33);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Salary To";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // language_FormBox
             // 
@@ -403,18 +403,18 @@
             this.language_FormBox.TabIndex = 7;
             this.language_FormBox.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged);
             // 
-            // label12
+            // label8
             // 
-            this.label12.AutoSize = true;
-            this.label12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label12.Location = new System.Drawing.Point(373, 194);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label12.Size = new System.Drawing.Size(92, 33);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "Language";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label8.AutoSize = true;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label8.Location = new System.Drawing.Point(373, 194);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.label8.Size = new System.Drawing.Size(92, 33);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Language";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // signature_FormBox
             // 
@@ -520,109 +520,109 @@
             this.fullName_FormBox.TabIndex = 2;
             this.fullName_FormBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // label7
+            // label17
             // 
-            this.label7.AutoSize = true;
-            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label7.Location = new System.Drawing.Point(25, 370);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label7.Size = new System.Drawing.Size(91, 33);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Signature";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label17.AutoSize = true;
+            this.label17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label17.Location = new System.Drawing.Point(25, 370);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.label17.Size = new System.Drawing.Size(91, 33);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Signature";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label8
+            // label14
             // 
-            this.label8.AutoSize = true;
-            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label8.Location = new System.Drawing.Point(35, 335);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label8.Size = new System.Drawing.Size(84, 33);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Province";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label14.AutoSize = true;
+            this.label14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label14.Location = new System.Drawing.Point(35, 335);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.label14.Size = new System.Drawing.Size(84, 33);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "Province";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label9
+            // label13
             // 
-            this.label9.AutoSize = true;
-            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label9.Location = new System.Drawing.Point(37, 300);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label9.Size = new System.Drawing.Size(80, 33);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Address";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label10.Location = new System.Drawing.Point(18, 265);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label10.Size = new System.Drawing.Size(102, 33);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "HR Advisor";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label13.AutoSize = true;
+            this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label13.Location = new System.Drawing.Point(37, 300);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.label13.Size = new System.Drawing.Size(80, 33);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Address";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label11.Location = new System.Drawing.Point(13, 229);
+            this.label11.Location = new System.Drawing.Point(18, 265);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label11.Size = new System.Drawing.Size(108, 33);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Salary From";
+            this.label11.Size = new System.Drawing.Size(102, 33);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "HR Advisor";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label9.Location = new System.Drawing.Point(13, 229);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.label9.Size = new System.Drawing.Size(108, 33);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Salary From";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Location = new System.Drawing.Point(374, 89);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.label4.Size = new System.Drawing.Size(81, 33);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "EX Level";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label6.Location = new System.Drawing.Point(374, 89);
+            this.label6.Location = new System.Drawing.Point(51, 159);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label6.Size = new System.Drawing.Size(81, 33);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "EX Level";
+            this.label6.Size = new System.Drawing.Size(68, 33);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Sector";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Location = new System.Drawing.Point(51, 159);
+            this.label5.Location = new System.Drawing.Point(5, 124);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label5.Size = new System.Drawing.Size(68, 33);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Sector";
+            this.label5.Size = new System.Drawing.Size(112, 33);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Position Title";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.Location = new System.Drawing.Point(5, 124);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.label4.Size = new System.Drawing.Size(112, 33);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Position Title";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
@@ -717,14 +717,14 @@
         private System.Windows.Forms.Panel panelTemp;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox fullName_FormBox;
         private System.Windows.Forms.TextBox position_FormBox;
@@ -735,16 +735,16 @@
         private System.Windows.Forms.ComboBox ex_FormBox;
         private System.Windows.Forms.ComboBox sector_FormBox;
         private System.Windows.Forms.TextBox city_FormBox;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox postal_FormBox;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox postal_FormBox;
+        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox address_FormBox;
         private System.Windows.Forms.ComboBox security_FormBox;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox salaryTo_FormBox;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox language_FormBox;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox salaryTo_FormBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox language_FormBox;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button pdfButton;
         private System.Windows.Forms.Button wordButton;
         private System.Windows.Forms.Button button3;
@@ -755,7 +755,7 @@
         private System.Windows.Forms.Button btnSalaryFrom;
         private System.Windows.Forms.Button btnEXlevel;
         private System.Windows.Forms.Button btnSector;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker startDate_FormBox;
         private System.Windows.Forms.Panel panel2;
     }

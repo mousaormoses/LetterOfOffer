@@ -1,4 +1,4 @@
-﻿namespace LetterOfOffer_18
+﻿namespace LetterOfOffer
 {
     partial class SelectColumnsForm
     {
