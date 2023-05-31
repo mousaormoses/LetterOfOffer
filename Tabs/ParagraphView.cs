@@ -94,7 +94,15 @@ namespace LetterOfOffer_18.Tabs
             try
             {
                 // Add paragraph to the SQLite database
-                using (var connection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;"))
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+
+                // Ensure the directory exists
+                Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+
+                // Use the dbPath variable when creating your SQLite connection
+                string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+                using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
                     string sql = "INSERT INTO paragraphs (content) VALUES (@Content)";
@@ -122,7 +130,15 @@ namespace LetterOfOffer_18.Tabs
                 try
                 {
                     // Remove from the database
-                    using (var connection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;"))
+                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+
+                    // Ensure the directory exists
+                    Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+
+                    // Use the dbPath variable when creating your SQLite connection
+                    string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+                    using (var connection = new SQLiteConnection(connectionString))
                     {
                         connection.Open();
                         string sql = $"DELETE FROM paragraphs WHERE ID = @ID";
@@ -225,7 +241,7 @@ namespace LetterOfOffer_18.Tabs
                                     try
                                     {
                                         // Remove from the database
-                                        using (var connection2 = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;"))
+                                        using (var connection2 = new SQLiteConnection(connectionString))
                                         {
                                             connection2.Open();
                                             string sql2 = $"DELETE FROM paragraphs WHERE ID = @ID";
@@ -321,7 +337,15 @@ namespace LetterOfOffer_18.Tabs
             try
             {
                 // Open the SQLite connection.
-                using (var conn = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;"))
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+
+                // Ensure the directory exists
+                Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+
+                // Use the dbPath variable when creating your SQLite connection
+                string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+                using (var conn = new SQLiteConnection(connectionString))
                 {
                     conn.Open();
 
@@ -389,7 +413,15 @@ namespace LetterOfOffer_18.Tabs
             {
                 try
                 {
-                    using (var connection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;"))
+                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyApplication", "MyDatabase.sqlite");
+
+                    // Ensure the directory exists
+                    Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+
+                    // Use the dbPath variable when creating your SQLite connection
+                    string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+                    using (var connection = new SQLiteConnection(connectionString))
                     {
                         connection.Open();
                         string sql = "UPDATE paragraphs SET content = @Content WHERE ID = @ID";
@@ -415,6 +447,11 @@ namespace LetterOfOffer_18.Tabs
         }
 
         private void panelParagraph_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonAdd_Click_1(object sender, EventArgs e)
         {
 
         }
