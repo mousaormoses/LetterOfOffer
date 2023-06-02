@@ -1,7 +1,7 @@
 # Letter Of Offer Generator
 
 ## Overview
-This application is designed to streamline the process of creating a Letter Of Offer. Its primary goal is to reduce repetitive tasks, minimize potential errors, and improve the efficiency of HR procedures. Developed by Moses and ChatGPT, the application is specifically created for Natural Resources Canada.
+This application is designed to streamline the process of creating a Letter Of Offer. Its primary goal is to reduce repetitive tasks, minimize potential errors, and improve the efficiency of HR procedures.
 
 ## Features
 Paragraph Tab: Allows the creation of reusable paragraphs and the inclusion of keys as placeholders.
