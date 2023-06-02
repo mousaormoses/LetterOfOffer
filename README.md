@@ -21,4 +21,4 @@ Fill out the form and choose the template you want to use.
 ## Motivation
 The main motivation behind creating this app was to reduce the need for manually editing text across multiple templates, thus reducing potential errors. Previously, similar paragraphs had to be edited separately in each of the 50 templates. Now, a single paragraph can be used in multiple templates and edited all at once.
 
-![LoO1](https://pasteboard.co/Tf98Ah9WaxYz.jpg)
+![LoO1](https://github.com/mousaormoses/LetterOfOffer/assets/56335425/e0867bdd-5dcb-4c2e-bcf4-8c2ade79c593)
