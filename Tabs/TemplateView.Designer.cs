@@ -42,7 +42,7 @@
             this.newTemp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newTemp.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.newTemp.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.newTemp.Location = new System.Drawing.Point(558, 7);
+            this.newTemp.Location = new System.Drawing.Point(558, 4);
             this.newTemp.Margin = new System.Windows.Forms.Padding(2);
             this.newTemp.Name = "newTemp";
             this.newTemp.Size = new System.Drawing.Size(148, 35);
