@@ -20,6 +20,32 @@ namespace LetterOfOffer.Tabs
         public FormView()
         {
             InitializeComponent();
+
+            Image backgroundImage = Properties.Resources.landscape;
+
+            panel2.Paint += (s, e) =>
+            {
+                // Get the scale factor (maintain aspect ratio)
+                float scale = Math.Min((float)panel2.Width / backgroundImage.Width, (float)panel2.Height / backgroundImage.Height);
+
+                // Calculate the new image size
+                int newWidth = (int)(backgroundImage.Width * scale);
+                int newHeight = (int)(backgroundImage.Height * scale);
+
+                // Calculate the position to draw the image (bottom right of the panel)
+                int xPos = panel2.Width - newWidth;
+                int yPos = panel2.Height - newHeight;
+
+                // Draw the image at the bottom right of the panel, resized to fit.
+                e.Graphics.DrawImage(backgroundImage, xPos, yPos, newWidth, newHeight);
+            };
+
+
+            panel2.Resize += (s, e) =>
+            {
+                // Force the panel to repaint when it is resized
+                panel2.Invalidate();
+            };
         }
 
         private void LoadItemsFromDatabase(ComboBox comboBox)

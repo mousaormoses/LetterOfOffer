@@ -244,6 +244,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon %281%29.ico" />
+    <None Include="Resources\icons8-new-document-27.png" />
+    <None Include="Resources\icons8-template-27 %285%29.png" />
+    <None Include="Resources\icons8-template-27 %284%29.png" />
+    <None Include="Resources\Ex_Community_2023_survey_1600x400_pp2.jpg" />
+    <None Include="Resources\icons8-template-27 %283%29.png" />
+    <None Include="Resources\icons8-template-27 %282%29.png" />
+    <None Include="Resources\icons8-more-details-27 %281%29.png" />
+    <None Include="Resources\icons8-template-27 %281%29.png" />
+    <None Include="Resources\icons8-edit-property-27 %282%29.png" />
+    <None Include="Resources\landscape2.jpg" />
+    <None Include="Resources\icons8-edit-property-27 %281%29.png" />
+    <None Include="Resources\icons8-edit-property-27.png" />
+    <None Include="Resources\icons8-form-30.png" />
+    <None Include="Resources\icons8-form-29.png" />
+    <None Include="Resources\icons8-more-details-27.png" />
+    <None Include="Resources\icons8-indent-32.png" />
+    <None Include="Resources\icons8-indent-27.png" />
+    <None Include="Resources\icons8-template-27.png" />
+    <None Include="Resources\icons8-form-27.png" />
+    <None Include="Resources\landscape.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
