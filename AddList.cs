@@ -257,7 +257,8 @@ namespace LetterOfOffer
                     }
 
 
-                    MessageBox.Show("Checked items were saved to the database.");
+                    MessageBox.Show("Checked items were saved to the database.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 catch (Exception ex)
                 {
@@ -273,6 +274,11 @@ namespace LetterOfOffer
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
         {
 
         }

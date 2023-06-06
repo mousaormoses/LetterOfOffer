@@ -83,6 +83,8 @@ namespace LetterOfOffer
             panel1.Controls.Add(userControl);
             userControl.BringToFront();
         }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             FormView panel = new FormView();

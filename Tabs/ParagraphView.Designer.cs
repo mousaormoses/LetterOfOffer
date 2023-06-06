@@ -30,7 +30,7 @@
         {
             this.panelParagraph = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnSave_dataParagraphs = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -65,25 +65,25 @@
             this.label2.Text = "Paragraphs";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnSave
+            // btnSave_dataParagraphs
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(103)))), ((int)(((byte)(79)))));
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSave.Location = new System.Drawing.Point(6, 10);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(148, 34);
-            this.btnSave.TabIndex = 13;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
+            this.btnSave_dataParagraphs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(103)))), ((int)(((byte)(79)))));
+            this.btnSave_dataParagraphs.FlatAppearance.BorderSize = 0;
+            this.btnSave_dataParagraphs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave_dataParagraphs.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.btnSave_dataParagraphs.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSave_dataParagraphs.Location = new System.Drawing.Point(6, 10);
+            this.btnSave_dataParagraphs.Name = "btnSave_dataParagraphs";
+            this.btnSave_dataParagraphs.Size = new System.Drawing.Size(148, 35);
+            this.btnSave_dataParagraphs.TabIndex = 13;
+            this.btnSave_dataParagraphs.Text = "Save";
+            this.btnSave_dataParagraphs.UseVisualStyleBackColor = false;
+            this.btnSave_dataParagraphs.Click += new System.EventHandler(this.btnSave_dataParagraphs_Click_1);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.buttonAdd);
-            this.panel2.Controls.Add(this.btnSave);
+            this.panel2.Controls.Add(this.btnSave_dataParagraphs);
             this.panel2.Location = new System.Drawing.Point(0, 501);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(575, 49);
@@ -98,7 +98,7 @@
             this.buttonAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonAdd.Location = new System.Drawing.Point(160, 10);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(148, 34);
+            this.buttonAdd.Size = new System.Drawing.Size(148, 35);
             this.buttonAdd.TabIndex = 11;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
@@ -116,7 +116,7 @@
             this.listView1.Location = new System.Drawing.Point(0, 34);
             this.listView1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(137, 464);
+            this.listView1.Size = new System.Drawing.Size(137, 414);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
@@ -133,7 +133,7 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(133, 26);
@@ -143,7 +143,7 @@
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(132, 26);
@@ -173,7 +173,7 @@
         #endregion
         private System.Windows.Forms.Panel panelParagraph;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnSave_dataParagraphs;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Panel panel1;

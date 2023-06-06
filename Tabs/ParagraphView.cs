@@ -168,6 +168,70 @@ namespace LetterOfOffer.Tabs
             panelParagraph.Controls.Add(newRichTextBox);
             panelParagraph.Controls.Add(idLabel);
             panelParagraph.Controls.Add(deleteButton);
+
+            foreach (Control control in panelParagraph.Controls)
+            {
+                if (control is RichTextBox richTextBox)
+                {
+                    richTextBox.ContextMenuStrip = new ContextMenuStrip();
+
+                    ToolStripMenuItem cutMenuItem = new ToolStripMenuItem("Cut");
+                    cutMenuItem.Click += (s, args) =>
+                    {
+                        richTextBox.Cut();
+                    };
+                    richTextBox.ContextMenuStrip.Items.Add(cutMenuItem);
+
+                    ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("Copy");
+                    copyMenuItem.Click += (s, args) =>
+                    {
+                        richTextBox.Copy();
+                    };
+                    richTextBox.ContextMenuStrip.Items.Add(copyMenuItem);
+
+                    ToolStripMenuItem pasteMenuItem = new ToolStripMenuItem("Paste");
+                    pasteMenuItem.Click += (s, args) =>
+                    {
+                        richTextBox.Paste();
+                    };
+                    richTextBox.ContextMenuStrip.Items.Add(pasteMenuItem);
+
+                    ToolStripMenuItem undoMenuItem = new ToolStripMenuItem("Undo");
+                    undoMenuItem.Click += (s, args) =>
+                    {
+                        if (richTextBox.CanUndo)
+                        {
+                            richTextBox.Undo();
+                        }
+                    };
+                    richTextBox.ContextMenuStrip.Items.Add(undoMenuItem);
+
+                    ToolStripMenuItem redoMenuItem = new ToolStripMenuItem("Redo");
+                    redoMenuItem.Click += (s, args) =>
+                    {
+                        if (richTextBox.CanRedo)
+                        {
+                            richTextBox.Redo();
+                        }
+                    };
+                    richTextBox.ContextMenuStrip.Items.Add(redoMenuItem);
+
+                    ToolStripMenuItem selectAllMenuItem = new ToolStripMenuItem("Select All");
+                    selectAllMenuItem.Click += (s, args) =>
+                    {
+                        richTextBox.SelectAll();
+                    };
+                    richTextBox.ContextMenuStrip.Items.Add(selectAllMenuItem);
+
+                    ToolStripMenuItem clearMenuItem = new ToolStripMenuItem("Clear");
+                    clearMenuItem.Click += (s, args) =>
+                    {
+                        richTextBox.Clear();
+                    };
+                    richTextBox.ContextMenuStrip.Items.Add(clearMenuItem);
+                }
+            }
+
         }
 
         private void ParagraphView_Load(object sender, EventArgs e)
@@ -280,6 +344,21 @@ namespace LetterOfOffer.Tabs
                             if (control is RichTextBox richTextBox)
                             {
                                 richTextBox.ContextMenuStrip = new ContextMenuStrip();
+
+                                ToolStripMenuItem cutMenuItem = new ToolStripMenuItem("Cut");
+                                cutMenuItem.Click += (s, args) =>
+                                {
+                                    richTextBox.Cut();
+                                };
+                                richTextBox.ContextMenuStrip.Items.Add(cutMenuItem);
+
+                                ToolStripMenuItem copyItem = new ToolStripMenuItem("Copy");
+                                copyItem.Click += (s, args) =>
+                                {
+                                    richTextBox.Copy();
+                                };
+                                richTextBox.ContextMenuStrip.Items.Add(copyItem);
+
                                 ToolStripMenuItem pasteMenuItem = new ToolStripMenuItem("Paste");
                                 pasteMenuItem.Click += (s, args) =>
                                 {
@@ -287,14 +366,42 @@ namespace LetterOfOffer.Tabs
                                 };
                                 richTextBox.ContextMenuStrip.Items.Add(pasteMenuItem);
 
+                                ToolStripMenuItem undoMenuItem = new ToolStripMenuItem("Undo");
+                                undoMenuItem.Click += (s, args) =>
+                                {
+                                    if (richTextBox.CanUndo)
+                                    {
+                                        richTextBox.Undo();
+                                    }
+                                };
+                                richTextBox.ContextMenuStrip.Items.Add(undoMenuItem);
+
+                                ToolStripMenuItem redoMenuItem = new ToolStripMenuItem("Redo");
+                                redoMenuItem.Click += (s, args) =>
+                                {
+                                    if (richTextBox.CanRedo)
+                                    {
+                                        richTextBox.Redo();
+                                    }
+                                };
+                                richTextBox.ContextMenuStrip.Items.Add(redoMenuItem);
+
                                 ToolStripMenuItem selectAllMenuItem = new ToolStripMenuItem("Select All");
                                 selectAllMenuItem.Click += (s, args) =>
                                 {
                                     richTextBox.SelectAll();
                                 };
                                 richTextBox.ContextMenuStrip.Items.Add(selectAllMenuItem);
+
+                                ToolStripMenuItem clearMenuItem = new ToolStripMenuItem("Clear");
+                                clearMenuItem.Click += (s, args) =>
+                                {
+                                    richTextBox.Clear();
+                                };
+                                richTextBox.ContextMenuStrip.Items.Add(clearMenuItem);
                             }
                         }
+
 
                     }
                 }
@@ -410,7 +517,7 @@ namespace LetterOfOffer.Tabs
             };
         }
 
-        private void btnSave_Click_1(object sender, EventArgs e)
+        public void btnSave_dataParagraphs_Click_1(object sender, EventArgs e)
         {
             foreach (var control in panelParagraph.Controls.OfType<RichTextBox>())
             {
@@ -442,6 +549,8 @@ namespace LetterOfOffer.Tabs
                     Console.WriteLine(ex.ToString());
                 }
             }
+            MessageBox.Show("Data has been saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)

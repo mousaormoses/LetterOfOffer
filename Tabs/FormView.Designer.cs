@@ -33,6 +33,14 @@
             this.panelTemp = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.startDate_FormBox = new System.Windows.Forms.DateTimePicker();
+            this.button11 = new System.Windows.Forms.Button();
+            this.btnSalaryTo = new System.Windows.Forms.Button();
+            this.btnLanguage = new System.Windows.Forms.Button();
+            this.btnHR = new System.Windows.Forms.Button();
+            this.btnSalaryFrom = new System.Windows.Forms.Button();
+            this.btnEXlevel = new System.Windows.Forms.Button();
+            this.btnSector = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.city_FormBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.postal_FormBox = new System.Windows.Forms.TextBox();
@@ -66,14 +74,6 @@
             this.pdfButton = new System.Windows.Forms.Button();
             this.wordButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button11 = new System.Windows.Forms.Button();
-            this.btnSalaryTo = new System.Windows.Forms.Button();
-            this.btnLanguage = new System.Windows.Forms.Button();
-            this.btnHR = new System.Windows.Forms.Button();
-            this.btnSalaryFrom = new System.Windows.Forms.Button();
-            this.btnEXlevel = new System.Windows.Forms.Button();
-            this.btnSector = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelTemp.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -178,6 +178,110 @@
             this.startDate_FormBox.TabIndex = 6;
             this.startDate_FormBox.Value = new System.DateTime(2023, 5, 24, 23, 44, 0, 0);
             this.startDate_FormBox.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // button11
+            // 
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
+            this.button11.Location = new System.Drawing.Point(669, 268);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(23, 26);
+            this.button11.TabIndex = 43;
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // btnSalaryTo
+            // 
+            this.btnSalaryTo.FlatAppearance.BorderSize = 0;
+            this.btnSalaryTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalaryTo.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
+            this.btnSalaryTo.Location = new System.Drawing.Point(669, 233);
+            this.btnSalaryTo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalaryTo.Name = "btnSalaryTo";
+            this.btnSalaryTo.Size = new System.Drawing.Size(23, 26);
+            this.btnSalaryTo.TabIndex = 42;
+            this.btnSalaryTo.UseVisualStyleBackColor = true;
+            this.btnSalaryTo.Click += new System.EventHandler(this.btnSalaryTo_Click);
+            // 
+            // btnLanguage
+            // 
+            this.btnLanguage.FlatAppearance.BorderSize = 0;
+            this.btnLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLanguage.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
+            this.btnLanguage.Location = new System.Drawing.Point(669, 198);
+            this.btnLanguage.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLanguage.Name = "btnLanguage";
+            this.btnLanguage.Size = new System.Drawing.Size(23, 26);
+            this.btnLanguage.TabIndex = 41;
+            this.btnLanguage.UseVisualStyleBackColor = true;
+            this.btnLanguage.Click += new System.EventHandler(this.btnLanguage_Click);
+            // 
+            // btnHR
+            // 
+            this.btnHR.FlatAppearance.BorderSize = 0;
+            this.btnHR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHR.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
+            this.btnHR.Location = new System.Drawing.Point(331, 269);
+            this.btnHR.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHR.Name = "btnHR";
+            this.btnHR.Size = new System.Drawing.Size(23, 26);
+            this.btnHR.TabIndex = 40;
+            this.btnHR.UseVisualStyleBackColor = true;
+            this.btnHR.Click += new System.EventHandler(this.btnHR_Click);
+            // 
+            // btnSalaryFrom
+            // 
+            this.btnSalaryFrom.FlatAppearance.BorderSize = 0;
+            this.btnSalaryFrom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalaryFrom.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
+            this.btnSalaryFrom.Location = new System.Drawing.Point(331, 234);
+            this.btnSalaryFrom.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalaryFrom.Name = "btnSalaryFrom";
+            this.btnSalaryFrom.Size = new System.Drawing.Size(23, 26);
+            this.btnSalaryFrom.TabIndex = 39;
+            this.btnSalaryFrom.UseVisualStyleBackColor = true;
+            this.btnSalaryFrom.Click += new System.EventHandler(this.btnSalaryFrom_Click);
+            // 
+            // btnEXlevel
+            // 
+            this.btnEXlevel.FlatAppearance.BorderSize = 0;
+            this.btnEXlevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEXlevel.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
+            this.btnEXlevel.Location = new System.Drawing.Point(668, 94);
+            this.btnEXlevel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEXlevel.Name = "btnEXlevel";
+            this.btnEXlevel.Size = new System.Drawing.Size(23, 26);
+            this.btnEXlevel.TabIndex = 38;
+            this.btnEXlevel.UseVisualStyleBackColor = true;
+            this.btnEXlevel.Click += new System.EventHandler(this.btnEXlevel_Click);
+            // 
+            // btnSector
+            // 
+            this.btnSector.FlatAppearance.BorderSize = 0;
+            this.btnSector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSector.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
+            this.btnSector.Location = new System.Drawing.Point(669, 163);
+            this.btnSector.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSector.Name = "btnSector";
+            this.btnSector.Size = new System.Drawing.Size(23, 26);
+            this.btnSector.TabIndex = 37;
+            this.btnSector.UseVisualStyleBackColor = true;
+            this.btnSector.Click += new System.EventHandler(this.btnSector_Click);
+            // 
+            // button3
+            // 
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
+            this.button3.Location = new System.Drawing.Point(239, 339);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(23, 26);
+            this.button3.TabIndex = 35;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // city_FormBox
             // 
@@ -546,13 +650,14 @@
             // pdfButton
             // 
             this.pdfButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(40)))), ((int)(((byte)(56)))));
+            this.pdfButton.FlatAppearance.BorderSize = 0;
             this.pdfButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pdfButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pdfButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pdfButton.Location = new System.Drawing.Point(5, 38);
             this.pdfButton.Margin = new System.Windows.Forms.Padding(2);
             this.pdfButton.Name = "pdfButton";
-            this.pdfButton.Size = new System.Drawing.Size(149, 34);
+            this.pdfButton.Size = new System.Drawing.Size(148, 35);
             this.pdfButton.TabIndex = 17;
             this.pdfButton.Text = "PDF";
             this.pdfButton.UseVisualStyleBackColor = false;
@@ -561,13 +666,14 @@
             // wordButton
             // 
             this.wordButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(40)))), ((int)(((byte)(56)))));
+            this.wordButton.FlatAppearance.BorderSize = 0;
             this.wordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.wordButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.wordButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.wordButton.Location = new System.Drawing.Point(158, 38);
             this.wordButton.Margin = new System.Windows.Forms.Padding(2);
             this.wordButton.Name = "wordButton";
-            this.wordButton.Size = new System.Drawing.Size(148, 34);
+            this.wordButton.Size = new System.Drawing.Size(148, 35);
             this.wordButton.TabIndex = 18;
             this.wordButton.Text = "Word";
             this.wordButton.UseVisualStyleBackColor = false;
@@ -584,110 +690,6 @@
             this.panel2.Size = new System.Drawing.Size(720, 82);
             this.panel2.TabIndex = 35;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // button11
-            // 
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
-            this.button11.Location = new System.Drawing.Point(669, 268);
-            this.button11.Margin = new System.Windows.Forms.Padding(2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(23, 26);
-            this.button11.TabIndex = 43;
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // btnSalaryTo
-            // 
-            this.btnSalaryTo.FlatAppearance.BorderSize = 0;
-            this.btnSalaryTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalaryTo.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
-            this.btnSalaryTo.Location = new System.Drawing.Point(669, 233);
-            this.btnSalaryTo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSalaryTo.Name = "btnSalaryTo";
-            this.btnSalaryTo.Size = new System.Drawing.Size(23, 26);
-            this.btnSalaryTo.TabIndex = 42;
-            this.btnSalaryTo.UseVisualStyleBackColor = true;
-            this.btnSalaryTo.Click += new System.EventHandler(this.btnSalaryTo_Click);
-            // 
-            // btnLanguage
-            // 
-            this.btnLanguage.FlatAppearance.BorderSize = 0;
-            this.btnLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLanguage.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
-            this.btnLanguage.Location = new System.Drawing.Point(669, 198);
-            this.btnLanguage.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLanguage.Name = "btnLanguage";
-            this.btnLanguage.Size = new System.Drawing.Size(23, 26);
-            this.btnLanguage.TabIndex = 41;
-            this.btnLanguage.UseVisualStyleBackColor = true;
-            this.btnLanguage.Click += new System.EventHandler(this.btnLanguage_Click);
-            // 
-            // btnHR
-            // 
-            this.btnHR.FlatAppearance.BorderSize = 0;
-            this.btnHR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHR.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
-            this.btnHR.Location = new System.Drawing.Point(331, 269);
-            this.btnHR.Margin = new System.Windows.Forms.Padding(2);
-            this.btnHR.Name = "btnHR";
-            this.btnHR.Size = new System.Drawing.Size(23, 26);
-            this.btnHR.TabIndex = 40;
-            this.btnHR.UseVisualStyleBackColor = true;
-            this.btnHR.Click += new System.EventHandler(this.btnHR_Click);
-            // 
-            // btnSalaryFrom
-            // 
-            this.btnSalaryFrom.FlatAppearance.BorderSize = 0;
-            this.btnSalaryFrom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalaryFrom.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
-            this.btnSalaryFrom.Location = new System.Drawing.Point(331, 234);
-            this.btnSalaryFrom.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSalaryFrom.Name = "btnSalaryFrom";
-            this.btnSalaryFrom.Size = new System.Drawing.Size(23, 26);
-            this.btnSalaryFrom.TabIndex = 39;
-            this.btnSalaryFrom.UseVisualStyleBackColor = true;
-            this.btnSalaryFrom.Click += new System.EventHandler(this.btnSalaryFrom_Click);
-            // 
-            // btnEXlevel
-            // 
-            this.btnEXlevel.FlatAppearance.BorderSize = 0;
-            this.btnEXlevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEXlevel.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
-            this.btnEXlevel.Location = new System.Drawing.Point(668, 94);
-            this.btnEXlevel.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEXlevel.Name = "btnEXlevel";
-            this.btnEXlevel.Size = new System.Drawing.Size(23, 26);
-            this.btnEXlevel.TabIndex = 38;
-            this.btnEXlevel.UseVisualStyleBackColor = true;
-            this.btnEXlevel.Click += new System.EventHandler(this.btnEXlevel_Click);
-            // 
-            // btnSector
-            // 
-            this.btnSector.FlatAppearance.BorderSize = 0;
-            this.btnSector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSector.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
-            this.btnSector.Location = new System.Drawing.Point(669, 163);
-            this.btnSector.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSector.Name = "btnSector";
-            this.btnSector.Size = new System.Drawing.Size(23, 26);
-            this.btnSector.TabIndex = 37;
-            this.btnSector.UseVisualStyleBackColor = true;
-            this.btnSector.Click += new System.EventHandler(this.btnSector_Click);
-            // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
-            this.button3.Location = new System.Drawing.Point(239, 339);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(23, 26);
-            this.button3.TabIndex = 35;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // FormView
             // 
