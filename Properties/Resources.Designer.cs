@@ -83,6 +83,26 @@ namespace LetterOfOffer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_bold_10 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-bold-10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_bold_7 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-bold-7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_delete_15__1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-delete-15 (1)", resourceCulture);
@@ -183,19 +203,9 @@ namespace LetterOfOffer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_indent_27 {
+        internal static System.Drawing.Bitmap icons8_italic_10 {
             get {
-                object obj = ResourceManager.GetObject("icons8-indent-27", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_indent_32 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-indent-32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-italic-10", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,16 +226,6 @@ namespace LetterOfOffer.Properties {
         internal static System.Drawing.Bitmap icons8_list_13 {
             get {
                 object obj = ResourceManager.GetObject("icons8-list-13", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_more_details_27 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-more-details-27", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -356,6 +356,26 @@ namespace LetterOfOffer.Properties {
         internal static System.Drawing.Bitmap icons8_template_27__5_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-template-27 (5)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_underline_10 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-underline-10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_underline_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-underline-12", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,30 +29,41 @@ namespace LetterOfOffer.Tabs
 
         private void CreateDatabaseAndTable()
         {
-            if (!File.Exists("MyDatabase.sqlite"))
+            try
             {
-                string dbPath = settings.DbPath;
-
-
-                // Ensure the directory exists
-                Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
-
-                // Use the dbPath variable when creating your SQLite connection
-                string connectionString = "Data Source=" + dbPath + ";Version=3;";
-
-                using (var connection = new SQLiteConnection(connectionString))
+                // Check if the database file already exists
+                if (!File.Exists("MyDatabase.sqlite"))
                 {
-                    connection.Open();
+                    string dbPath = settings.DbPath;
 
-                    string sql = "CREATE TABLE IF NOT EXISTS paragraphs (ID INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT)";
+                    // Ensure the directory exists
+                    Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
 
-                    using (var command = new SQLiteCommand(sql, connection))
+                    // Use the dbPath variable when creating your SQLite connection
+                    string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+                    using (var connection = new SQLiteConnection(connectionString))
                     {
-                        command.ExecuteNonQuery();
+                        connection.Open();
+
+                        // SQL query to create a new table named "paragraphs" if it doesn't exist
+                        string sql = "CREATE TABLE IF NOT EXISTS paragraphs (ID INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT)";
+
+                        using (var command = new SQLiteCommand(sql, connection))
+                        {
+                            // Execute the SQL command
+                            command.ExecuteNonQuery();
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                // Log or display the exception as needed
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
         }
+
 
         private void newRichTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
         {
@@ -76,26 +88,48 @@ namespace LetterOfOffer.Tabs
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            // Create new RichTextBox and Delete button
-            var newRichTextBox = new RichTextBox() { Width = 500, Height = 160, DetectUrls = true, BorderStyle = BorderStyle.None };
+            // Create and configure new RichTextBox and Delete button
+            var newRichTextBox = CreateAndConfigureRichTextBox();
+            var deleteButton = CreateAndConfigureDeleteButton(newRichTextBox);
+
+            // Add paragraph to the SQLite database
+            AddParagraphToDatabase(newRichTextBox);
+
+            // Create the ID label
+            var idLabel = new Label() { Text = newRichTextBox.Tag.ToString(), Width = 50, Height = 20, Left = newRichTextBox.Left - 60, Top = newRichTextBox.Top };
+
+            // Add Click event to delete button
+            deleteButton.Click += (s, args) => DeleteButtonClickEvent(newRichTextBox, deleteButton, idLabel);
+
+            // Add new RichTextBox, ID label and Delete button to the panel
+            AddControlsToPanel(newRichTextBox, idLabel, deleteButton);
+        }
+
+        private Button CreateAndConfigureDeleteButton(RichTextBox newRichTextBox)
+        {
             var deleteButton = new Button()
             {
                 Image = Properties.Resources.icons8_delete_15__1_,
                 BackgroundImageLayout = ImageLayout.Zoom,
                 Left = newRichTextBox.Width + 10,
-                Width = 35
+                Width = 35,
+                Top = newRichTextBox.Top
             };
 
-            newRichTextBox.LinkClicked += new LinkClickedEventHandler(newRichTextBox_LinkClicked);
-            newRichTextBox.KeyDown += new KeyEventHandler(newRichTextBox_KeyDown);
+            return deleteButton;
+        }
 
-            // Set location for the new controls
-            if (panelParagraph.Controls.Count > 0)
-            {
-                newRichTextBox.Top = panelParagraph.Controls[panelParagraph.Controls.Count - 1].Bottom + 140;
-                deleteButton.Top = newRichTextBox.Top;
-            }
+        private void AddControlsToPanel(RichTextBox newRichTextBox, Label idLabel, Button deleteButton)
+        {
+            panelParagraph.Controls.Add(newRichTextBox);
+            panelParagraph.Controls.Add(idLabel);
+            panelParagraph.Controls.Add(deleteButton);
 
+            AddContextMenuItemsToRichTextBox();
+        }
+
+        private void AddParagraphToDatabase(RichTextBox newRichTextBox)
+        {
             try
             {
                 // Add paragraph to the SQLite database
@@ -125,53 +159,46 @@ namespace LetterOfOffer.Tabs
                 // Log or display the exception as needed
                 Console.WriteLine(ex.ToString());
             }
+        }
 
-            // Now that we have the Tag value, create the ID label
-            var idLabel = new Label() { Text = newRichTextBox.Tag.ToString(), Width = 50, Height = 20, Left = newRichTextBox.Left - 60, Top = newRichTextBox.Top };
-
-            // Add Click event to delete button
-            deleteButton.Click += (s, args) =>
+        private void DeleteButtonClickEvent(RichTextBox newRichTextBox, Button deleteButton, Label idLabel)
+        {
+            try
             {
-                try
+                // Remove from the database
+                string dbPath = settings.DbPath;
+
+                // Ensure the directory exists
+                Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+
+                // Use the dbPath variable when creating your SQLite connection
+                string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+                using (var connection = new SQLiteConnection(connectionString))
                 {
-                    // Remove from the database
-                    string dbPath = settings.DbPath;
-
-
-                    // Ensure the directory exists
-                    Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
-
-                    // Use the dbPath variable when creating your SQLite connection
-                    string connectionString = "Data Source=" + dbPath + ";Version=3;";
-
-                    using (var connection = new SQLiteConnection(connectionString))
+                    connection.Open();
+                    string sql = $"DELETE FROM paragraphs WHERE ID = @ID";
+                    using (var command = new SQLiteCommand(sql, connection))
                     {
-                        connection.Open();
-                        string sql = $"DELETE FROM paragraphs WHERE ID = @ID";
-                        using (var command = new SQLiteCommand(sql, connection))
-                        {
-                            command.Parameters.AddWithValue("@ID", newRichTextBox.Tag);
-                            command.ExecuteNonQuery();
-                        }
+                        command.Parameters.AddWithValue("@ID", newRichTextBox.Tag);
+                        command.ExecuteNonQuery();
                     }
                 }
-                catch (Exception ex)
-                {
-                    // Log or display the exception as needed
-                    Console.WriteLine(ex.ToString());
-                }
+            }
+            catch (Exception ex)
+            {
+                // Log or display the exception as needed
+                Console.WriteLine(ex.ToString());
+            }
 
-                // Remove controls
-                panelParagraph.Controls.Remove(newRichTextBox);
-                panelParagraph.Controls.Remove(deleteButton);
-                panelParagraph.Controls.Remove(idLabel);
-            };
+            // Remove controls
+            panelParagraph.Controls.Remove(newRichTextBox);
+            panelParagraph.Controls.Remove(deleteButton);
+            panelParagraph.Controls.Remove(idLabel);
+        }
 
-            // Add new RichTextBox, ID label and Delete button to the panel
-            panelParagraph.Controls.Add(newRichTextBox);
-            panelParagraph.Controls.Add(idLabel);
-            panelParagraph.Controls.Add(deleteButton);
-
+        private void AddContextMenuItemsToRichTextBox()
+        {
             foreach (Control control in panelParagraph.Controls)
             {
                 if (control is RichTextBox richTextBox)
@@ -234,11 +261,95 @@ namespace LetterOfOffer.Tabs
                     richTextBox.ContextMenuStrip.Items.Add(clearMenuItem);
                 }
             }
-
         }
 
-        private void ParagraphView_Load(object sender, EventArgs e)
+
+        private RichTextBox CreateAndConfigureRichTextBox()
         {
+            var newRichTextBox = new PaddingRichText.PaddedRichTextBox() { Width = 500, Height = 160, DetectUrls = true, BorderStyle = BorderStyle.None };
+
+            newRichTextBox.LinkClicked += new LinkClickedEventHandler(newRichTextBox_LinkClicked);
+            newRichTextBox.KeyDown += new KeyEventHandler(newRichTextBox_KeyDown);
+
+            // Set location for the new controls
+            if (panelParagraph.Controls.Count > 0)
+            {
+                newRichTextBox.Top = panelParagraph.Controls[panelParagraph.Controls.Count - 1].Bottom + 140;
+            }
+
+            return newRichTextBox;
+        }
+
+        private RichTextBox currentRichTextBox = null;
+
+        private void LoadParagraphsFromDatabase()
+        {
+
+
+            // Hook up event handlers for each toolbar item
+            toolStripBold.Click += (s, e) =>
+            {
+                if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
+                {
+                    FontStyle newFontStyle = currentRichTextBox.SelectionFont.Style ^ FontStyle.Bold;
+                    currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont, newFontStyle);
+                }
+            };
+
+            toolStripItalic.Click += (s, e) =>
+            {
+                if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
+                {
+                    FontStyle newFontStyle = currentRichTextBox.SelectionFont.Style ^ FontStyle.Italic;
+                    currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont, newFontStyle);
+                }
+            };
+
+            toolStripUnderline.Click += (s, e) =>
+            {
+                if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
+                {
+                    FontStyle newFontStyle = currentRichTextBox.SelectionFont.Style ^ FontStyle.Underline;
+                    currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont, newFontStyle);
+                }
+            };
+
+            toolStripDropDownFontSize.SelectedIndexChanged += (s, e) =>
+            {
+                if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
+                {
+                    float newSize;
+                    if (float.TryParse(toolStripDropDownFontSize.SelectedItem.ToString(), out newSize))
+                    {
+                        currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont.FontFamily, newSize, currentRichTextBox.SelectionFont.Style);
+                    }
+                }
+            };
+
+            toolStripDropDownFontFamily.SelectedIndexChanged += (s, e) =>
+            {
+                if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
+                {
+                    string fontFamily = toolStripDropDownFontFamily.SelectedItem.ToString();
+                    currentRichTextBox.SelectionFont = new System.Drawing.Font(fontFamily, currentRichTextBox.SelectionFont.Size, currentRichTextBox.SelectionFont.Style);
+                }
+            };
+
+
+
+            // Create InstalledFontCollection object
+            System.Drawing.Text.InstalledFontCollection installedFontCollection = new System.Drawing.Text.InstalledFontCollection();
+
+            // Get array of FontFamily objects
+            FontFamily[] fontFamilies = installedFontCollection.Families;
+
+            // Iterate over the array and add each FontFamily's name to your ToolStripComboBox
+            foreach (FontFamily fontFamily in fontFamilies)
+            {
+                toolStripDropDownFontFamily.Items.Add(fontFamily.Name);
+            }
+
+
             // Load the paragraphs from the SQLite database
 
             try
@@ -270,16 +381,18 @@ namespace LetterOfOffer.Tabs
                     string sql = "SELECT * FROM paragraphs";
                     using (var command = new SQLiteCommand(sql, connection))
                     {
-                        using (var reader = command.ExecuteReader())
-                        {
+                        var reader = command.ExecuteReader();
+                        
                             while (reader.Read())
                             {
-                                // Create the idLabel first
-                                var idLabel = new System.Windows.Forms.Label() { Text = reader["ID"].ToString(), Width = 0, Height = 20 };
+                            // Create the idLabel first
+                            var idLabel = new System.Windows.Forms.Label() { Text = reader["ID"].ToString(), Width = 0, Height = 20 };
 
-                                // Create a new RichTextBox and Delete button
-                                var newRichTextBox = new RichTextBox() { Width = 500, Height = 160, BorderStyle = BorderStyle.None };
-                                var deleteButton = new Button()
+                            // Create a new RichTextBox and Delete button
+                            var newRichTextBox = new PaddingRichText.PaddedRichTextBox() { Width = 500, Height = 160, BorderStyle = BorderStyle.None };
+                            newRichTextBox.GotFocus += (s, e) => { currentRichTextBox = newRichTextBox; };  // add this line
+
+                            var deleteButton = new Button()
                                 {
                                     Image = Properties.Resources.icons8_delete_15__1_,
                                     BackgroundImageLayout = ImageLayout.Zoom,
@@ -336,11 +449,11 @@ namespace LetterOfOffer.Tabs
                                 };
 
                                 // Add the new RichTextBox, ID label, and Delete button to the panel
-                                //panelParagraph.Controls.Add(idLabel);
+                                panelParagraph.Controls.Add(idLabel);
                                 panelParagraph.Controls.Add(newRichTextBox);
                                 panelParagraph.Controls.Add(deleteButton);
                             }
-                        }
+                        
 
                         // Add context menu strip to each RichTextBox control
                         foreach (Control control in panelParagraph.Controls)
@@ -419,7 +532,10 @@ namespace LetterOfOffer.Tabs
             {
                 Console.WriteLine("Exception: " + ex.Message);
             }
+        }
 
+        private void InitializeListView()
+        {
             // Initialize ListView properties
             listView1.GridLines = true;
             listView1.FullRowSelect = true;
@@ -447,6 +563,7 @@ namespace LetterOfOffer.Tabs
                 }
             };
             contextMenuStrip.Items.Add(copyMenuItem);
+            listView1.ContextMenuStrip = contextMenuStrip;
 
             try
             {
@@ -520,6 +637,13 @@ namespace LetterOfOffer.Tabs
                     }
                 }
             };
+        }
+
+        private void ParagraphView_Load(object sender, EventArgs e)
+        {
+            LoadParagraphsFromDatabase();
+            InitializeListView();
+
         }
 
         public void btnSave_dataParagraphs_Click_1(object sender, EventArgs e)

@@ -37,16 +37,25 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panelToolBar = new System.Windows.Forms.Panel();
+            this.toolStripEditor = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownFontSize = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripDropDownFontFamily = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripBold = new System.Windows.Forms.ToolStripButton();
+            this.toolStripItalic = new System.Windows.Forms.ToolStripButton();
+            this.toolStripUnderline = new System.Windows.Forms.ToolStripButton();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panelToolBar.SuspendLayout();
+            this.toolStripEditor.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelParagraph
             // 
             this.panelParagraph.AutoScroll = true;
-            this.panelParagraph.Location = new System.Drawing.Point(5, 81);
+            this.panelParagraph.Location = new System.Drawing.Point(3, 123);
             this.panelParagraph.Name = "panelParagraph";
-            this.panelParagraph.Size = new System.Drawing.Size(570, 414);
+            this.panelParagraph.Size = new System.Drawing.Size(572, 372);
             this.panelParagraph.TabIndex = 10;
             this.panelParagraph.Paint += new System.Windows.Forms.PaintEventHandler(this.panelParagraph_Paint);
             // 
@@ -151,10 +160,98 @@
             this.label3.Text = "Paragraphs";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // panelToolBar
+            // 
+            this.panelToolBar.Controls.Add(this.toolStripEditor);
+            this.panelToolBar.Location = new System.Drawing.Point(3, 84);
+            this.panelToolBar.Name = "panelToolBar";
+            this.panelToolBar.Size = new System.Drawing.Size(500, 33);
+            this.panelToolBar.TabIndex = 39;
+            // 
+            // toolStripEditor
+            // 
+            this.toolStripEditor.AutoSize = false;
+            this.toolStripEditor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolStripEditor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripBold,
+            this.toolStripItalic,
+            this.toolStripUnderline,
+            this.toolStripDropDownFontSize,
+            this.toolStripDropDownFontFamily});
+            this.toolStripEditor.Location = new System.Drawing.Point(0, 0);
+            this.toolStripEditor.Name = "toolStripEditor";
+            this.toolStripEditor.Size = new System.Drawing.Size(500, 33);
+            this.toolStripEditor.TabIndex = 0;
+            this.toolStripEditor.Text = "toolStrip1";
+            // 
+            // toolStripDropDownFontSize
+            // 
+            this.toolStripDropDownFontSize.Items.AddRange(new object[] {
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "14",
+            "16",
+            "18",
+            "20",
+            "22",
+            "24",
+            "26",
+            "28",
+            "32",
+            "36",
+            "40",
+            "46",
+            "52",
+            "60",
+            "72"});
+            this.toolStripDropDownFontSize.Name = "toolStripDropDownFontSize";
+            this.toolStripDropDownFontSize.Size = new System.Drawing.Size(75, 33);
+            this.toolStripDropDownFontSize.Text = "Font Size";
+            // 
+            // toolStripDropDownFontFamily
+            // 
+            this.toolStripDropDownFontFamily.Name = "toolStripDropDownFontFamily";
+            this.toolStripDropDownFontFamily.Size = new System.Drawing.Size(120, 33);
+            this.toolStripDropDownFontFamily.Text = "Font Family";
+            // 
+            // toolStripBold
+            // 
+            this.toolStripBold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBold.Image = global::LetterOfOffer.Properties.Resources.icons8_bold_10;
+            this.toolStripBold.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBold.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBold.Name = "toolStripBold";
+            this.toolStripBold.Size = new System.Drawing.Size(23, 30);
+            this.toolStripBold.Text = "Bold";
+            // 
+            // toolStripItalic
+            // 
+            this.toolStripItalic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripItalic.Image = global::LetterOfOffer.Properties.Resources.icons8_italic_10;
+            this.toolStripItalic.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripItalic.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripItalic.Name = "toolStripItalic";
+            this.toolStripItalic.Size = new System.Drawing.Size(23, 30);
+            this.toolStripItalic.Text = "Italic";
+            // 
+            // toolStripUnderline
+            // 
+            this.toolStripUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripUnderline.Image = global::LetterOfOffer.Properties.Resources.icons8_underline_12;
+            this.toolStripUnderline.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripUnderline.Name = "toolStripUnderline";
+            this.toolStripUnderline.Size = new System.Drawing.Size(23, 30);
+            this.toolStripUnderline.Text = "Underline";
+            // 
             // ParagraphView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panelToolBar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -166,6 +263,9 @@
             this.Load += new System.EventHandler(this.ParagraphView_Load);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panelToolBar.ResumeLayout(false);
+            this.toolStripEditor.ResumeLayout(false);
+            this.toolStripEditor.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -180,5 +280,12 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panelToolBar;
+        private System.Windows.Forms.ToolStrip toolStripEditor;
+        private System.Windows.Forms.ToolStripButton toolStripBold;
+        private System.Windows.Forms.ToolStripButton toolStripItalic;
+        private System.Windows.Forms.ToolStripButton toolStripUnderline;
+        private System.Windows.Forms.ToolStripComboBox toolStripDropDownFontSize;
+        private System.Windows.Forms.ToolStripComboBox toolStripDropDownFontFamily;
     }
 }

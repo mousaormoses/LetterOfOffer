@@ -17,10 +17,12 @@ namespace LetterOfOffer
 
             if (!string.IsNullOrWhiteSpace(savedPath))
             {
+                //New path
                 DbPath = savedPath;
             }
             else
             {
+                //create a path in C:\Users\YOURUSER\AppData\Roaming\LetterOfOffer
                 DbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
             }
         }
