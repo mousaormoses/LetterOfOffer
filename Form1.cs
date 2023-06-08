@@ -16,11 +16,13 @@ namespace LetterOfOffer
         public Form1()
         {
             InitializeComponent();
-
+            // Load the settings
+            AppSettings settings = AppSettings.Load();
             try
             {
                 // Connect to the SQLite database
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));

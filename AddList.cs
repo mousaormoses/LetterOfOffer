@@ -29,7 +29,8 @@ namespace LetterOfOffer
                     try
                     {
                         // Load data from the SQLite database
-                        string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                        DatabasePath databasePath = new DatabasePath();
+string dbPath = databasePath.MyPathDes();
 
                         // Ensure the directory exists
                         Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -88,7 +89,8 @@ namespace LetterOfOffer
                     {
                         try
                         {
-                            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                            DatabasePath databasePath = new DatabasePath();
+string dbPath = databasePath.MyPathDes();
 
                             // Ensure the directory exists
                             Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -161,7 +163,12 @@ namespace LetterOfOffer
             try
             {
                 // Load data from the SQLite database
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                // Load the settings
+                AppSettings settings = AppSettings.Load();
+
+                // Use the DbPath from the settings
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -219,7 +226,11 @@ namespace LetterOfOffer
             {
                 try
                 {
-                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                    // Load the settings
+                    AppSettings settings = AppSettings.Load();
+
+                    // Use the DbPath from the settings
+                    string dbPath = settings.DbPath;
 
                     // Ensure the directory exists
                     Directory.CreateDirectory(Path.GetDirectoryName(dbPath));

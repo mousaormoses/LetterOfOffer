@@ -13,8 +13,12 @@ using System.Xml;
 
 namespace LetterOfOffer.Tabs
 {
+
     public partial class TemplateView : UserControl
     {
+        // Load the settings
+        AppSettings settings = AppSettings.Load();
+
         private List<int> selectedParagraphs; // List to store IDs of selected paragraphs
         private string selectedTableName; // Variable to store the selected template table name
 
@@ -31,7 +35,8 @@ namespace LetterOfOffer.Tabs
 
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -421,7 +426,8 @@ namespace LetterOfOffer.Tabs
                     try
                     {
                         // Add new table to the SQLite database
-                        string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                        string dbPath = settings.DbPath;
+
 
                         // Ensure the directory exists
                         Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -502,7 +508,8 @@ namespace LetterOfOffer.Tabs
 
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));

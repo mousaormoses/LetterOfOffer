@@ -85,6 +85,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
             this.Import = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -99,7 +101,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Signature.SuspendLayout();
             this.Header.SuspendLayout();
@@ -708,6 +710,8 @@
             // 
             // Import
             // 
+            this.Import.Controls.Add(this.label30);
+            this.Import.Controls.Add(this.button3);
             this.Import.Controls.Add(this.label29);
             this.Import.Controls.Add(this.label25);
             this.Import.Controls.Add(this.label24);
@@ -723,6 +727,30 @@
             this.Import.TabIndex = 2;
             this.Import.Text = "Import & Export  ";
             this.Import.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Black;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(12, 350);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(108, 26);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Path";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label29
+            // 
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(18, 123);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(448, 25);
+            this.label29.TabIndex = 8;
+            this.label29.Text = "- Signature";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label25
             // 
@@ -879,15 +907,12 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label29
+            // label30
             // 
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(18, 123);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(448, 25);
-            this.label29.TabIndex = 8;
-            this.label29.Text = "- Signature";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label30.Location = new System.Drawing.Point(12, 324);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(446, 23);
+            this.label30.TabIndex = 10;
             // 
             // Settings
             // 
@@ -993,5 +1018,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label30;
     }
 }

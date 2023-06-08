@@ -15,7 +15,8 @@ namespace LetterOfOffer.Tabs
 {
     public partial class ParagraphView : UserControl
     {
-
+        // Load the settings
+        AppSettings settings = AppSettings.Load();
         public ParagraphView()
         {
             InitializeComponent();
@@ -29,7 +30,8 @@ namespace LetterOfOffer.Tabs
         {
             if (!File.Exists("MyDatabase.sqlite"))
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -97,7 +99,7 @@ namespace LetterOfOffer.Tabs
             try
             {
                 // Add paragraph to the SQLite database
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -133,7 +135,8 @@ namespace LetterOfOffer.Tabs
                 try
                 {
                     // Remove from the database
-                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                    string dbPath = settings.DbPath;
+
 
                     // Ensure the directory exists
                     Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -240,7 +243,8 @@ namespace LetterOfOffer.Tabs
 
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -447,7 +451,8 @@ namespace LetterOfOffer.Tabs
             try
             {
                 // Open the SQLite connection.
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -523,7 +528,8 @@ namespace LetterOfOffer.Tabs
             {
                 try
                 {
-                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                    string dbPath = settings.DbPath;
+
 
                     // Ensure the directory exists
                     Directory.CreateDirectory(Path.GetDirectoryName(dbPath));

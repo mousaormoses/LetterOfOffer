@@ -19,15 +19,23 @@ namespace LetterOfOffer
     {
 
         private Form1 mainForm;
+        AppSettings settings = AppSettings.Load();
+
         public Settings(Form1 form1)
         {
             InitializeComponent();
             mainForm = form1; // get the reference to the Form1
+                              // Load the settings
+
+            // Use the DbPath from the settings
+            label30.Text = settings.DbPath;
+
 
             this.Load += new System.EventHandler(this.Form_Load);
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -62,7 +70,9 @@ namespace LetterOfOffer
 
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -116,7 +126,8 @@ namespace LetterOfOffer
         {
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -235,6 +246,8 @@ namespace LetterOfOffer
 
         private void Settings_Load(object sender, EventArgs e)
         {
+            string dbPath = settings.DbPath;
+
             // Retrieve keys and values from the keys table
             Dictionary<string, string> keyValues = RetrieveKeyValuesFromTable("keys");
 
@@ -254,7 +267,9 @@ namespace LetterOfOffer
 
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+
+                // Use the DbPath from the settings
+                dbPath = settings.DbPath;
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -312,7 +327,8 @@ namespace LetterOfOffer
 
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -398,7 +414,8 @@ namespace LetterOfOffer
         {
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -445,12 +462,13 @@ namespace LetterOfOffer
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string sourceFilePath = openFileDialog.FileName;
-                string destinationFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Make sure the source file exists before trying to copy it
                 if (System.IO.File.Exists(sourceFilePath))
                 {
-                    System.IO.File.Copy(sourceFilePath, destinationFilePath, true); // Overwrite existing file
+                    System.IO.File.Copy(sourceFilePath, dbPath, true); // Overwrite existing file
                     MessageBox.Show("Database has been imported successfully!");
                 }
                 else
@@ -470,13 +488,14 @@ namespace LetterOfOffer
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string sourceFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
                 string destinationFilePath = saveFileDialog.FileName;
 
                 // Make sure the source file exists before trying to copy it
-                if (System.IO.File.Exists(sourceFilePath))
+                if (System.IO.File.Exists(dbPath))
                 {
-                    System.IO.File.Copy(sourceFilePath, destinationFilePath, true); // Overwrite existing file
+                    System.IO.File.Copy(dbPath, destinationFilePath, true); // Overwrite existing file
                     MessageBox.Show("Database has been exported successfully!");
                 }
                 else
@@ -542,7 +561,8 @@ namespace LetterOfOffer
             string[] textBoxSigns = { sign1.Text, sign2.Text, sign3.Text, sign4.Text };
             string[] richSigns = { richTextSign1.Rtf, richTextSign2.Rtf, richTextSign3.Rtf, richTextSign4.Rtf };
 
-            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+            string dbPath = settings.DbPath;
+
 
             // Ensure the directory exists
             Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -598,7 +618,8 @@ namespace LetterOfOffer
         {
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -697,6 +718,35 @@ namespace LetterOfOffer
             {
                 // Show a message to the user
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Create a FolderBrowserDialog to allow the user to pick a new directory
+            using (var dialog = new FolderBrowserDialog())
+            {
+                // Show the dialog and get the result
+                DialogResult result = dialog.ShowDialog();
+
+                // If the user clicked OK, change the destination path
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(dialog.SelectedPath))
+                {
+                    // Combine the selected path with the filename to get the new destination file path
+                    string destinationFilePath = Path.Combine(dialog.SelectedPath, "MyDatabase.sqlite");
+
+                    // Load the settings
+                    AppSettings settings = AppSettings.Load();
+
+                    // Update the settings
+                    settings.DbPath = destinationFilePath;
+
+                    // Save the settings
+                    settings.Save();
+
+                    // Display a message box to show the new file path
+                    MessageBox.Show($"The new file path is: {destinationFilePath}");
+                }
             }
         }
     }
