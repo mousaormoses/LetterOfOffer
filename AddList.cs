@@ -293,5 +293,70 @@ string dbPath = databasePath.MyPathDes();
         {
 
         }
+
+        private bool isMaximized = false; // Track the maximized state
+        private Size originalSize; // Store the original size of panel1
+
+        private void AddList_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                if (!isMaximized)
+                {
+                    // Store the original size of panel1
+                    originalSize = panel1.Size;
+
+                    // Calculate the new size for panel1 and dataGridView1 based on the available form size
+                    int newWidth = ClientSize.Width;
+                    int newHeight = ClientSize.Height;
+                    int panel1Height = (int)(newHeight * 0.9);
+                    int dataGridView1Height = panel1Height - panel1.Padding.Top - panel1.Padding.Bottom;
+
+                    // Adjust the size and position of panel1 and dataGridView1
+                    panel1.Size = new Size(newWidth, panel1Height);
+                    dataGridView1.Size = new Size(newWidth - dataGridView1.Margin.Left - dataGridView1.Margin.Right, dataGridView1Height);
+                    dataGridView1.Location = new Point(dataGridView1.Margin.Left, dataGridView1.Margin.Top);
+
+                    isMaximized = true;
+                }
+            }
+            else if (WindowState == FormWindowState.Normal)
+            {
+                if (isMaximized)
+                {
+                    // Restore the original size and position of panel1 and dataGridView1
+                    panel1.Size = originalSize;
+                    dataGridView1.Size = new Size(originalSize.Width - dataGridView1.Margin.Left - dataGridView1.Margin.Right, originalSize.Height - dataGridView1.Margin.Top - dataGridView1.Margin.Bottom);
+                    dataGridView1.Location = new Point(dataGridView1.Margin.Left, dataGridView1.Margin.Top);
+
+                    isMaximized = false;
+                }
+            }
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Check if it's a DataGridViewTextBoxCell in the Content column
+            if (e.ColumnIndex == dataGridView1.Columns["Content"].Index && e.RowIndex >= 0)
+            {
+                DataGridViewTextBoxCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewTextBoxCell;
+                if (cell != null)
+                {
+                    // Get the content of the cell
+                    string content = cell.Value?.ToString();
+
+                    // Calculate the desired row height based on the number of lines
+                    int numLines = content.Split('\n').Length;
+                    int lineHeight = TextRenderer.MeasureText("Sample", dataGridView1.Font).Height;
+                    int desiredHeight = numLines * lineHeight + dataGridView1.RowTemplate.DefaultCellStyle.Padding.Vertical;
+
+                    // Set the row height
+                    if (dataGridView1.Rows[e.RowIndex].Height != desiredHeight)
+                    {
+                        dataGridView1.Rows[e.RowIndex].Height = desiredHeight +10;
+                    }
+                }
+            }
+        }
     }
 }
