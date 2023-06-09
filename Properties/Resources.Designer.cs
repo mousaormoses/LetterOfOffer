@@ -213,6 +213,26 @@ namespace LetterOfOffer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_link_10 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-link-10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_link_14 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-link-14", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_list_10 {
             get {
                 object obj = ResourceManager.GetObject("icons8-list-10", resourceCulture);
@@ -356,6 +376,26 @@ namespace LetterOfOffer.Properties {
         internal static System.Drawing.Bitmap icons8_template_27__5_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-template-27 (5)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_text_color_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-text-color-12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_text_color_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-text-color-16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -335,6 +335,49 @@ namespace LetterOfOffer.Tabs
                 }
             };
 
+            toolStripHyper.Click += (s, e) =>
+            {
+                if (currentRichTextBox != null && !string.IsNullOrEmpty(currentRichTextBox.SelectedText))
+                {
+                    var inputBox = new InputBox()
+                    {
+                        Text = "Enter URL",
+                        StartPosition = FormStartPosition.CenterParent
+                    };
+                    if (inputBox.ShowDialog() == DialogResult.OK)
+                    {
+                        string url = inputBox.InputText;
+
+                        // Create the hyperlink text
+                        string hyperlinkText = currentRichTextBox.SelectedText;
+                        currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont, FontStyle.Underline);
+                        currentRichTextBox.SelectionColor = Color.Blue;
+
+                        // Attach the hyperlink URL as a tag to the selected text
+                        currentRichTextBox.SelectionProtected = true;
+                        currentRichTextBox.Tag = url;
+
+                        // Subscribe to the LinkClicked event
+                        currentRichTextBox.LinkClicked += CurrentRichTextBox_LinkClicked;
+
+                        // Update the selected text with the hyperlink
+                        currentRichTextBox.SelectedText = hyperlinkText;
+                    }
+                }
+            };
+
+            toolStripFontColor.Click += (s, e) =>
+            {
+                if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
+                {
+                    ColorDialog colorDialog = new ColorDialog();
+                    if (colorDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        currentRichTextBox.SelectionColor = colorDialog.Color;
+                    }
+                }
+            };
+
 
 
             // Create InstalledFontCollection object
@@ -390,7 +433,13 @@ namespace LetterOfOffer.Tabs
 
                             // Create a new RichTextBox and Delete button
                             var newRichTextBox = new PaddingRichText.PaddedRichTextBox() { Width = 500, Height = 160, BorderStyle = BorderStyle.None };
-                            newRichTextBox.GotFocus += (s, e) => { currentRichTextBox = newRichTextBox; };  // add this line
+
+                            // Add the GotFocus event to the new RichTextBox
+                            newRichTextBox.GotFocus += (s, e) => { currentRichTextBox = newRichTextBox; };
+
+                            // Add the LinkClicked event to the new RichTextBox
+                            newRichTextBox.LinkClicked += (s, e) => { System.Diagnostics.Process.Start(e.LinkText); };
+
 
                             var deleteButton = new Button()
                                 {
@@ -697,6 +746,12 @@ namespace LetterOfOffer.Tabs
         {
 
         }
+        private void CurrentRichTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            string url = e.LinkText;
+            System.Diagnostics.Process.Start(url);
+        }
+
     }
 }
 

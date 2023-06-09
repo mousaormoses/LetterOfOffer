@@ -44,6 +44,8 @@
             this.toolStripBold = new System.Windows.Forms.ToolStripButton();
             this.toolStripItalic = new System.Windows.Forms.ToolStripButton();
             this.toolStripUnderline = new System.Windows.Forms.ToolStripButton();
+            this.toolStripHyper = new System.Windows.Forms.ToolStripButton();
+            this.toolStripFontColor = new System.Windows.Forms.ToolStripButton();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelToolBar.SuspendLayout();
@@ -177,7 +179,9 @@
             this.toolStripItalic,
             this.toolStripUnderline,
             this.toolStripDropDownFontSize,
-            this.toolStripDropDownFontFamily});
+            this.toolStripDropDownFontFamily,
+            this.toolStripHyper,
+            this.toolStripFontColor});
             this.toolStripEditor.Location = new System.Drawing.Point(0, 0);
             this.toolStripEditor.Name = "toolStripEditor";
             this.toolStripEditor.Size = new System.Drawing.Size(500, 33);
@@ -247,6 +251,26 @@
             this.toolStripUnderline.Size = new System.Drawing.Size(23, 30);
             this.toolStripUnderline.Text = "Underline";
             // 
+            // toolStripHyper
+            // 
+            this.toolStripHyper.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripHyper.Image = global::LetterOfOffer.Properties.Resources.icons8_link_14;
+            this.toolStripHyper.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripHyper.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripHyper.Name = "toolStripHyper";
+            this.toolStripHyper.Size = new System.Drawing.Size(23, 30);
+            this.toolStripHyper.Text = "toolStripButton1";
+            // 
+            // toolStripFontColor
+            // 
+            this.toolStripFontColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripFontColor.Image = global::LetterOfOffer.Properties.Resources.icons8_text_color_16;
+            this.toolStripFontColor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripFontColor.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripFontColor.Name = "toolStripFontColor";
+            this.toolStripFontColor.Size = new System.Drawing.Size(23, 30);
+            this.toolStripFontColor.Text = "toolStripButton1";
+            // 
             // ParagraphView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,5 +311,7 @@
         private System.Windows.Forms.ToolStripButton toolStripUnderline;
         private System.Windows.Forms.ToolStripComboBox toolStripDropDownFontSize;
         private System.Windows.Forms.ToolStripComboBox toolStripDropDownFontFamily;
+        private System.Windows.Forms.ToolStripButton toolStripHyper;
+        private System.Windows.Forms.ToolStripButton toolStripFontColor;
     }
 }
