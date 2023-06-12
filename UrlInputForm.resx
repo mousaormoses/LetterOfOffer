@@ -117,20 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ImageUpload.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>The primary goal of this application is to streamline the process of creating a Letter Of Offer, reduce repetitive tasks, and minimize potential errors.
-
-Now, with this application, we introduce a more efficient method:
-- Each paragraph is stored and managed individually. Any update made to a paragraph is immediately reflected in all templates where it is used. This ensures consistency across different letters.
-- Paragraphs are created independently and can be reused in multiple templates. This significantly reduces duplication and the effort required to manage and edit multiple templates.
-- With a library of pre-defined paragraphs at your disposal, you can easily create a new template by simply adding the desired paragraphs in the required order. You can even re-order them as necessary.
-
-For any updates or questions, feel free to reach out via GitHub or email.
-
-GitHub: https://github.com/mousaormoses
-Email: moses.hashim@gmail.com</value>
-  </data>
 </root>

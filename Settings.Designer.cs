@@ -80,10 +80,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.ImageUpload = new System.Windows.Forms.TabPage();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.uploadImageBtn = new System.Windows.Forms.Button();
-            this.label28 = new System.Windows.Forms.Label();
             this.Import = new System.Windows.Forms.TabPage();
             this.label30 = new System.Windows.Forms.Label();
             this.newPathBtn = new System.Windows.Forms.Button();
@@ -102,16 +98,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.uploadImageBtn = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.ImageUpload = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.Signature.SuspendLayout();
             this.Header.SuspendLayout();
             this.Keys.SuspendLayout();
-            this.ImageUpload.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.Import.SuspendLayout();
             this.Help.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.ImageUpload.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -582,7 +582,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(132, 20);
             this.label9.TabIndex = 7;
-            this.label9.Text = "Salarty To";
+            this.label9.Text = "Salary To";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
@@ -662,51 +662,6 @@
             this.label2.Text = "Full Name";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // ImageUpload
-            // 
-            this.ImageUpload.Controls.Add(this.pictureBox2);
-            this.ImageUpload.Controls.Add(this.uploadImageBtn);
-            this.ImageUpload.Controls.Add(this.label28);
-            this.ImageUpload.Location = new System.Drawing.Point(4, 22);
-            this.ImageUpload.Name = "ImageUpload";
-            this.ImageUpload.Size = new System.Drawing.Size(466, 381);
-            this.ImageUpload.TabIndex = 5;
-            this.ImageUpload.Text = "Image";
-            this.ImageUpload.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(8, 61);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(449, 278);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // uploadImageBtn
-            // 
-            this.uploadImageBtn.BackColor = System.Drawing.Color.Black;
-            this.uploadImageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.uploadImageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uploadImageBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.uploadImageBtn.Location = new System.Drawing.Point(350, 350);
-            this.uploadImageBtn.Name = "uploadImageBtn";
-            this.uploadImageBtn.Size = new System.Drawing.Size(108, 26);
-            this.uploadImageBtn.TabIndex = 4;
-            this.uploadImageBtn.Text = "Upload";
-            this.uploadImageBtn.UseVisualStyleBackColor = false;
-            this.uploadImageBtn.Click += new System.EventHandler(this.uploadImageBtn_Click);
-            // 
-            // label28
-            // 
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(8, 14);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(451, 28);
-            this.label28.TabIndex = 3;
-            this.label28.Text = "Upload a new image";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Import
             // 
@@ -914,6 +869,52 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // label28
+            // 
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(8, 14);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(451, 28);
+            this.label28.TabIndex = 3;
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uploadImageBtn
+            // 
+            this.uploadImageBtn.BackColor = System.Drawing.Color.Black;
+            this.uploadImageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.uploadImageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uploadImageBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.uploadImageBtn.Location = new System.Drawing.Point(350, 350);
+            this.uploadImageBtn.Name = "uploadImageBtn";
+            this.uploadImageBtn.Size = new System.Drawing.Size(108, 26);
+            this.uploadImageBtn.TabIndex = 4;
+            this.uploadImageBtn.Text = "Upload";
+            this.uploadImageBtn.UseVisualStyleBackColor = false;
+            this.uploadImageBtn.Click += new System.EventHandler(this.uploadImageBtn_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.ErrorImage = global::LetterOfOffer.Properties.Resources.cand;
+            this.pictureBox2.Location = new System.Drawing.Point(8, 61);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(449, 278);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // ImageUpload
+            // 
+            this.ImageUpload.Controls.Add(this.pictureBox2);
+            this.ImageUpload.Controls.Add(this.uploadImageBtn);
+            this.ImageUpload.Controls.Add(this.label28);
+            this.ImageUpload.Location = new System.Drawing.Point(4, 22);
+            this.ImageUpload.Name = "ImageUpload";
+            this.ImageUpload.Size = new System.Drawing.Size(466, 381);
+            this.ImageUpload.TabIndex = 5;
+            this.ImageUpload.Text = "Image";
+            this.ImageUpload.UseVisualStyleBackColor = true;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -935,12 +936,12 @@
             this.Header.ResumeLayout(false);
             this.Keys.ResumeLayout(false);
             this.Keys.PerformLayout();
-            this.ImageUpload.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.Import.ResumeLayout(false);
             this.Help.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.ImageUpload.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1013,12 +1014,12 @@
         private System.Windows.Forms.RichTextBox richTextSign2;
         private System.Windows.Forms.TextBox sign1;
         private System.Windows.Forms.RichTextBox richTextSign1;
-        private System.Windows.Forms.TabPage ImageUpload;
-        private System.Windows.Forms.Button uploadImageBtn;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Button newPathBtn;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TabPage ImageUpload;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button uploadImageBtn;
+        private System.Windows.Forms.Label label28;
     }
 }

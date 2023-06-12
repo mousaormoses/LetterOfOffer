@@ -30,7 +30,6 @@
         {
             this.panelParagraph = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSave_dataParagraphs = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -39,13 +38,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panelToolBar = new System.Windows.Forms.Panel();
             this.toolStripEditor = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownFontSize = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripDropDownFontFamily = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripBold = new System.Windows.Forms.ToolStripButton();
             this.toolStripItalic = new System.Windows.Forms.ToolStripButton();
             this.toolStripUnderline = new System.Windows.Forms.ToolStripButton();
-            this.toolStripHyper = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownFontSize = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripFontColor = new System.Windows.Forms.ToolStripButton();
+            this.toolStripHighlightTextColor = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLeftAlighment = new System.Windows.Forms.ToolStripButton();
+            this.toolStripCenterAlighment = new System.Windows.Forms.ToolStripButton();
+            this.toolStripRightAlighment = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownFontFamily = new System.Windows.Forms.ToolStripComboBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelToolBar.SuspendLayout();
@@ -76,25 +78,9 @@
             this.label2.Text = "Paragraphs";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnSave_dataParagraphs
-            // 
-            this.btnSave_dataParagraphs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(103)))), ((int)(((byte)(79)))));
-            this.btnSave_dataParagraphs.FlatAppearance.BorderSize = 0;
-            this.btnSave_dataParagraphs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave_dataParagraphs.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.btnSave_dataParagraphs.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSave_dataParagraphs.Location = new System.Drawing.Point(6, 10);
-            this.btnSave_dataParagraphs.Name = "btnSave_dataParagraphs";
-            this.btnSave_dataParagraphs.Size = new System.Drawing.Size(148, 35);
-            this.btnSave_dataParagraphs.TabIndex = 13;
-            this.btnSave_dataParagraphs.Text = "Save";
-            this.btnSave_dataParagraphs.UseVisualStyleBackColor = false;
-            this.btnSave_dataParagraphs.Click += new System.EventHandler(this.btnSave_dataParagraphs_Click_1);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.buttonAdd);
-            this.panel2.Controls.Add(this.btnSave_dataParagraphs);
             this.panel2.Location = new System.Drawing.Point(0, 501);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(575, 49);
@@ -107,7 +93,7 @@
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.buttonAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonAdd.Location = new System.Drawing.Point(160, 10);
+            this.buttonAdd.Location = new System.Drawing.Point(3, 10);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(148, 35);
             this.buttonAdd.TabIndex = 11;
@@ -124,14 +110,15 @@
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 34);
+            this.listView1.Location = new System.Drawing.Point(0, 76);
             this.listView1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(137, 414);
+            this.listView1.Size = new System.Drawing.Size(137, 372);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
             // 
             // panel1
             // 
@@ -145,9 +132,9 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 8);
+            this.label1.Location = new System.Drawing.Point(0, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 26);
+            this.label1.Size = new System.Drawing.Size(133, 33);
             this.label1.TabIndex = 1;
             this.label1.Text = "Keys";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -180,13 +167,43 @@
             this.toolStripUnderline,
             this.toolStripDropDownFontSize,
             this.toolStripDropDownFontFamily,
-            this.toolStripHyper,
-            this.toolStripFontColor});
+            this.toolStripFontColor,
+            this.toolStripHighlightTextColor,
+            this.toolStripLeftAlighment,
+            this.toolStripCenterAlighment,
+            this.toolStripRightAlighment});
             this.toolStripEditor.Location = new System.Drawing.Point(0, 0);
             this.toolStripEditor.Name = "toolStripEditor";
             this.toolStripEditor.Size = new System.Drawing.Size(500, 33);
             this.toolStripEditor.TabIndex = 0;
             this.toolStripEditor.Text = "toolStrip1";
+            // 
+            // toolStripBold
+            // 
+            this.toolStripBold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBold.Image = global::LetterOfOffer.Properties.Resources.icons8_bold_25;
+            this.toolStripBold.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBold.Name = "toolStripBold";
+            this.toolStripBold.Size = new System.Drawing.Size(23, 30);
+            this.toolStripBold.Text = "Bold";
+            // 
+            // toolStripItalic
+            // 
+            this.toolStripItalic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripItalic.Image = global::LetterOfOffer.Properties.Resources.icons8_italic_25;
+            this.toolStripItalic.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripItalic.Name = "toolStripItalic";
+            this.toolStripItalic.Size = new System.Drawing.Size(23, 30);
+            this.toolStripItalic.Text = "Italic";
+            // 
+            // toolStripUnderline
+            // 
+            this.toolStripUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripUnderline.Image = global::LetterOfOffer.Properties.Resources.icons8_underline_25;
+            this.toolStripUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripUnderline.Name = "toolStripUnderline";
+            this.toolStripUnderline.Size = new System.Drawing.Size(23, 30);
+            this.toolStripUnderline.Text = "Underline";
             // 
             // toolStripDropDownFontSize
             // 
@@ -215,61 +232,56 @@
             this.toolStripDropDownFontSize.Size = new System.Drawing.Size(75, 33);
             this.toolStripDropDownFontSize.Text = "Font Size";
             // 
-            // toolStripDropDownFontFamily
-            // 
-            this.toolStripDropDownFontFamily.Name = "toolStripDropDownFontFamily";
-            this.toolStripDropDownFontFamily.Size = new System.Drawing.Size(120, 33);
-            this.toolStripDropDownFontFamily.Text = "Font Family";
-            // 
-            // toolStripBold
-            // 
-            this.toolStripBold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBold.Image = global::LetterOfOffer.Properties.Resources.icons8_bold_10;
-            this.toolStripBold.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripBold.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBold.Name = "toolStripBold";
-            this.toolStripBold.Size = new System.Drawing.Size(23, 30);
-            this.toolStripBold.Text = "Bold";
-            // 
-            // toolStripItalic
-            // 
-            this.toolStripItalic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripItalic.Image = global::LetterOfOffer.Properties.Resources.icons8_italic_10;
-            this.toolStripItalic.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripItalic.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripItalic.Name = "toolStripItalic";
-            this.toolStripItalic.Size = new System.Drawing.Size(23, 30);
-            this.toolStripItalic.Text = "Italic";
-            // 
-            // toolStripUnderline
-            // 
-            this.toolStripUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripUnderline.Image = global::LetterOfOffer.Properties.Resources.icons8_underline_12;
-            this.toolStripUnderline.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripUnderline.Name = "toolStripUnderline";
-            this.toolStripUnderline.Size = new System.Drawing.Size(23, 30);
-            this.toolStripUnderline.Text = "Underline";
-            // 
-            // toolStripHyper
-            // 
-            this.toolStripHyper.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripHyper.Image = global::LetterOfOffer.Properties.Resources.icons8_link_14;
-            this.toolStripHyper.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripHyper.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripHyper.Name = "toolStripHyper";
-            this.toolStripHyper.Size = new System.Drawing.Size(23, 30);
-            this.toolStripHyper.Text = "toolStripButton1";
-            // 
             // toolStripFontColor
             // 
             this.toolStripFontColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripFontColor.Image = global::LetterOfOffer.Properties.Resources.icons8_text_color_16;
-            this.toolStripFontColor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripFontColor.Image = global::LetterOfOffer.Properties.Resources.icons8_text_color_25__1_;
             this.toolStripFontColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripFontColor.Name = "toolStripFontColor";
             this.toolStripFontColor.Size = new System.Drawing.Size(23, 30);
             this.toolStripFontColor.Text = "toolStripButton1";
+            // 
+            // toolStripHighlightTextColor
+            // 
+            this.toolStripHighlightTextColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripHighlightTextColor.Image = global::LetterOfOffer.Properties.Resources.icons8_marker_pen_25;
+            this.toolStripHighlightTextColor.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripHighlightTextColor.Name = "toolStripHighlightTextColor";
+            this.toolStripHighlightTextColor.Size = new System.Drawing.Size(23, 30);
+            this.toolStripHighlightTextColor.Text = "toolStripButton1";
+            // 
+            // toolStripLeftAlighment
+            // 
+            this.toolStripLeftAlighment.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripLeftAlighment.Image = global::LetterOfOffer.Properties.Resources.icons8_align_left_25;
+            this.toolStripLeftAlighment.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripLeftAlighment.Name = "toolStripLeftAlighment";
+            this.toolStripLeftAlighment.Size = new System.Drawing.Size(23, 30);
+            this.toolStripLeftAlighment.Text = "toolStripButton1";
+            // 
+            // toolStripCenterAlighment
+            // 
+            this.toolStripCenterAlighment.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCenterAlighment.Image = global::LetterOfOffer.Properties.Resources.icons8_align_center_25;
+            this.toolStripCenterAlighment.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripCenterAlighment.Name = "toolStripCenterAlighment";
+            this.toolStripCenterAlighment.Size = new System.Drawing.Size(23, 30);
+            this.toolStripCenterAlighment.Text = "toolStripButton2";
+            // 
+            // toolStripRightAlighment
+            // 
+            this.toolStripRightAlighment.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripRightAlighment.Image = global::LetterOfOffer.Properties.Resources.icons8_align_right_25;
+            this.toolStripRightAlighment.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripRightAlighment.Name = "toolStripRightAlighment";
+            this.toolStripRightAlighment.Size = new System.Drawing.Size(23, 30);
+            this.toolStripRightAlighment.Text = "toolStripButton3";
+            // 
+            // toolStripDropDownFontFamily
+            // 
+            this.toolStripDropDownFontFamily.Name = "toolStripDropDownFontFamily";
+            this.toolStripDropDownFontFamily.Size = new System.Drawing.Size(121, 33);
+            this.toolStripDropDownFontFamily.Text = "Font Family";
             // 
             // ParagraphView
             // 
@@ -297,7 +309,6 @@
         #endregion
         private System.Windows.Forms.Panel panelParagraph;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnSave_dataParagraphs;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Panel panel1;
@@ -310,8 +321,11 @@
         private System.Windows.Forms.ToolStripButton toolStripItalic;
         private System.Windows.Forms.ToolStripButton toolStripUnderline;
         private System.Windows.Forms.ToolStripComboBox toolStripDropDownFontSize;
-        private System.Windows.Forms.ToolStripComboBox toolStripDropDownFontFamily;
-        private System.Windows.Forms.ToolStripButton toolStripHyper;
         private System.Windows.Forms.ToolStripButton toolStripFontColor;
+        private System.Windows.Forms.ToolStripButton toolStripHighlightTextColor;
+        private System.Windows.Forms.ToolStripButton toolStripLeftAlighment;
+        private System.Windows.Forms.ToolStripButton toolStripCenterAlighment;
+        private System.Windows.Forms.ToolStripButton toolStripRightAlighment;
+        private System.Windows.Forms.ToolStripComboBox toolStripDropDownFontFamily;
     }
 }

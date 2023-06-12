@@ -89,6 +89,9 @@
     </Compile>
     <Compile Include="AppSettings.cs" />
     <Compile Include="DatabasePath.cs" />
+    <Compile Include="ExtendedRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +148,12 @@
     <Compile Include="Tabs\TemplateView.Designer.cs">
       <DependentUpon>TemplateView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UrlInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UrlInputForm.Designer.cs">
+      <DependentUpon>UrlInputForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddList.resx">
       <DependentUpon>AddList.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tabs\TemplateView.resx">
       <DependentUpon>TemplateView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UrlInputForm.resx">
+      <DependentUpon>UrlInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MyDatabase.sqlite" />
     <None Include="packages.config" />
@@ -259,6 +271,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon %281%29.ico" />
+    <None Include="Resources\icons8-align-right-25.png" />
+    <None Include="Resources\icons8-align-center-25.png" />
+    <None Include="Resources\icons8-align-left-25.png" />
+    <None Include="Resources\icons8-text-color-25 %281%29.png" />
+    <None Include="Resources\icons8-bold-25.png" />
+    <None Include="Resources\icons8-italic-25.png" />
+    <None Include="Resources\icons8-underline-25.png" />
+    <None Include="Resources\icons8-text-color-25.png" />
+    <None Include="Resources\icons8-marker-pen-25.png" />
     <None Include="Resources\icons8-text-color-16.png" />
     <None Include="Resources\icons8-text-color-12.png" />
     <None Include="Resources\icons8-link-14.png" />

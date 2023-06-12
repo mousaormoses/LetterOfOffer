@@ -33,7 +33,7 @@
             this.panelTemp = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.startDate_FormBox = new System.Windows.Forms.DateTimePicker();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnSecurity = new System.Windows.Forms.Button();
             this.btnSalaryTo = new System.Windows.Forms.Button();
             this.btnLanguage = new System.Windows.Forms.Button();
             this.btnHR = new System.Windows.Forms.Button();
@@ -109,7 +109,7 @@
             // 
             this.panelTemp.Controls.Add(this.label7);
             this.panelTemp.Controls.Add(this.startDate_FormBox);
-            this.panelTemp.Controls.Add(this.button11);
+            this.panelTemp.Controls.Add(this.btnSecurity);
             this.panelTemp.Controls.Add(this.btnSalaryTo);
             this.panelTemp.Controls.Add(this.btnLanguage);
             this.panelTemp.Controls.Add(this.btnHR);
@@ -179,18 +179,18 @@
             this.startDate_FormBox.Value = new System.DateTime(2023, 5, 24, 23, 44, 0, 0);
             this.startDate_FormBox.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // button11
+            // btnSecurity
             // 
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
-            this.button11.Location = new System.Drawing.Point(669, 268);
-            this.button11.Margin = new System.Windows.Forms.Padding(2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(23, 26);
-            this.button11.TabIndex = 43;
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.btnSecurity.FlatAppearance.BorderSize = 0;
+            this.btnSecurity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSecurity.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
+            this.btnSecurity.Location = new System.Drawing.Point(669, 268);
+            this.btnSecurity.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSecurity.Name = "btnSecurity";
+            this.btnSecurity.Size = new System.Drawing.Size(23, 26);
+            this.btnSecurity.TabIndex = 43;
+            this.btnSecurity.UseVisualStyleBackColor = true;
+            this.btnSecurity.Click += new System.EventHandler(this.button11_Click);
             // 
             // btnSalaryTo
             // 
@@ -749,7 +749,7 @@
         private System.Windows.Forms.Button pdfButton;
         private System.Windows.Forms.Button wordButton;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnSecurity;
         private System.Windows.Forms.Button btnSalaryTo;
         private System.Windows.Forms.Button btnLanguage;
         private System.Windows.Forms.Button btnHR;

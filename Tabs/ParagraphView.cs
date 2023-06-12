@@ -280,7 +280,8 @@ namespace LetterOfOffer.Tabs
             return newRichTextBox;
         }
 
-        private RichTextBox currentRichTextBox = null;
+
+        private PaddingRichText.PaddedRichTextBox currentRichTextBox = null;
 
         private void LoadParagraphsFromDatabase()
         {
@@ -289,86 +290,118 @@ namespace LetterOfOffer.Tabs
             // Hook up event handlers for each toolbar item
             toolStripBold.Click += (s, e) =>
             {
-                if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
+                if (currentRichTextBox != null && currentRichTextBox.SelectionLength > 0)
                 {
-                    FontStyle newFontStyle = currentRichTextBox.SelectionFont.Style ^ FontStyle.Bold;
-                    currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont, newFontStyle);
+                    if (currentRichTextBox.SelectionFont != null)
+                    {
+                        FontStyle newFontStyle = currentRichTextBox.SelectionFont.Style ^ FontStyle.Bold;
+                        currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont, newFontStyle);
+                    }
+                    else
+                    {
+                        // Handle the case when SelectionFont is null.
+                        // For instance, you might want to create a new Font with FontStyle.Bold:
+                        currentRichTextBox.SelectionFont = new System.Drawing.Font("Times New Roman", 12, FontStyle.Bold);
+                    }
                 }
             };
 
+
             toolStripItalic.Click += (s, e) =>
             {
-                if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
+                if (currentRichTextBox != null && currentRichTextBox.SelectionLength > 0)
                 {
-                    FontStyle newFontStyle = currentRichTextBox.SelectionFont.Style ^ FontStyle.Italic;
-                    currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont, newFontStyle);
+                    if (currentRichTextBox.SelectionFont != null)
+                    {
+                        FontStyle newFontStyle = currentRichTextBox.SelectionFont.Style ^ FontStyle.Italic;
+                        currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont, newFontStyle);
+                    }
+                    else
+                    {
+                        // Handle the case when SelectionFont is null.
+                        // For instance, you might want to create a new Font with FontStyle.Bold:
+                        currentRichTextBox.SelectionFont = new System.Drawing.Font("Times New Roman", 12, FontStyle.Bold);
+                    }
                 }
             };
 
             toolStripUnderline.Click += (s, e) =>
             {
-                if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
+                if (currentRichTextBox != null && currentRichTextBox.SelectionLength > 0)
                 {
-                    FontStyle newFontStyle = currentRichTextBox.SelectionFont.Style ^ FontStyle.Underline;
-                    currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont, newFontStyle);
+                    if (currentRichTextBox.SelectionFont != null)
+                    {
+                        FontStyle newFontStyle = currentRichTextBox.SelectionFont.Style ^ FontStyle.Underline;
+                        currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont, newFontStyle);
+                    }
+                    else
+                    {
+                        // Handle the case when SelectionFont is null.
+                        // For instance, you might want to create a new Font with FontStyle.Bold:
+                        currentRichTextBox.SelectionFont = new System.Drawing.Font("Times New Roman", 12, FontStyle.Bold);
+                    }
                 }
             };
 
+
             toolStripDropDownFontSize.SelectedIndexChanged += (s, e) =>
             {
-                if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
+                if (currentRichTextBox != null && currentRichTextBox.SelectionLength > 0)
                 {
                     float newSize;
                     if (float.TryParse(toolStripDropDownFontSize.SelectedItem.ToString(), out newSize))
                     {
-                        currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont.FontFamily, newSize, currentRichTextBox.SelectionFont.Style);
+                        // Ensure FontFamily is not null before creating a new font
+                        FontFamily fontFamily;
+                        FontStyle fontStyle;
+
+                        // If SelectionFont is null, use default font family and style.
+                        if (currentRichTextBox.SelectionFont == null)
+                        {
+                            fontFamily = FontFamily.GenericSansSerif;
+                            fontStyle = FontStyle.Regular;
+                        }
+                        else
+                        {
+                            fontFamily = currentRichTextBox.SelectionFont.FontFamily;
+                            fontStyle = currentRichTextBox.SelectionFont.Style;
+                        }
+
+                        // Create a new font with the selected size and apply it to the entire selection
+                        var newFont = new System.Drawing.Font(fontFamily, newSize, fontStyle);
+                        currentRichTextBox.SelectionFont = newFont;
                     }
                 }
             };
+
+
+
 
             toolStripDropDownFontFamily.SelectedIndexChanged += (s, e) =>
             {
                 if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
                 {
+                    int start = currentRichTextBox.SelectionStart;
+                    int length = currentRichTextBox.SelectionLength;
+
                     string fontFamily = toolStripDropDownFontFamily.SelectedItem.ToString();
-                    currentRichTextBox.SelectionFont = new System.Drawing.Font(fontFamily, currentRichTextBox.SelectionFont.Size, currentRichTextBox.SelectionFont.Style);
-                }
-            };
 
-            toolStripHyper.Click += (s, e) =>
-            {
-                if (currentRichTextBox != null && !string.IsNullOrEmpty(currentRichTextBox.SelectedText))
-                {
-                    var inputBox = new InputBox()
+                    // Check if the current selection's font is not null
+                    if (currentRichTextBox.SelectionFont != null)
                     {
-                        Text = "Enter URL",
-                        StartPosition = FormStartPosition.CenterParent
-                    };
-                    if (inputBox.ShowDialog() == DialogResult.OK)
-                    {
-                        string url = inputBox.InputText;
-
-                        // Create the hyperlink text
-                        string hyperlinkText = currentRichTextBox.SelectedText;
-                        currentRichTextBox.SelectionFont = new System.Drawing.Font(currentRichTextBox.SelectionFont, FontStyle.Underline);
-                        currentRichTextBox.SelectionColor = Color.Blue;
-
-                        // Attach the hyperlink URL as a tag to the selected text
-                        currentRichTextBox.SelectionProtected = true;
-                        currentRichTextBox.Tag = url;
-
-                        // Subscribe to the LinkClicked event
-                        currentRichTextBox.LinkClicked += CurrentRichTextBox_LinkClicked;
-
-                        // Update the selected text with the hyperlink
-                        currentRichTextBox.SelectedText = hyperlinkText;
+                        currentRichTextBox.SelectionFont = new System.Drawing.Font(fontFamily, currentRichTextBox.SelectionFont.Size, currentRichTextBox.SelectionFont.Style);
                     }
+
+                    // Re-select the original selection
+                    currentRichTextBox.Select(start, length);
                 }
             };
+
+
 
             toolStripFontColor.Click += (s, e) =>
             {
-                if (currentRichTextBox != null && currentRichTextBox.SelectionFont != null)
+                if (currentRichTextBox != null && currentRichTextBox.SelectionLength > 0)
                 {
                     ColorDialog colorDialog = new ColorDialog();
                     if (colorDialog.ShowDialog() == DialogResult.OK)
@@ -378,6 +411,41 @@ namespace LetterOfOffer.Tabs
                 }
             };
 
+            toolStripHighlightTextColor.Click += (s, e) =>
+            {
+                if (currentRichTextBox != null && currentRichTextBox.SelectionLength > 0)
+                {
+                    ColorDialog colorDialog = new ColorDialog();
+                    if (colorDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        currentRichTextBox.SelectionBackColor = colorDialog.Color;
+                    }
+                }
+            };
+
+            toolStripLeftAlighment.Click += (s, e) =>
+            {
+                if (currentRichTextBox != null)
+                {
+                    currentRichTextBox.SelectionAlignment = HorizontalAlignment.Left;
+                }
+            };
+
+            toolStripCenterAlighment.Click += (s, e) =>
+            {
+                if (currentRichTextBox != null)
+                {
+                    currentRichTextBox.SelectionAlignment = HorizontalAlignment.Center;
+                }
+            };
+
+            toolStripRightAlighment.Click += (s, e) =>
+            {
+                if (currentRichTextBox != null)
+                {
+                    currentRichTextBox.SelectionAlignment = HorizontalAlignment.Right;
+                }
+            };
 
 
             // Create InstalledFontCollection object
@@ -432,7 +500,13 @@ namespace LetterOfOffer.Tabs
                             var idLabel = new System.Windows.Forms.Label() { Text = reader["ID"].ToString(), Width = 0, Height = 20 };
 
                             // Create a new RichTextBox and Delete button
-                            var newRichTextBox = new PaddingRichText.PaddedRichTextBox() { Width = 500, Height = 160, BorderStyle = BorderStyle.None };
+                            var newRichTextBox = new PaddingRichText.PaddedRichTextBox()
+                            {
+                                Width = 500,
+                                Height = 160,
+                                BorderStyle = BorderStyle.None,
+                                Font = new System.Drawing.Font("Times New Roman", 12) // 10 is the font size, change it to your desired size
+                            };
 
                             // Add the GotFocus event to the new RichTextBox
                             newRichTextBox.GotFocus += (s, e) => { currentRichTextBox = newRichTextBox; };
@@ -750,6 +824,69 @@ namespace LetterOfOffer.Tabs
         {
             string url = e.LinkText;
             System.Diagnostics.Process.Start(url);
+        }
+
+        public void autoSaveParagraphs()
+        {
+            foreach (var control in panelParagraph.Controls.OfType<RichTextBox>())
+            {
+                control.TextChanged += (sender, e) =>
+                {
+                    RichTextBox richTextBox = sender as RichTextBox;
+                    if (richTextBox != null)
+                    {
+                        try
+                        {
+                            string dbPath = settings.DbPath;
+
+                            // Ensure the directory exists
+                            Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+
+                            // Use the dbPath variable when creating your SQLite connection
+                            string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+                            using (var connection = new SQLiteConnection(connectionString))
+                            {
+                                connection.Open();
+                                string sql = "UPDATE paragraphs SET content = @Content WHERE ID = @ID";
+                                using (var command = new SQLiteCommand(sql, connection))
+                                {
+                                    command.Parameters.AddWithValue("@ID", richTextBox.Tag);
+                                    command.Parameters.AddWithValue("@Content", richTextBox.Rtf);
+                                    command.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            // Log or display the exception as needed
+                            Console.WriteLine(ex.ToString());
+                        }
+                    }
+                };
+            }
+
+        }
+
+        private void listView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                CopySelectedItems();
+            }
+        }
+
+        private void CopySelectedItems()
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                var builder = new StringBuilder();
+                foreach (ListViewItem item in listView1.SelectedItems)
+                {
+                    builder.AppendLine(item.Text);
+                }
+                Clipboard.SetText(builder.ToString());
+            }
         }
 
     }

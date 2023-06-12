@@ -783,64 +783,64 @@ namespace LetterOfOffer
 
         }
 
-        private void uploadImageBtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Initialize a new OpenFileDialog
-                System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
-                // Specify filter options and filter index for the OpenFileDialog
-                openFileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
-                openFileDialog.FilterIndex = 1;
-                openFileDialog.Multiselect = false;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                private void uploadImageBtn_Click(object sender, EventArgs e)
                 {
-                    // Specify a path to a local directory and create the directory if it doesn't exist
-                    string directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LetterOfOffer", "Images");
-                    Directory.CreateDirectory(directoryPath);
+             try
+             {
+                 // Initialize a new OpenFileDialog
+                 System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+                 // Specify filter options and filter index for the OpenFileDialog
+                 openFileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+                 openFileDialog.FilterIndex = 1;
+                 openFileDialog.Multiselect = false;
 
-                    // Define the path to the new image file
-                    string path = Path.Combine(directoryPath, "LetterOfOffer.jpg");
+                 if (openFileDialog.ShowDialog() == DialogResult.OK)
+                 {
+                     // Specify a path to a local directory and create the directory if it doesn't exist
+                     string directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LetterOfOffer", "Images");
+                     Directory.CreateDirectory(directoryPath);
 
-                    // Save the selected image as a new JPEG file
-                    using (var img = Image.FromFile(openFileDialog.FileName))
-                    {
-                        img.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    }
+                     // Define the path to the new image file
+                     string path = Path.Combine(directoryPath, "LetterOfOffer.jpg");
 
-                    // Update the image displayed in the PictureBox on the main form
-                    using (var bmpTemp = new Bitmap(path))
-                    {
-                        Image imgOld = mainForm.pictureBox1.Image;
-                        mainForm.pictureBox1.Image = new Bitmap(bmpTemp);
+                     // Save the selected image as a new JPEG file
+                     using (var img = Image.FromFile(openFileDialog.FileName))
+                     {
+                         img.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
+                     }
 
-                        // Dispose of the old image to free up resources
-                        if (imgOld != null)
-                        {
-                            imgOld.Dispose();
-                        }
-                    }
+                     // Update the image displayed in the PictureBox on the main form
+                     using (var bmpTemp = new Bitmap(path))
+                     {
+                         Image imgOld = mainForm.pictureBox1.Image;
+                         mainForm.pictureBox1.Image = new Bitmap(bmpTemp);
 
-                    // Update the image displayed in the PictureBox on the current form
-                    using (var bmpTemp = new Bitmap(path))
-                    {
-                        Image imgOld = pictureBox2.Image;
-                        pictureBox2.Image = new Bitmap(bmpTemp);
+                         // Dispose of the old image to free up resources
+                         if (imgOld != null)
+                         {
+                             imgOld.Dispose();
+                         }
+                     }
 
-                        // Dispose of the old image to free up resources
-                        if (imgOld != null)
-                        {
-                            imgOld.Dispose();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Display an error message to the user
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                     // Update the image displayed in the PictureBox on the current form
+                     using (var bmpTemp = new Bitmap(path))
+                     {
+                         Image imgOld = pictureBox2.Image;
+                         pictureBox2.Image = new Bitmap(bmpTemp);
+
+                         // Dispose of the old image to free up resources
+                         if (imgOld != null)
+                         {
+                             imgOld.Dispose();
+                         }
+                     }
+                 }
+             }
+             catch (Exception ex)
+             {
+                 // Display an error message to the user
+                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
         }
 
         private void newPathBtn_Click(object sender, EventArgs e)
@@ -870,6 +870,11 @@ namespace LetterOfOffer
                     MessageBox.Show($"The new file path is: {destinationFilePath}");
                 }
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
