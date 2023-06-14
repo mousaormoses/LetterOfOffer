@@ -12,15 +12,18 @@ namespace LetterOfOffer
 {
     public partial class Form1 : Form
     {
+        ParagraphView panelParagraph = new ParagraphView();
 
         public Form1()
         {
             InitializeComponent();
-
+            // Load the settings
+            AppSettings settings = AppSettings.Load();
             try
             {
                 // Connect to the SQLite database
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -83,56 +86,27 @@ namespace LetterOfOffer
             panel1.Controls.Add(userControl);
             userControl.BringToFront();
         }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             FormView panel = new FormView();
             addUserControl(panel);
+            panelParagraph.autoSaveParagraphs();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             TemplateView panel = new TemplateView();
             addUserControl(panel);
+            panelParagraph.autoSaveParagraphs();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             ParagraphView panel = new ParagraphView();
             addUserControl(panel);
-        }
-
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_MouseHover(object sender, EventArgs e)
-        {
-            // button4.BackColor = Color.Blue;
-        }
-
-        private void button1_MouseHover(object sender, EventArgs e)
-        {
-            // button1.BackColor = Color.FromArgb(105, 105, 105);
-        }
-
-        private void button1_MouseLeave(object sender, EventArgs e)
-        {
-            //button1.BackColor = Color.FromArgb(240, 240, 105);
-        }
-
-        private void button1_MouseEnter(object sender, EventArgs e)
-        {
-            // button1.BackColor = Color.FromArgb(105,105,105);
-        }
-
-        private void settingsBox_Click(object sender, EventArgs e)
-        {
+            panel.autoSaveParagraphs();
         }
 
         private void button4_Click_1(object sender, EventArgs e)
@@ -142,11 +116,6 @@ namespace LetterOfOffer
 
         }
 
-        private void OpenSettings()
-        {
-            Settings settingsForm = new Settings(this);
-            settingsForm.Show();
-        }
 
         public void SetImage(Image image)
         {
@@ -155,8 +124,9 @@ namespace LetterOfOffer
         }
 
 
-        public void pictureBox1_Click(object sender, EventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            panelParagraph.autoSaveParagraphs();
 
         }
     }

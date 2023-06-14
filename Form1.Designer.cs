@@ -67,7 +67,7 @@
             this.button3.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.button3, "button3");
             this.button3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button3.Image = global::LetterOfOffer.Properties.Resources.icons8_paragraph_25;
+            this.button3.Image = global::LetterOfOffer.Properties.Resources.icons8_new_document_27;
             this.button3.Name = "button3";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -78,7 +78,7 @@
             this.button2.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.button2, "button2");
             this.button2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.Image = global::LetterOfOffer.Properties.Resources.icons8_template_25;
+            this.button2.Image = global::LetterOfOffer.Properties.Resources.icons8_template_27__5_;
             this.button2.Name = "button2";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -89,27 +89,23 @@
             this.button1.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.button1, "button1");
             this.button1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.Image = global::LetterOfOffer.Properties.Resources.icons8_form_25;
+            this.button1.Image = global::LetterOfOffer.Properties.Resources.icons8_edit_property_27__2_;
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
-            this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::LetterOfOffer.Properties.Resources.cand;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // Form1
             // 
@@ -120,6 +116,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

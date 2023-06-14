@@ -24,10 +24,22 @@ namespace LetterOfOffer
             // Create a dictionary to associate the preview text with the corresponding database values
             Dictionary<string, Tuple<int, string>> previewTextToParagraphMap = new Dictionary<string, Tuple<int, string>>();
 
+            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+            checkBoxColumn.ValueType = typeof(bool);
+            checkBoxColumn.Name = "checkBoxColumn";
+            checkBoxColumn.HeaderText = "Select";
+            dataGridView1.Columns.Insert(0, checkBoxColumn);
+
+
             try
             {
                 // Load data from the SQLite database
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                // Load the settings
+                AppSettings settings = AppSettings.Load();
+
+                // Use the DbPath from the settings
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -66,8 +78,8 @@ namespace LetterOfOffer
                                         }
                                     }
 
-                                    previewTextToParagraphMap[$"Paragraph {previewTextToParagraphMap.Count + 1}"] = new Tuple<int, string>(id, plainContent); // Mapping the actual database value for the preview text
-                                    addFormTemplate.Items.Add($"{id} - {plainContent}", false); // Adding items to the list box, default unchecked
+                                    previewTextToParagraphMap[$"Paragraph {previewTextToParagraphMap.Count + 1}"] = new Tuple<int, string>(id, content); // Mapping the actual database value for the preview text
+                                    dataGridView1.Rows.Add(false, $"{id} - {plainContent}"); // Adding items to the DataGridView, default unchecked
                                 }
                             }
                         }
@@ -80,84 +92,142 @@ namespace LetterOfOffer
                 Console.WriteLine(ex.ToString());
             }
 
-
             // Handle saveButton Click event
             saveButton.Click += (s, args) =>
             {
                 try
                 {
-                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                    // Load the settings
+                    AppSettings settings = AppSettings.Load();
+
+                    // Use the DbPath from the settings
+                    string dbPath = settings.DbPath;
 
                     // Ensure the directory exists
                     Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
 
                     // Use the dbPath variable when creating your SQLite connection
                     string connectionString = "Data Source=" + dbPath + ";Version=3;";
-
                     using (var connection = new SQLiteConnection(connectionString))
                     {
                         connection.Open();
 
-                        // Iterate through each item in the list box
-                        for (int i = 0; i < addFormTemplate.Items.Count; i++)
+                        // Iterate through each row in the DataGridView
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
                         {
-                            // Check if the item is checked
-                            if (addFormTemplate.GetItemChecked(i))
+                            // Avoid operating on empty rows (which are null)
+                            if (row.Cells[0].Value != null && row.Cells[1].Value != null)
                             {
-                                // Get the item's preview text
-                                string previewText = addFormTemplate.Items[i].ToString();
-
-                                // Attempt to parse the ID from the preview text
-                                if (int.TryParse(previewText.Split(' ')[0], out int id))
+                                // Check if the checkbox is checked
+                                bool isChecked = (bool)row.Cells[0].Value;
+                                if (isChecked)
                                 {
-                                    // If successful, retrieve the corresponding database value from the dictionary using the ID
-                                    var matchingEntry = previewTextToParagraphMap.First(entry => entry.Value.Item1 == id);
+                                    // Get the paragraph ID from the row's data
+                                    int id = Convert.ToInt32(row.Cells[1].Value.ToString().Split('-')[0].Trim());
 
                                     // Insert the paragraph ID and itemOrder into the selected table
                                     string sql = $"INSERT INTO \"{SelectedTableName}\" (paragraph_id, itemOrder) VALUES (@ParagraphId, @ItemOrder)";
                                     using (var command = new SQLiteCommand(sql, connection))
                                     {
-                                        command.Parameters.AddWithValue("@ParagraphId", matchingEntry.Value.Item1);
-                                        command.Parameters.AddWithValue("@ItemOrder", matchingEntry.Value.Item1);  // itemOrder is now the same as ParagraphId
+                                        command.Parameters.AddWithValue("@ParagraphId", id);
+                                        command.Parameters.AddWithValue("@ItemOrder", id); // itemOrder is now the same as ParagraphId
                                         command.ExecuteNonQuery();
                                     }
-                                }
-                                else
-                                {
-                                    // If parsing failed, show an error message (or handle the error appropriately)
-                                    MessageBox.Show("There was an error parsing the ID from the preview text. Please check the preview text format.");
                                 }
                             }
                         }
                     }
+
+
+                    MessageBox.Show("Checked items were saved to the database.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 catch (Exception ex)
                 {
                     // Log or display the exception as needed
                     Console.WriteLine(ex.ToString());
                 }
-
-                MessageBox.Show("Checked items were saved to the database.");
             };
-
-
-
-
-
-
-
-
         }
-
 
         private void AddList_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void addFormTemplate_SelectedIndexChanged(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool isMaximized = false; // Track the maximized state
+        private Size originalSize; // Store the original size of panel1
+
+        private void AddList_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                if (!isMaximized)
+                {
+                    // Store the original size of panel1
+                    originalSize = panel1.Size;
+
+                    // Calculate the new size for panel1 and dataGridView1 based on the available form size
+                    int newWidth = ClientSize.Width;
+                    int newHeight = ClientSize.Height;
+                    int panel1Height = (int)(newHeight * 0.9);
+                    int dataGridView1Height = panel1Height - panel1.Padding.Top - panel1.Padding.Bottom;
+
+                    // Adjust the size and position of panel1 and dataGridView1
+                    panel1.Size = new Size(newWidth, panel1Height);
+                    dataGridView1.Size = new Size(newWidth - dataGridView1.Margin.Left - dataGridView1.Margin.Right, dataGridView1Height);
+                    dataGridView1.Location = new Point(dataGridView1.Margin.Left, dataGridView1.Margin.Top);
+
+                    isMaximized = true;
+                }
+            }
+            else if (WindowState == FormWindowState.Normal)
+            {
+                if (isMaximized)
+                {
+                    // Restore the original size and position of panel1 and dataGridView1
+                    panel1.Size = originalSize;
+                    dataGridView1.Size = new Size(originalSize.Width - dataGridView1.Margin.Left - dataGridView1.Margin.Right, originalSize.Height - dataGridView1.Margin.Top - dataGridView1.Margin.Bottom);
+                    dataGridView1.Location = new Point(dataGridView1.Margin.Left, dataGridView1.Margin.Top);
+
+                    isMaximized = false;
+                }
+            }
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Check if it's a DataGridViewTextBoxCell in the Content column
+            if (e.ColumnIndex == dataGridView1.Columns["Content"].Index && e.RowIndex >= 0)
+            {
+                DataGridViewTextBoxCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewTextBoxCell;
+                if (cell != null)
+                {
+                    // Get the content of the cell
+                    string content = cell.Value?.ToString();
+
+                    // Calculate the desired row height based on the number of lines
+                    int numLines = content.Split('\n').Length;
+                    int lineHeight = TextRenderer.MeasureText("Sample", dataGridView1.Font).Height;
+                    int desiredHeight = numLines * lineHeight + dataGridView1.RowTemplate.DefaultCellStyle.Padding.Vertical;
+
+                    // Set the row height
+                    if (dataGridView1.Rows[e.RowIndex].Height != desiredHeight)
+                    {
+                        dataGridView1.Rows[e.RowIndex].Height = desiredHeight +10;
+                    }
+                }
+            }
         }
     }
 }

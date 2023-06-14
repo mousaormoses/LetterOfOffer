@@ -17,9 +17,37 @@ namespace LetterOfOffer.Tabs
 {
     public partial class FormView : UserControl
     {
+        // Load the settings
+        AppSettings settings = AppSettings.Load();
         public FormView()
         {
             InitializeComponent();
+
+            Image backgroundImage = Properties.Resources.landscape;
+
+            panel2.Paint += (s, e) =>
+            {
+                // Get the scale factor (maintain aspect ratio)
+                float scale = Math.Min((float)panel2.Width / backgroundImage.Width, (float)panel2.Height / backgroundImage.Height);
+
+                // Calculate the new image size
+                int newWidth = (int)(backgroundImage.Width * scale);
+                int newHeight = (int)(backgroundImage.Height * scale);
+
+                // Calculate the position to draw the image (bottom right of the panel)
+                int xPos = panel2.Width - newWidth;
+                int yPos = panel2.Height - newHeight;
+
+                // Draw the image at the bottom right of the panel, resized to fit.
+                e.Graphics.DrawImage(backgroundImage, xPos, yPos, newWidth, newHeight);
+            };
+
+
+            panel2.Resize += (s, e) =>
+            {
+                // Force the panel to repaint when it is resized
+                panel2.Invalidate();
+            };
         }
 
         private void LoadItemsFromDatabase(ComboBox comboBox)
@@ -29,7 +57,8 @@ namespace LetterOfOffer.Tabs
             try
             {
 
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -109,7 +138,8 @@ namespace LetterOfOffer.Tabs
                 try
                 {
 
-                    string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                    string dbPath = settings.DbPath;
+
 
                     // Ensure the directory exists
                     Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -176,7 +206,8 @@ namespace LetterOfOffer.Tabs
             try
             {
                 // Create the tables if they don't exist
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -209,7 +240,8 @@ namespace LetterOfOffer.Tabs
             try
             {
                 // Load the items from the corresponding tables in the database and populate the combo boxes
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -274,7 +306,8 @@ namespace LetterOfOffer.Tabs
             try
             {
                 // Establish a connection to the SQLite database
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -425,7 +458,7 @@ namespace LetterOfOffer.Tabs
 
         private void btnSalaryTo_Click(object sender, EventArgs e)
         {
-            EditWishlistItems(security_FormBox);
+            EditWishlistItems(salaryTo_FormBox);
         }
 
         private void btnHR_Click(object sender, EventArgs e)
@@ -439,7 +472,8 @@ namespace LetterOfOffer.Tabs
         }
         private void load_signatures()
         {
-            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+            string dbPath = settings.DbPath;
+
 
             // Use the dbPath variable when creating your SQLite connection
             string connectionString = "Data Source=" + dbPath + ";Version=3;";
@@ -526,6 +560,7 @@ namespace LetterOfOffer.Tabs
                 string keyBoxStartDate = RetrieveSpecificKeyValueFromTable("keys", "keyBoxStartDate");
                 string keyBoxLanguage = RetrieveSpecificKeyValueFromTable("keys", "keyBoxLanguage");
                 string keyBoxSalaryFrom = RetrieveSpecificKeyValueFromTable("keys", "keyBoxSalaryFrom");
+                string keyBoxSalaryTo = RetrieveSpecificKeyValueFromTable("keys", "keyBoxSalaryTo");
                 string keyBoxStartTo = RetrieveSpecificKeyValueFromTable("keys", "keyBoxStartTo");
                 string keyBoxHR = RetrieveSpecificKeyValueFromTable("keys", "keyBoxHR");
                 string keyBoxSecurity = RetrieveSpecificKeyValueFromTable("keys", "keyBoxSecurity");
@@ -539,32 +574,46 @@ namespace LetterOfOffer.Tabs
                 {
                     if (!string.IsNullOrEmpty(keyBoxName))
                         contentList[i] = contentList[i].Replace(keyBoxName, fullName);
+
                     if (!string.IsNullOrEmpty(keyBoxEX))
                         contentList[i] = contentList[i].Replace(keyBoxEX, ex);
+
                     if (!string.IsNullOrEmpty(keyBoxSector))
                         contentList[i] = contentList[i].Replace(keyBoxSector, sector);
+
                     if (!string.IsNullOrEmpty(keyBoxPosition))
                         contentList[i] = contentList[i].Replace(keyBoxPosition, position);
+
                     if (!string.IsNullOrEmpty(keyBoxStartDate))
                         contentList[i] = contentList[i].Replace(keyBoxStartDate, startDate);
+
                     if (!string.IsNullOrEmpty(keyBoxLanguage))
                         contentList[i] = contentList[i].Replace(keyBoxLanguage, language);
+
                     if (!string.IsNullOrEmpty(keyBoxSalaryFrom))
                         contentList[i] = contentList[i].Replace(keyBoxSalaryFrom, salaryFrom);
-                    if (!string.IsNullOrEmpty(keyBoxStartTo))
-                        contentList[i] = contentList[i].Replace(keyBoxStartTo, salaryTo);
+
+                    if (!string.IsNullOrEmpty(keyBoxSalaryTo))
+                        contentList[i] = contentList[i].Replace(keyBoxSalaryTo, salaryTo);
+
                     if (!string.IsNullOrEmpty(keyBoxHR))
                         contentList[i] = contentList[i].Replace(keyBoxHR, hr);
+
                     if (!string.IsNullOrEmpty(keyBoxSecurity))
                         contentList[i] = contentList[i].Replace(keyBoxSecurity, security);
+
                     if (!string.IsNullOrEmpty(keyBoxAddress))
                         contentList[i] = contentList[i].Replace(keyBoxAddress, address);
+
                     if (!string.IsNullOrEmpty(keyBoxProvince))
                         contentList[i] = contentList[i].Replace(keyBoxProvince, province);
+
                     if (!string.IsNullOrEmpty(keyBoxCity))
                         contentList[i] = contentList[i].Replace(keyBoxCity, city);
+
                     if (!string.IsNullOrEmpty(keyBoxPostal))
                         contentList[i] = contentList[i].Replace(keyBoxPostal, postal);
+
                     if (!string.IsNullOrEmpty(keyBoxSignature))
                         contentList[i] = contentList[i].Replace(keyBoxSignature, signature);
                 }
@@ -705,7 +754,7 @@ namespace LetterOfOffer.Tabs
                 string keyBoxStartDate = RetrieveSpecificKeyValueFromTable("keys", "keyBoxStartDate");
                 string keyBoxLanguage = RetrieveSpecificKeyValueFromTable("keys", "keyBoxLanguage");
                 string keyBoxSalaryFrom = RetrieveSpecificKeyValueFromTable("keys", "keyBoxSalaryFrom");
-                string keyBoxStartTo = RetrieveSpecificKeyValueFromTable("keys", "keyBoxStartTo");
+                string keyBoxSalaryTo = RetrieveSpecificKeyValueFromTable("keys", "keyBoxSalaryTo");
                 string keyBoxHR = RetrieveSpecificKeyValueFromTable("keys", "keyBoxHR");
                 string keyBoxSecurity = RetrieveSpecificKeyValueFromTable("keys", "keyBoxSecurity");
                 string keyBoxProvince = RetrieveSpecificKeyValueFromTable("keys", "keyBoxProvince");
@@ -730,8 +779,8 @@ namespace LetterOfOffer.Tabs
                         contentList[i] = contentList[i].Replace(keyBoxLanguage, language);
                     if (!string.IsNullOrEmpty(keyBoxSalaryFrom))
                         contentList[i] = contentList[i].Replace(keyBoxSalaryFrom, salaryFrom);
-                    if (!string.IsNullOrEmpty(keyBoxStartTo))
-                        contentList[i] = contentList[i].Replace(keyBoxStartTo, salaryTo);
+                    if (!string.IsNullOrEmpty(keyBoxSalaryTo))
+                        contentList[i] = contentList[i].Replace(keyBoxSalaryTo, salaryTo);
                     if (!string.IsNullOrEmpty(keyBoxHR))
                         contentList[i] = contentList[i].Replace(keyBoxHR, hr);
                     if (!string.IsNullOrEmpty(keyBoxSecurity))
@@ -840,7 +889,8 @@ namespace LetterOfOffer.Tabs
 
         private string RetrieveRichTextSignatureForTextBoxSign(string textBoxSign)
         {
-            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+            string dbPath = settings.DbPath;
+
             string connectionString = "Data Source=" + dbPath + ";Version=3;";
 
             string richTextSign = "";
@@ -963,7 +1013,8 @@ namespace LetterOfOffer.Tabs
             string content = "";
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -1004,7 +1055,8 @@ namespace LetterOfOffer.Tabs
             string keyValue = "";
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
@@ -1047,7 +1099,8 @@ namespace LetterOfOffer.Tabs
             List<string> contentList = new List<string>();
             try
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LetterOfOffer", "MyDatabase.sqlite");
+                string dbPath = settings.DbPath;
+
 
                 // Ensure the directory exists
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
