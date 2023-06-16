@@ -790,7 +790,7 @@ namespace LetterOfOffer
                  // Initialize a new OpenFileDialog
                  System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
                  // Specify filter options and filter index for the OpenFileDialog
-                 openFileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+                 openFileDialog.Filter = "PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg";
                  openFileDialog.FilterIndex = 1;
                  openFileDialog.Multiselect = false;
 

@@ -271,6 +271,13 @@ namespace LetterOfOffer.Tabs
             newRichTextBox.LinkClicked += new LinkClickedEventHandler(newRichTextBox_LinkClicked);
             newRichTextBox.KeyDown += new KeyEventHandler(newRichTextBox_KeyDown);
 
+            // Subscribe to the TextChanged event
+            newRichTextBox.TextChanged += (sender, e) =>
+            {
+                RichTextBox richTextBox = (RichTextBox)sender;
+                SaveRichTextBoxContentToDatabase(richTextBox);
+            };
+
             // Set location for the new controls
             if (panelParagraph.Controls.Count > 0)
             {
@@ -279,6 +286,38 @@ namespace LetterOfOffer.Tabs
 
             return newRichTextBox;
         }
+
+        private void SaveRichTextBoxContentToDatabase(RichTextBox richTextBox)
+        {
+            try
+            {
+                string dbPath = settings.DbPath;
+
+                // Ensure the directory exists
+                Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+
+                // Use the dbPath variable when creating your SQLite connection
+                string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    string sql = "UPDATE paragraphs SET content = @Content WHERE ID = @ID";
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@ID", richTextBox.Tag);
+                        command.Parameters.AddWithValue("@Content", richTextBox.Rtf);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or display the exception as needed
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
 
 
         private PaddingRichText.PaddedRichTextBox currentRichTextBox = null;
@@ -542,6 +581,7 @@ namespace LetterOfOffer.Tabs
                                 // Set the Tag of the RichTextBox to the ID from the database
                                 newRichTextBox.Tag = reader["ID"];
 
+                                
                                 // Add the Click event to the Delete button
                                 deleteButton.Click += (s, args) =>
                                 {
