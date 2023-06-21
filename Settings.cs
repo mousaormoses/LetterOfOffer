@@ -351,7 +351,7 @@ namespace LetterOfOffer
                     )";
 
                     // An array of ids for pre-filling the 'advisor' table
-                    string[] advisorIds = { "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10" };
+                    string[] advisorIds = { "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8" };
 
                     // Execute the create table SQL query
                     using (var command = new SQLiteCommand(createAdvisorTableQuery, conn))
@@ -936,9 +936,6 @@ namespace LetterOfOffer
                 {
                     // Combine the selected path with the filename to get the new destination file path
                     string destinationFilePath = Path.Combine(dialog.SelectedPath, "MyDatabase.sqlite");
-
-                    // Load the settings
-                    AppSettings settings = AppSettings.Load();
 
                     // Update the settings with the new path
                     settings.DbPath = destinationFilePath;

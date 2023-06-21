@@ -174,7 +174,7 @@
             this.startDate_FormBox.Name = "startDate_FormBox";
             this.startDate_FormBox.Size = new System.Drawing.Size(212, 29);
             this.startDate_FormBox.TabIndex = 6;
-            this.startDate_FormBox.Value = new System.DateTime(2023, 5, 24, 23, 44, 0, 0);
+            this.startDate_FormBox.Value = new System.DateTime(2023, 6, 21, 0, 0, 0, 0);
             this.startDate_FormBox.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // btnSecurity
@@ -434,7 +434,7 @@
             this.hr_FormBox.Margin = new System.Windows.Forms.Padding(2);
             this.hr_FormBox.Name = "hr_FormBox";
             this.hr_FormBox.Size = new System.Drawing.Size(212, 29);
-            this.hr_FormBox.TabIndex = 10;
+            this.hr_FormBox.TabIndex = 8;
             this.hr_FormBox.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
             // salaryFrom_FormBox

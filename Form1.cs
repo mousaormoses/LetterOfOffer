@@ -19,6 +19,7 @@ namespace LetterOfOffer
             InitializeComponent();
             // Load the settings
             AppSettings settings = AppSettings.Load();
+
             try
             {
                 // Connect to the SQLite database

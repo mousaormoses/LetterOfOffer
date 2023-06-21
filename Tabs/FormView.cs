@@ -22,7 +22,7 @@ namespace LetterOfOffer.Tabs
         public FormView()
         {
             InitializeComponent();
-
+            startDate_FormBox.Value = DateTime.Now;
             Image backgroundImage = Properties.Resources.landscape;
 
             panel2.Paint += (s, e) =>
@@ -262,6 +262,7 @@ namespace LetterOfOffer.Tabs
                     LoadItemsFromDatabase(language_FormBox);
                     LoadItemsFromDatabase(salaryTo_FormBox);
                     LoadItemsFromDatabase(security_FormBox);
+
                 }
             }
             catch (Exception ex)
@@ -1068,7 +1069,8 @@ namespace LetterOfOffer.Tabs
 
             catch (SQLiteException ex)
             {
-               
+                Console.WriteLine(ex.ToString());
+
             }
 
             return richTextSign;

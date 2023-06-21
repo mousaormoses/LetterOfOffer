@@ -1,12 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Reflection;
 
 public class AppSettings
 {
     public string DbPath { get; set; }
 
-    private const string fileName = "settings.json";
+    private static string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    private static string fileName = Path.Combine(appDirectory, "settings.json");
 
     public static AppSettings Load()
     {
@@ -28,3 +30,4 @@ public class AppSettings
         File.WriteAllText(fileName, json);
     }
 }
+
