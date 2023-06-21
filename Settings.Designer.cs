@@ -29,29 +29,32 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.Signature = new System.Windows.Forms.TabPage();
-            this.sign4 = new System.Windows.Forms.TextBox();
-            this.richTextSign4 = new System.Windows.Forms.RichTextBox();
-            this.sign3 = new System.Windows.Forms.TextBox();
-            this.richTextSign3 = new System.Windows.Forms.RichTextBox();
-            this.sign2 = new System.Windows.Forms.TextBox();
-            this.richTextSign2 = new System.Windows.Forms.RichTextBox();
-            this.sign1 = new System.Windows.Forms.TextBox();
-            this.richTextSign1 = new System.Windows.Forms.RichTextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.buttonSign = new System.Windows.Forms.Button();
-            this.Header = new System.Windows.Forms.TabPage();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.richTextFooter = new System.Windows.Forms.RichTextBox();
-            this.richTextHeader = new System.Windows.Forms.RichTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Help = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.Import = new System.Windows.Forms.TabPage();
+            this.label30 = new System.Windows.Forms.Label();
+            this.newPathBtn = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.ExportBtn = new System.Windows.Forms.Button();
+            this.ImportBtn = new System.Windows.Forms.Button();
+            this.ImageUpload = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.uploadImageBtn = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
             this.Keys = new System.Windows.Forms.TabPage();
             this.label19 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.keyBoxAddress = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.keyBoxSignature = new System.Windows.Forms.TextBox();
             this.keyBoxPostal = new System.Windows.Forms.TextBox();
             this.keyBoxCity = new System.Windows.Forms.TextBox();
@@ -66,6 +69,7 @@
             this.keyBoxPosition = new System.Windows.Forms.TextBox();
             this.keyBoxEX = new System.Windows.Forms.TextBox();
             this.keyBoxName = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -80,243 +84,301 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Import = new System.Windows.Forms.TabPage();
-            this.label30 = new System.Windows.Forms.Label();
-            this.newPathBtn = new System.Windows.Forms.Button();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.ExportBtn = new System.Windows.Forms.Button();
-            this.ImportBtn = new System.Windows.Forms.Button();
-            this.Help = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.uploadImageBtn = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.ImageUpload = new System.Windows.Forms.TabPage();
-            this.tabControl1.SuspendLayout();
-            this.Signature.SuspendLayout();
-            this.Header.SuspendLayout();
-            this.Keys.SuspendLayout();
-            this.Import.SuspendLayout();
-            this.Help.SuspendLayout();
+            this.Header = new System.Windows.Forms.TabPage();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.richTextFooter = new System.Windows.Forms.RichTextBox();
+            this.richTextHeader = new System.Windows.Forms.RichTextBox();
+            this.Signature = new System.Windows.Forms.TabPage();
+            this.sign4 = new System.Windows.Forms.TextBox();
+            this.richTextSign4 = new System.Windows.Forms.RichTextBox();
+            this.sign3 = new System.Windows.Forms.TextBox();
+            this.richTextSign3 = new System.Windows.Forms.RichTextBox();
+            this.sign2 = new System.Windows.Forms.TextBox();
+            this.richTextSign2 = new System.Windows.Forms.RichTextBox();
+            this.sign1 = new System.Windows.Forms.TextBox();
+            this.richTextSign1 = new System.Windows.Forms.RichTextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.buttonSign = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Advisor = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.button_SaveAdvisor = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.Help.SuspendLayout();
+            this.Import.SuspendLayout();
             this.ImageUpload.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.Keys.SuspendLayout();
+            this.Header.SuspendLayout();
+            this.Signature.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.Advisor.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // panel1
             // 
-            this.tabControl1.Controls.Add(this.Signature);
-            this.tabControl1.Controls.Add(this.Header);
-            this.tabControl1.Controls.Add(this.Keys);
-            this.tabControl1.Controls.Add(this.ImageUpload);
-            this.tabControl1.Controls.Add(this.Import);
-            this.tabControl1.Controls.Add(this.Help);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(0, 63);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(474, 407);
-            this.tabControl1.TabIndex = 0;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(474, 59);
+            this.panel1.TabIndex = 1;
             // 
-            // Signature
+            // label1
             // 
-            this.Signature.Controls.Add(this.sign4);
-            this.Signature.Controls.Add(this.richTextSign4);
-            this.Signature.Controls.Add(this.sign3);
-            this.Signature.Controls.Add(this.richTextSign3);
-            this.Signature.Controls.Add(this.sign2);
-            this.Signature.Controls.Add(this.richTextSign2);
-            this.Signature.Controls.Add(this.sign1);
-            this.Signature.Controls.Add(this.richTextSign1);
-            this.Signature.Controls.Add(this.label27);
-            this.Signature.Controls.Add(this.buttonSign);
-            this.Signature.Location = new System.Drawing.Point(4, 22);
-            this.Signature.Name = "Signature";
-            this.Signature.Size = new System.Drawing.Size(466, 381);
-            this.Signature.TabIndex = 4;
-            this.Signature.Text = "Signature";
-            this.Signature.UseVisualStyleBackColor = true;
-            this.Signature.Click += new System.EventHandler(this.Signature_Click);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(50, 2);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(183, 55);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Settings";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // sign4
+            // pictureBox1
             // 
-            this.sign4.Location = new System.Drawing.Point(237, 211);
-            this.sign4.Name = "sign4";
-            this.sign4.Size = new System.Drawing.Size(221, 20);
-            this.sign4.TabIndex = 7;
-            this.sign4.TextChanged += new System.EventHandler(this.sign4_TextChanged);
+            this.pictureBox1.Image = global::LetterOfOffer.Properties.Resources.icons8_settings_30;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 55);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
-            // richTextSign4
+            // Help
             // 
-            this.richTextSign4.Location = new System.Drawing.Point(237, 237);
-            this.richTextSign4.Name = "richTextSign4";
-            this.richTextSign4.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign4.TabIndex = 8;
-            this.richTextSign4.Text = "";
-            this.richTextSign4.TextChanged += new System.EventHandler(this.richTextSign4_TextChanged);
+            this.Help.Controls.Add(this.richTextBox1);
+            this.Help.Controls.Add(this.label26);
+            this.Help.Location = new System.Drawing.Point(4, 22);
+            this.Help.Name = "Help";
+            this.Help.Size = new System.Drawing.Size(466, 381);
+            this.Help.TabIndex = 3;
+            this.Help.Text = "Help";
+            this.Help.UseVisualStyleBackColor = true;
             // 
-            // sign3
+            // richTextBox1
             // 
-            this.sign3.Location = new System.Drawing.Point(8, 211);
-            this.sign3.Name = "sign3";
-            this.sign3.Size = new System.Drawing.Size(221, 20);
-            this.sign3.TabIndex = 5;
-            this.sign3.TextChanged += new System.EventHandler(this.sign3_TextChanged);
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(11, 40);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(447, 333);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // richTextSign3
+            // label26
             // 
-            this.richTextSign3.Location = new System.Drawing.Point(8, 237);
-            this.richTextSign3.Name = "richTextSign3";
-            this.richTextSign3.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign3.TabIndex = 6;
-            this.richTextSign3.Text = "";
-            this.richTextSign3.TextChanged += new System.EventHandler(this.richTextSign3_TextChanged);
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label26.Location = new System.Drawing.Point(5, 15);
+            this.label26.Margin = new System.Windows.Forms.Padding(0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(171, 20);
+            this.label26.TabIndex = 0;
+            this.label26.Text = " Purpose of the App";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // sign2
+            // Import
             // 
-            this.sign2.Location = new System.Drawing.Point(237, 46);
-            this.sign2.Name = "sign2";
-            this.sign2.Size = new System.Drawing.Size(221, 20);
-            this.sign2.TabIndex = 3;
-            this.sign2.TextChanged += new System.EventHandler(this.sign2_TextChanged);
+            this.Import.Controls.Add(this.label30);
+            this.Import.Controls.Add(this.newPathBtn);
+            this.Import.Controls.Add(this.label29);
+            this.Import.Controls.Add(this.label25);
+            this.Import.Controls.Add(this.label24);
+            this.Import.Controls.Add(this.label23);
+            this.Import.Controls.Add(this.label22);
+            this.Import.Controls.Add(this.label21);
+            this.Import.Controls.Add(this.label20);
+            this.Import.Controls.Add(this.ExportBtn);
+            this.Import.Controls.Add(this.ImportBtn);
+            this.Import.Location = new System.Drawing.Point(4, 22);
+            this.Import.Name = "Import";
+            this.Import.Size = new System.Drawing.Size(466, 381);
+            this.Import.TabIndex = 2;
+            this.Import.Text = "Import & Export  ";
+            this.Import.UseVisualStyleBackColor = true;
             // 
-            // richTextSign2
+            // label30
             // 
-            this.richTextSign2.Location = new System.Drawing.Point(237, 73);
-            this.richTextSign2.Name = "richTextSign2";
-            this.richTextSign2.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign2.TabIndex = 4;
-            this.richTextSign2.Text = "";
-            this.richTextSign2.TextChanged += new System.EventHandler(this.richTextSign2_TextChanged);
+            this.label30.Location = new System.Drawing.Point(12, 324);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(446, 23);
+            this.label30.TabIndex = 10;
             // 
-            // sign1
+            // newPathBtn
             // 
-            this.sign1.Location = new System.Drawing.Point(8, 46);
-            this.sign1.Name = "sign1";
-            this.sign1.Size = new System.Drawing.Size(221, 20);
-            this.sign1.TabIndex = 1;
-            this.sign1.TextChanged += new System.EventHandler(this.sign1_TextChanged);
+            this.newPathBtn.BackColor = System.Drawing.Color.Black;
+            this.newPathBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newPathBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newPathBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.newPathBtn.Location = new System.Drawing.Point(12, 350);
+            this.newPathBtn.Name = "newPathBtn";
+            this.newPathBtn.Size = new System.Drawing.Size(108, 26);
+            this.newPathBtn.TabIndex = 9;
+            this.newPathBtn.Text = "Path";
+            this.newPathBtn.UseVisualStyleBackColor = false;
+            this.newPathBtn.Click += new System.EventHandler(this.newPathBtn_Click);
             // 
-            // richTextSign1
+            // label29
             // 
-            this.richTextSign1.Location = new System.Drawing.Point(8, 72);
-            this.richTextSign1.Name = "richTextSign1";
-            this.richTextSign1.Size = new System.Drawing.Size(221, 104);
-            this.richTextSign1.TabIndex = 2;
-            this.richTextSign1.Text = "";
-            this.richTextSign1.TextChanged += new System.EventHandler(this.richTextSign1_TextChanged);
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(18, 123);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(448, 25);
+            this.label29.TabIndex = 8;
+            this.label29.Text = "- Signature";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label27
+            // label25
             // 
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label27.Location = new System.Drawing.Point(8, 14);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(100, 29);
-            this.label27.TabIndex = 9;
-            this.label27.Text = "Signature";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(18, 173);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(448, 25);
+            this.label25.TabIndex = 7;
+            this.label25.Text = "- List of Drop Down Menus";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // buttonSign
+            // label24
             // 
-            this.buttonSign.BackColor = System.Drawing.Color.Black;
-            this.buttonSign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonSign.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonSign.Location = new System.Drawing.Point(350, 350);
-            this.buttonSign.Name = "buttonSign";
-            this.buttonSign.Size = new System.Drawing.Size(108, 26);
-            this.buttonSign.TabIndex = 9;
-            this.buttonSign.Text = "Save";
-            this.buttonSign.UseVisualStyleBackColor = false;
-            this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(18, 148);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(448, 25);
+            this.label24.TabIndex = 6;
+            this.label24.Text = "- Header and Footer";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Header
+            // label23
             // 
-            this.Header.Controls.Add(this.label18);
-            this.Header.Controls.Add(this.label17);
-            this.Header.Controls.Add(this.btnSave);
-            this.Header.Controls.Add(this.richTextFooter);
-            this.Header.Controls.Add(this.richTextHeader);
-            this.Header.Location = new System.Drawing.Point(4, 22);
-            this.Header.Margin = new System.Windows.Forms.Padding(2);
-            this.Header.Name = "Header";
-            this.Header.Padding = new System.Windows.Forms.Padding(2);
-            this.Header.Size = new System.Drawing.Size(466, 381);
-            this.Header.TabIndex = 0;
-            this.Header.Text = "Header & Footer  ";
-            this.Header.UseVisualStyleBackColor = true;
-            this.Header.Click += new System.EventHandler(this.Data_Click);
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(18, 98);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(448, 25);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "- Keys";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label18
+            // label22
             // 
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label18.Location = new System.Drawing.Point(8, 179);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(100, 29);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "Footer";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(18, 73);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(448, 25);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "- Paragraphs";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label17
+            // label21
             // 
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label17.Location = new System.Drawing.Point(8, 14);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(100, 29);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Header";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(18, 48);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(448, 25);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "- Templates";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnSave
+            // label20
             // 
-            this.btnSave.BackColor = System.Drawing.Color.Black;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSave.Location = new System.Drawing.Point(350, 350);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(108, 26);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(8, 14);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(451, 28);
+            this.label20.TabIndex = 2;
+            this.label20.Text = "Export and Import the data";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // richTextFooter
+            // ExportBtn
             // 
-            this.richTextFooter.Location = new System.Drawing.Point(8, 211);
-            this.richTextFooter.Name = "richTextFooter";
-            this.richTextFooter.Size = new System.Drawing.Size(450, 122);
-            this.richTextFooter.TabIndex = 1;
-            this.richTextFooter.Text = "";
-            this.richTextFooter.TextChanged += new System.EventHandler(this.richTextFooter_TextChanged);
+            this.ExportBtn.BackColor = System.Drawing.Color.Black;
+            this.ExportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ExportBtn.Location = new System.Drawing.Point(350, 350);
+            this.ExportBtn.Name = "ExportBtn";
+            this.ExportBtn.Size = new System.Drawing.Size(108, 26);
+            this.ExportBtn.TabIndex = 1;
+            this.ExportBtn.Text = "Export";
+            this.ExportBtn.UseVisualStyleBackColor = false;
+            this.ExportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
             // 
-            // richTextHeader
+            // ImportBtn
             // 
-            this.richTextHeader.Location = new System.Drawing.Point(8, 46);
-            this.richTextHeader.Name = "richTextHeader";
-            this.richTextHeader.Size = new System.Drawing.Size(450, 122);
-            this.richTextHeader.TabIndex = 0;
-            this.richTextHeader.Text = "";
-            this.richTextHeader.TextChanged += new System.EventHandler(this.richTextHeader_TextChanged);
+            this.ImportBtn.BackColor = System.Drawing.Color.Black;
+            this.ImportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ImportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImportBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ImportBtn.Location = new System.Drawing.Point(236, 350);
+            this.ImportBtn.Name = "ImportBtn";
+            this.ImportBtn.Size = new System.Drawing.Size(108, 26);
+            this.ImportBtn.TabIndex = 0;
+            this.ImportBtn.Text = "Import";
+            this.ImportBtn.UseVisualStyleBackColor = false;
+            this.ImportBtn.Click += new System.EventHandler(this.ImportBtn_Click);
+            // 
+            // ImageUpload
+            // 
+            this.ImageUpload.Controls.Add(this.pictureBox2);
+            this.ImageUpload.Controls.Add(this.uploadImageBtn);
+            this.ImageUpload.Controls.Add(this.label28);
+            this.ImageUpload.Location = new System.Drawing.Point(4, 22);
+            this.ImageUpload.Name = "ImageUpload";
+            this.ImageUpload.Size = new System.Drawing.Size(466, 381);
+            this.ImageUpload.TabIndex = 5;
+            this.ImageUpload.Text = "Image";
+            this.ImageUpload.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.ErrorImage = global::LetterOfOffer.Properties.Resources.cand;
+            this.pictureBox2.Location = new System.Drawing.Point(8, 61);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(449, 278);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // uploadImageBtn
+            // 
+            this.uploadImageBtn.BackColor = System.Drawing.Color.Black;
+            this.uploadImageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.uploadImageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uploadImageBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.uploadImageBtn.Location = new System.Drawing.Point(350, 350);
+            this.uploadImageBtn.Name = "uploadImageBtn";
+            this.uploadImageBtn.Size = new System.Drawing.Size(108, 26);
+            this.uploadImageBtn.TabIndex = 4;
+            this.uploadImageBtn.Text = "Upload";
+            this.uploadImageBtn.UseVisualStyleBackColor = false;
+            this.uploadImageBtn.Click += new System.EventHandler(this.uploadImageBtn_Click);
+            // 
+            // label28
+            // 
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(8, 14);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(451, 28);
+            this.label28.TabIndex = 3;
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Keys
             // 
             this.Keys.Controls.Add(this.label19);
             this.Keys.Controls.Add(this.button1);
             this.Keys.Controls.Add(this.keyBoxAddress);
-            this.Keys.Controls.Add(this.label16);
             this.Keys.Controls.Add(this.keyBoxSignature);
             this.Keys.Controls.Add(this.keyBoxPostal);
             this.Keys.Controls.Add(this.keyBoxCity);
@@ -331,6 +393,7 @@
             this.Keys.Controls.Add(this.keyBoxPosition);
             this.Keys.Controls.Add(this.keyBoxEX);
             this.Keys.Controls.Add(this.keyBoxName);
+            this.Keys.Controls.Add(this.label16);
             this.Keys.Controls.Add(this.label15);
             this.Keys.Controls.Add(this.label14);
             this.Keys.Controls.Add(this.label13);
@@ -384,17 +447,6 @@
             this.keyBoxAddress.Size = new System.Drawing.Size(308, 20);
             this.keyBoxAddress.TabIndex = 29;
             this.keyBoxAddress.TextChanged += new System.EventHandler(this.keyBoxAddress_TextChanged);
-            // 
-            // label16
-            // 
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label16.Location = new System.Drawing.Point(11, 243);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(132, 20);
-            this.label16.TabIndex = 28;
-            this.label16.Text = "Address";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // keyBoxSignature
             // 
@@ -507,6 +559,17 @@
             this.keyBoxName.Size = new System.Drawing.Size(308, 20);
             this.keyBoxName.TabIndex = 14;
             this.keyBoxName.TextChanged += new System.EventHandler(this.keyBoxName_TextChanged);
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label16.Location = new System.Drawing.Point(11, 243);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(132, 20);
+            this.label16.TabIndex = 28;
+            this.label16.Text = "Address";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label15
             // 
@@ -663,257 +726,262 @@
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // Import
+            // Header
             // 
-            this.Import.Controls.Add(this.label30);
-            this.Import.Controls.Add(this.newPathBtn);
-            this.Import.Controls.Add(this.label29);
-            this.Import.Controls.Add(this.label25);
-            this.Import.Controls.Add(this.label24);
-            this.Import.Controls.Add(this.label23);
-            this.Import.Controls.Add(this.label22);
-            this.Import.Controls.Add(this.label21);
-            this.Import.Controls.Add(this.label20);
-            this.Import.Controls.Add(this.ExportBtn);
-            this.Import.Controls.Add(this.ImportBtn);
-            this.Import.Location = new System.Drawing.Point(4, 22);
-            this.Import.Name = "Import";
-            this.Import.Size = new System.Drawing.Size(466, 381);
-            this.Import.TabIndex = 2;
-            this.Import.Text = "Import & Export  ";
-            this.Import.UseVisualStyleBackColor = true;
+            this.Header.Controls.Add(this.label18);
+            this.Header.Controls.Add(this.label17);
+            this.Header.Controls.Add(this.btnSave);
+            this.Header.Controls.Add(this.richTextFooter);
+            this.Header.Controls.Add(this.richTextHeader);
+            this.Header.Location = new System.Drawing.Point(4, 22);
+            this.Header.Margin = new System.Windows.Forms.Padding(2);
+            this.Header.Name = "Header";
+            this.Header.Padding = new System.Windows.Forms.Padding(2);
+            this.Header.Size = new System.Drawing.Size(466, 381);
+            this.Header.TabIndex = 0;
+            this.Header.Text = "Header & Footer  ";
+            this.Header.UseVisualStyleBackColor = true;
+            this.Header.Click += new System.EventHandler(this.Data_Click);
             // 
-            // label30
+            // label18
             // 
-            this.label30.Location = new System.Drawing.Point(12, 324);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(446, 23);
-            this.label30.TabIndex = 10;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label18.Location = new System.Drawing.Point(8, 179);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(100, 29);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Footer";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // newPathBtn
+            // label17
             // 
-            this.newPathBtn.BackColor = System.Drawing.Color.Black;
-            this.newPathBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.newPathBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newPathBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.newPathBtn.Location = new System.Drawing.Point(12, 350);
-            this.newPathBtn.Name = "newPathBtn";
-            this.newPathBtn.Size = new System.Drawing.Size(108, 26);
-            this.newPathBtn.TabIndex = 9;
-            this.newPathBtn.Text = "Path";
-            this.newPathBtn.UseVisualStyleBackColor = false;
-            this.newPathBtn.Click += new System.EventHandler(this.newPathBtn_Click);
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label17.Location = new System.Drawing.Point(8, 14);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(100, 29);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "Header";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label29
+            // btnSave
             // 
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(18, 123);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(448, 25);
-            this.label29.TabIndex = 8;
-            this.label29.Text = "- Signature";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.BackColor = System.Drawing.Color.Black;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSave.Location = new System.Drawing.Point(350, 350);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(108, 26);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label25
+            // richTextFooter
             // 
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(18, 173);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(448, 25);
-            this.label25.TabIndex = 7;
-            this.label25.Text = "- List of Drop Down Menus";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.richTextFooter.Location = new System.Drawing.Point(8, 211);
+            this.richTextFooter.Name = "richTextFooter";
+            this.richTextFooter.Size = new System.Drawing.Size(450, 122);
+            this.richTextFooter.TabIndex = 1;
+            this.richTextFooter.Text = "";
+            this.richTextFooter.TextChanged += new System.EventHandler(this.richTextFooter_TextChanged);
             // 
-            // label24
+            // richTextHeader
             // 
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(18, 148);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(448, 25);
-            this.label24.TabIndex = 6;
-            this.label24.Text = "- Header and Footer";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.richTextHeader.Location = new System.Drawing.Point(8, 46);
+            this.richTextHeader.Name = "richTextHeader";
+            this.richTextHeader.Size = new System.Drawing.Size(450, 122);
+            this.richTextHeader.TabIndex = 0;
+            this.richTextHeader.Text = "";
+            this.richTextHeader.TextChanged += new System.EventHandler(this.richTextHeader_TextChanged);
             // 
-            // label23
+            // Signature
             // 
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(18, 98);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(448, 25);
-            this.label23.TabIndex = 5;
-            this.label23.Text = "- Keys";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Signature.Controls.Add(this.sign4);
+            this.Signature.Controls.Add(this.richTextSign4);
+            this.Signature.Controls.Add(this.sign3);
+            this.Signature.Controls.Add(this.richTextSign3);
+            this.Signature.Controls.Add(this.sign2);
+            this.Signature.Controls.Add(this.richTextSign2);
+            this.Signature.Controls.Add(this.sign1);
+            this.Signature.Controls.Add(this.richTextSign1);
+            this.Signature.Controls.Add(this.label27);
+            this.Signature.Controls.Add(this.buttonSign);
+            this.Signature.Location = new System.Drawing.Point(4, 22);
+            this.Signature.Name = "Signature";
+            this.Signature.Size = new System.Drawing.Size(466, 381);
+            this.Signature.TabIndex = 4;
+            this.Signature.Text = "Signature";
+            this.Signature.UseVisualStyleBackColor = true;
+            this.Signature.Click += new System.EventHandler(this.Signature_Click);
             // 
-            // label22
+            // sign4
             // 
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(18, 73);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(448, 25);
-            this.label22.TabIndex = 4;
-            this.label22.Text = "- Paragraphs";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.sign4.Location = new System.Drawing.Point(237, 211);
+            this.sign4.Name = "sign4";
+            this.sign4.Size = new System.Drawing.Size(221, 20);
+            this.sign4.TabIndex = 7;
+            this.sign4.TextChanged += new System.EventHandler(this.sign4_TextChanged);
             // 
-            // label21
+            // richTextSign4
             // 
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(18, 48);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(448, 25);
-            this.label21.TabIndex = 3;
-            this.label21.Text = "- Templates";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.richTextSign4.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.richTextSign4.Location = new System.Drawing.Point(237, 237);
+            this.richTextSign4.Name = "richTextSign4";
+            this.richTextSign4.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign4.TabIndex = 8;
+            this.richTextSign4.Text = "";
+            this.richTextSign4.TextChanged += new System.EventHandler(this.richTextSign4_TextChanged);
             // 
-            // label20
+            // sign3
             // 
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(8, 14);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(451, 28);
-            this.label20.TabIndex = 2;
-            this.label20.Text = "Export and Import the data";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.sign3.Location = new System.Drawing.Point(8, 211);
+            this.sign3.Name = "sign3";
+            this.sign3.Size = new System.Drawing.Size(221, 20);
+            this.sign3.TabIndex = 5;
+            this.sign3.TextChanged += new System.EventHandler(this.sign3_TextChanged);
             // 
-            // ExportBtn
+            // richTextSign3
             // 
-            this.ExportBtn.BackColor = System.Drawing.Color.Black;
-            this.ExportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExportBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ExportBtn.Location = new System.Drawing.Point(350, 350);
-            this.ExportBtn.Name = "ExportBtn";
-            this.ExportBtn.Size = new System.Drawing.Size(108, 26);
-            this.ExportBtn.TabIndex = 1;
-            this.ExportBtn.Text = "Export";
-            this.ExportBtn.UseVisualStyleBackColor = false;
-            this.ExportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
+            this.richTextSign3.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.richTextSign3.Location = new System.Drawing.Point(8, 237);
+            this.richTextSign3.Name = "richTextSign3";
+            this.richTextSign3.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign3.TabIndex = 6;
+            this.richTextSign3.Text = "";
+            this.richTextSign3.TextChanged += new System.EventHandler(this.richTextSign3_TextChanged);
             // 
-            // ImportBtn
+            // sign2
             // 
-            this.ImportBtn.BackColor = System.Drawing.Color.Black;
-            this.ImportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ImportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ImportBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ImportBtn.Location = new System.Drawing.Point(236, 350);
-            this.ImportBtn.Name = "ImportBtn";
-            this.ImportBtn.Size = new System.Drawing.Size(108, 26);
-            this.ImportBtn.TabIndex = 0;
-            this.ImportBtn.Text = "Import";
-            this.ImportBtn.UseVisualStyleBackColor = false;
-            this.ImportBtn.Click += new System.EventHandler(this.ImportBtn_Click);
+            this.sign2.Location = new System.Drawing.Point(237, 46);
+            this.sign2.Name = "sign2";
+            this.sign2.Size = new System.Drawing.Size(221, 20);
+            this.sign2.TabIndex = 3;
+            this.sign2.TextChanged += new System.EventHandler(this.sign2_TextChanged);
             // 
-            // Help
+            // richTextSign2
             // 
-            this.Help.Controls.Add(this.richTextBox1);
-            this.Help.Controls.Add(this.label26);
-            this.Help.Location = new System.Drawing.Point(4, 22);
-            this.Help.Name = "Help";
-            this.Help.Size = new System.Drawing.Size(466, 381);
-            this.Help.TabIndex = 3;
-            this.Help.Text = "Help";
-            this.Help.UseVisualStyleBackColor = true;
+            this.richTextSign2.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.richTextSign2.Location = new System.Drawing.Point(237, 73);
+            this.richTextSign2.Name = "richTextSign2";
+            this.richTextSign2.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign2.TabIndex = 4;
+            this.richTextSign2.Text = "";
+            this.richTextSign2.TextChanged += new System.EventHandler(this.richTextSign2_TextChanged);
             // 
-            // richTextBox1
+            // sign1
             // 
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(11, 40);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(447, 333);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.sign1.Location = new System.Drawing.Point(8, 46);
+            this.sign1.Name = "sign1";
+            this.sign1.Size = new System.Drawing.Size(221, 20);
+            this.sign1.TabIndex = 1;
+            this.sign1.TextChanged += new System.EventHandler(this.sign1_TextChanged);
             // 
-            // label26
+            // richTextSign1
             // 
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label26.Location = new System.Drawing.Point(5, 15);
-            this.label26.Margin = new System.Windows.Forms.Padding(0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(171, 20);
-            this.label26.TabIndex = 0;
-            this.label26.Text = " Purpose of the App";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.richTextSign1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextSign1.Location = new System.Drawing.Point(8, 72);
+            this.richTextSign1.Name = "richTextSign1";
+            this.richTextSign1.Size = new System.Drawing.Size(221, 104);
+            this.richTextSign1.TabIndex = 2;
+            this.richTextSign1.Text = "";
+            this.richTextSign1.TextChanged += new System.EventHandler(this.richTextSign1_TextChanged);
             // 
-            // panel1
+            // label27
             // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(474, 59);
-            this.panel1.TabIndex = 1;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label27.Location = new System.Drawing.Point(8, 14);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(100, 29);
+            this.label27.TabIndex = 9;
+            this.label27.Text = "Signature";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label1
+            // buttonSign
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 2);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 55);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Settings";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSign.BackColor = System.Drawing.Color.Black;
+            this.buttonSign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonSign.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonSign.Location = new System.Drawing.Point(350, 350);
+            this.buttonSign.Name = "buttonSign";
+            this.buttonSign.Size = new System.Drawing.Size(108, 26);
+            this.buttonSign.TabIndex = 9;
+            this.buttonSign.Text = "Save";
+            this.buttonSign.UseVisualStyleBackColor = false;
+            this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
             // 
-            // pictureBox1
+            // tabControl1
             // 
-            this.pictureBox1.Image = global::LetterOfOffer.Properties.Resources.icons8_settings_30;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 55);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.tabControl1.Controls.Add(this.Signature);
+            this.tabControl1.Controls.Add(this.Advisor);
+            this.tabControl1.Controls.Add(this.Header);
+            this.tabControl1.Controls.Add(this.Keys);
+            this.tabControl1.Controls.Add(this.ImageUpload);
+            this.tabControl1.Controls.Add(this.Import);
+            this.tabControl1.Controls.Add(this.Help);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tabControl1.Location = new System.Drawing.Point(0, 63);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(474, 407);
+            this.tabControl1.TabIndex = 0;
             // 
-            // label28
+            // Advisor
             // 
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(8, 14);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(451, 28);
-            this.label28.TabIndex = 3;
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Advisor.Controls.Add(this.panel3);
+            this.Advisor.Controls.Add(this.panel2);
+            this.Advisor.Location = new System.Drawing.Point(4, 22);
+            this.Advisor.Name = "Advisor";
+            this.Advisor.Size = new System.Drawing.Size(466, 381);
+            this.Advisor.TabIndex = 6;
+            this.Advisor.Text = "Advisor";
+            this.Advisor.UseVisualStyleBackColor = true;
             // 
-            // uploadImageBtn
+            // panel3
             // 
-            this.uploadImageBtn.BackColor = System.Drawing.Color.Black;
-            this.uploadImageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.uploadImageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uploadImageBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.uploadImageBtn.Location = new System.Drawing.Point(350, 350);
-            this.uploadImageBtn.Name = "uploadImageBtn";
-            this.uploadImageBtn.Size = new System.Drawing.Size(108, 26);
-            this.uploadImageBtn.TabIndex = 4;
-            this.uploadImageBtn.Text = "Upload";
-            this.uploadImageBtn.UseVisualStyleBackColor = false;
-            this.uploadImageBtn.Click += new System.EventHandler(this.uploadImageBtn_Click);
+            this.panel3.Controls.Add(this.button_SaveAdvisor);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 344);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(466, 37);
+            this.panel3.TabIndex = 1;
             // 
-            // pictureBox2
+            // button_SaveAdvisor
             // 
-            this.pictureBox2.ErrorImage = global::LetterOfOffer.Properties.Resources.cand;
-            this.pictureBox2.Location = new System.Drawing.Point(8, 61);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(449, 278);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.button_SaveAdvisor.BackColor = System.Drawing.Color.Black;
+            this.button_SaveAdvisor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_SaveAdvisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.button_SaveAdvisor.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button_SaveAdvisor.Location = new System.Drawing.Point(350, 6);
+            this.button_SaveAdvisor.Name = "button_SaveAdvisor";
+            this.button_SaveAdvisor.Size = new System.Drawing.Size(108, 26);
+            this.button_SaveAdvisor.TabIndex = 10;
+            this.button_SaveAdvisor.Text = "Save";
+            this.button_SaveAdvisor.UseVisualStyleBackColor = false;
+            this.button_SaveAdvisor.Click += new System.EventHandler(this.button_SaveAdvisor_Click);
             // 
-            // ImageUpload
+            // panel2
             // 
-            this.ImageUpload.Controls.Add(this.pictureBox2);
-            this.ImageUpload.Controls.Add(this.uploadImageBtn);
-            this.ImageUpload.Controls.Add(this.label28);
-            this.ImageUpload.Location = new System.Drawing.Point(4, 22);
-            this.ImageUpload.Name = "ImageUpload";
-            this.ImageUpload.Size = new System.Drawing.Size(466, 381);
-            this.ImageUpload.TabIndex = 5;
-            this.ImageUpload.Text = "Image";
-            this.ImageUpload.UseVisualStyleBackColor = true;
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.label31);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(466, 344);
+            this.panel2.TabIndex = 0;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // label31
+            // 
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label31.Location = new System.Drawing.Point(8, 14);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(100, 29);
+            this.label31.TabIndex = 18;
+            this.label31.Text = "Advisor";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Settings
             // 
@@ -930,46 +998,52 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.Settings_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.Signature.ResumeLayout(false);
-            this.Signature.PerformLayout();
-            this.Header.ResumeLayout(false);
-            this.Keys.ResumeLayout(false);
-            this.Keys.PerformLayout();
-            this.Import.ResumeLayout(false);
-            this.Help.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.Help.ResumeLayout(false);
+            this.Import.ResumeLayout(false);
             this.ImageUpload.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.Keys.ResumeLayout(false);
+            this.Keys.PerformLayout();
+            this.Header.ResumeLayout(false);
+            this.Signature.ResumeLayout(false);
+            this.Signature.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.Advisor.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage Header;
-        private System.Windows.Forms.TabPage Keys;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TabPage Help;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TabPage Import;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Button newPathBtn;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button ExportBtn;
+        private System.Windows.Forms.Button ImportBtn;
+        private System.Windows.Forms.TabPage ImageUpload;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button uploadImageBtn;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TabPage Keys;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox keyBoxAddress;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox keyBoxSignature;
         private System.Windows.Forms.TextBox keyBoxPostal;
         private System.Windows.Forms.TextBox keyBoxCity;
@@ -984,28 +1058,28 @@
         private System.Windows.Forms.TextBox keyBoxPosition;
         private System.Windows.Forms.TextBox keyBoxEX;
         private System.Windows.Forms.TextBox keyBoxName;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextFooter;
-        private System.Windows.Forms.RichTextBox richTextHeader;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage Header;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TabPage Import;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button ExportBtn;
-        private System.Windows.Forms.Button ImportBtn;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TabPage Help;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.RichTextBox richTextFooter;
+        private System.Windows.Forms.RichTextBox richTextHeader;
         private System.Windows.Forms.TabPage Signature;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Button buttonSign;
         private System.Windows.Forms.TextBox sign4;
         private System.Windows.Forms.RichTextBox richTextSign4;
         private System.Windows.Forms.TextBox sign3;
@@ -1014,12 +1088,13 @@
         private System.Windows.Forms.RichTextBox richTextSign2;
         private System.Windows.Forms.TextBox sign1;
         private System.Windows.Forms.RichTextBox richTextSign1;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Button newPathBtn;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TabPage ImageUpload;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button uploadImageBtn;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button buttonSign;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage Advisor;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button_SaveAdvisor;
     }
 }

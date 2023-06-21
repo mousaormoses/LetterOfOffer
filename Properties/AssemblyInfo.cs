@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("LetterOfOffer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Government of Canada - Gouvernement du Canada")]
+[assembly: AssemblyCompany("Canada")]
 [assembly: AssemblyProduct("LetterOfOffer")]
-[assembly: AssemblyCopyright("Copyright © Government of Canada - Gouvernement du Canada 2023")]
+[assembly: AssemblyCopyright("Copyright © Mousa Abdulaziz 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

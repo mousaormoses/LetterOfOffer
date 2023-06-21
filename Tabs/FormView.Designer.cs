@@ -36,7 +36,6 @@
             this.btnSecurity = new System.Windows.Forms.Button();
             this.btnSalaryTo = new System.Windows.Forms.Button();
             this.btnLanguage = new System.Windows.Forms.Button();
-            this.btnHR = new System.Windows.Forms.Button();
             this.btnSalaryFrom = new System.Windows.Forms.Button();
             this.btnEXlevel = new System.Windows.Forms.Button();
             this.btnSector = new System.Windows.Forms.Button();
@@ -72,8 +71,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pdfButton = new System.Windows.Forms.Button();
-            this.wordButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button_Preview = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelTemp.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -112,7 +111,6 @@
             this.panelTemp.Controls.Add(this.btnSecurity);
             this.panelTemp.Controls.Add(this.btnSalaryTo);
             this.panelTemp.Controls.Add(this.btnLanguage);
-            this.panelTemp.Controls.Add(this.btnHR);
             this.panelTemp.Controls.Add(this.btnSalaryFrom);
             this.panelTemp.Controls.Add(this.btnEXlevel);
             this.panelTemp.Controls.Add(this.btnSector);
@@ -217,19 +215,6 @@
             this.btnLanguage.TabIndex = 41;
             this.btnLanguage.UseVisualStyleBackColor = true;
             this.btnLanguage.Click += new System.EventHandler(this.btnLanguage_Click);
-            // 
-            // btnHR
-            // 
-            this.btnHR.FlatAppearance.BorderSize = 0;
-            this.btnHR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHR.Image = global::LetterOfOffer.Properties.Resources.icons8_list_13;
-            this.btnHR.Location = new System.Drawing.Point(331, 269);
-            this.btnHR.Margin = new System.Windows.Forms.Padding(2);
-            this.btnHR.Name = "btnHR";
-            this.btnHR.Size = new System.Drawing.Size(23, 26);
-            this.btnHR.TabIndex = 40;
-            this.btnHR.UseVisualStyleBackColor = true;
-            this.btnHR.Click += new System.EventHandler(this.btnHR_Click);
             // 
             // btnSalaryFrom
             // 
@@ -659,30 +644,14 @@
             this.pdfButton.Name = "pdfButton";
             this.pdfButton.Size = new System.Drawing.Size(148, 35);
             this.pdfButton.TabIndex = 17;
-            this.pdfButton.Text = "PDF";
+            this.pdfButton.Text = "Generate";
             this.pdfButton.UseVisualStyleBackColor = false;
             this.pdfButton.Click += new System.EventHandler(this.pdfButton_Click);
-            // 
-            // wordButton
-            // 
-            this.wordButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(40)))), ((int)(((byte)(56)))));
-            this.wordButton.FlatAppearance.BorderSize = 0;
-            this.wordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.wordButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.wordButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.wordButton.Location = new System.Drawing.Point(158, 38);
-            this.wordButton.Margin = new System.Windows.Forms.Padding(2);
-            this.wordButton.Name = "wordButton";
-            this.wordButton.Size = new System.Drawing.Size(148, 35);
-            this.wordButton.TabIndex = 18;
-            this.wordButton.Text = "Word";
-            this.wordButton.UseVisualStyleBackColor = false;
-            this.wordButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.Controls.Add(this.wordButton);
+            this.panel2.Controls.Add(this.button_Preview);
             this.panel2.Controls.Add(this.pdfButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 468);
@@ -690,6 +659,22 @@
             this.panel2.Size = new System.Drawing.Size(720, 82);
             this.panel2.TabIndex = 35;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // button_Preview
+            // 
+            this.button_Preview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(40)))), ((int)(((byte)(56)))));
+            this.button_Preview.FlatAppearance.BorderSize = 0;
+            this.button_Preview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Preview.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Preview.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button_Preview.Location = new System.Drawing.Point(157, 38);
+            this.button_Preview.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Preview.Name = "button_Preview";
+            this.button_Preview.Size = new System.Drawing.Size(148, 35);
+            this.button_Preview.TabIndex = 18;
+            this.button_Preview.Text = "Preview";
+            this.button_Preview.UseVisualStyleBackColor = false;
+            this.button_Preview.Click += new System.EventHandler(this.button_Preview_Click);
             // 
             // FormView
             // 
@@ -747,17 +732,16 @@
         private System.Windows.Forms.ComboBox language_FormBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button pdfButton;
-        private System.Windows.Forms.Button wordButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnSecurity;
         private System.Windows.Forms.Button btnSalaryTo;
         private System.Windows.Forms.Button btnLanguage;
-        private System.Windows.Forms.Button btnHR;
         private System.Windows.Forms.Button btnSalaryFrom;
         private System.Windows.Forms.Button btnEXlevel;
         private System.Windows.Forms.Button btnSector;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker startDate_FormBox;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button_Preview;
     }
 }

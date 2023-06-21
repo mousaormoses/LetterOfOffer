@@ -461,11 +461,6 @@ namespace LetterOfOffer.Tabs
             EditWishlistItems(salaryTo_FormBox);
         }
 
-        private void btnHR_Click(object sender, EventArgs e)
-        {
-            EditWishlistItems(hr_FormBox);
-        }
-
         private void button11_Click(object sender, EventArgs e)
         {
             EditWishlistItems(security_FormBox);
@@ -497,6 +492,21 @@ namespace LetterOfOffer.Tabs
                             }
                         }
                     }
+
+                    string selectAdvisor = "SELECT textBoxAdvisor FROM advisor;";
+
+                    using (var command = new SQLiteCommand(selectAdvisor, conn))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            hr_FormBox.Items.Clear();
+                            while (reader.Read())
+                            {
+                                hr_FormBox.Items.Add(reader["textBoxAdvisor"].ToString());
+                            }
+                        }
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -544,7 +554,7 @@ namespace LetterOfOffer.Tabs
                 string language = language_FormBox.Text;
                 string salaryFrom = salaryFrom_FormBox.Text;
                 string salaryTo = salaryTo_FormBox.Text;
-                string hr = hr_FormBox.Text;
+                string hr = RetrieveRichTextSignatureForTextBoxAdvisor(hr_FormBox.Text);
                 string security = security_FormBox.Text;
                 string address = address_FormBox.Text;
                 string province = province_FormBox.Text;
@@ -618,25 +628,80 @@ namespace LetterOfOffer.Tabs
                         contentList[i] = contentList[i].Replace(keyBoxSignature, signature);
                 }
 
-
                 // Create a new Word document
                 Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
                 Document doc = wordApp.Documents.Add();
 
-                string headerText = RetrieveHeaderFooterContent("header");
-                string footerText = RetrieveHeaderFooterContent("footer");
-                // Before trying to add a header, check if the headerText is not null or empty.
-                if (!string.IsNullOrEmpty(headerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
+                try
                 {
-                    AddHeader(doc, headerText);
+
+
+                    string headerText = RetrieveHeaderFooterContent("header");
+                    string footerText = RetrieveHeaderFooterContent("footer");
+
+                    //Add a header into the document
+                    Section firstSection = doc.Sections[1];
+                    firstSection.PageSetup.DifferentFirstPageHeaderFooter = -1; // true in Office.Interop
+
+                    // Add header to the first page
+                    HeadersFooters firstPageHeaders = firstSection.Headers;
+                    Range headerRange = firstPageHeaders[WdHeaderFooterIndex.wdHeaderFooterFirstPage].Range;
+
+                    HeadersFooters firstPageFooter = firstSection.Footers;
+                    Range footerRange = firstPageFooter[WdHeaderFooterIndex.wdHeaderFooterFirstPage].Range;
+
+                    // Save current Clipboard data
+                    IDataObject originalData = Clipboard.GetDataObject();
+
+                    // Put RTF header text onto the Clipboard
+                    Clipboard.SetText(headerText, TextDataFormat.Rtf);
+
+                    // Paste the RTF header from the Clipboard into the Word document
+                    headerRange.Paste();
+
+                    // Restore original Clipboard data
+                    Clipboard.SetDataObject(originalData);
+
+                    // Put RTF footer text onto the Clipboard
+                    Clipboard.SetText(footerText, TextDataFormat.Rtf);
+
+                    // Paste the RTF footer from the Clipboard into the Word document
+                    footerRange.Paste();
+
+                    // Restore original Clipboard data
+                    Clipboard.SetDataObject(originalData);
+
+                    foreach (Section section in doc.Sections)
+                    {
+                        Range footerPageNumberRange = section.Footers[WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                        Field pageField = footerPageNumberRange.Fields.Add(footerPageNumberRange, WdFieldType.wdFieldPage);
+                        footerPageNumberRange.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+                        pageField.Update();
+                    }
+                }
+                catch (Exception e2)
+                {
+                    // Log or display the exception as needed
+                    Console.WriteLine(e2.ToString());
                 }
 
-                // Do the same for the footer.
-                if (!string.IsNullOrEmpty(footerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
-                {
-                    AddFooter(doc, footerText);
-                }
 
+
+
+
+
+                /*                // check if the headerText is not null or empty.
+                                if (!string.IsNullOrEmpty(headerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
+                                {
+                                    AddHeader(doc, headerText);
+                                }
+
+
+                                if (!string.IsNullOrEmpty(footerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
+                                {
+                                    AddFooter(doc, footerText);
+                                }
+                */
 
 
 
@@ -672,37 +737,46 @@ namespace LetterOfOffer.Tabs
                     doc.Application.Selection.InsertParagraphAfter();
                 }
 
-
-                // Show the save file dialog to choose the save location
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Word Document (*.docx)|*.docx";
-                saveFileDialog.Title = "Save Word Document";
-                saveFileDialog.FileName = "document.docx"; // Default file name
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    string filePath = saveFileDialog.FileName;
+                    // Show the save file dialog to choose the save location
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Filter = "Word Document (*.docx)|*.docx";
+                    saveFileDialog.Title = "Save Word Document";
+                    saveFileDialog.FileName = "document.docx"; // Default file name
 
-                    // Save the Word document
-                    doc.SaveAs2(filePath);
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = saveFileDialog.FileName;
 
-                    // Show success message
-                    MessageBox.Show("The content has been exported to Word successfully!");
+                        // Save the Word document
+                        doc.SaveAs2(filePath);
+
+                        // Show success message
+                        MessageBox.Show("The content has been exported to Word successfully!");
+                    }
                 }
 
-                // Close the Word document and release resources
-                // This is done whether the user chooses to save the document or not.
-                if (doc != null)
-                {
-                    // Close without saving any changes.
-                    doc.Close(SaveChanges: false);
-                    doc = null; // Prevent any further action on this document.
-                }
 
-                if (wordApp != null)
+                catch (System.Runtime.InteropServices.COMException)
                 {
-                    wordApp.Quit();
-                    wordApp = null; // Prevent any further action on this Word application.
+                    // Show error message
+                    MessageBox.Show("Unable to save the document. Please ensure the file is not currently open.");
+                }
+                finally
+                {
+                    // Close the Word document and release resources
+                    if (doc != null)
+                    {
+                        doc.Close(SaveChanges: false);
+                        doc = null;
+                    }
+
+                    if (wordApp != null)
+                    {
+                        wordApp.Quit();
+                        wordApp = null;
+                    }
                 }
             }
             else
@@ -738,7 +812,7 @@ namespace LetterOfOffer.Tabs
                 string language = language_FormBox.Text;
                 string salaryFrom = salaryFrom_FormBox.Text;
                 string salaryTo = salaryTo_FormBox.Text;
-                string hr = hr_FormBox.Text;
+                string hr = RetrieveRichTextSignatureForTextBoxAdvisor(hr_FormBox.Text);
                 string security = security_FormBox.Text;
                 string address = address_FormBox.Text;
                 string province = province_FormBox.Text;
@@ -802,19 +876,70 @@ namespace LetterOfOffer.Tabs
                 Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
                 Document doc = wordApp.Documents.Add();
 
-                string headerText = RetrieveHeaderFooterContent("header");
-                string footerText = RetrieveHeaderFooterContent("footer");
-                // Before trying to add a header, check if the headerText is not null or empty.
-                if (!string.IsNullOrEmpty(headerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
+                try
                 {
-                    AddHeader(doc, headerText);
+
+
+                    string headerText = RetrieveHeaderFooterContent("header");
+                    string footerText = RetrieveHeaderFooterContent("footer");
+
+                    //Add a header into the document
+                    Section firstSection = doc.Sections[1];
+                    firstSection.PageSetup.DifferentFirstPageHeaderFooter = -1; // true in Office.Interop
+
+                    // Add header to the first page
+                    HeadersFooters firstPageHeaders = firstSection.Headers;
+                    Range headerRange = firstPageHeaders[WdHeaderFooterIndex.wdHeaderFooterFirstPage].Range;
+
+                    HeadersFooters firstPageFooter = firstSection.Footers;
+                    Range footerRange = firstPageFooter[WdHeaderFooterIndex.wdHeaderFooterFirstPage].Range;
+
+                    // Save current Clipboard data
+                    IDataObject originalData = Clipboard.GetDataObject();
+
+                    // Put RTF header text onto the Clipboard
+                    Clipboard.SetText(headerText, TextDataFormat.Rtf);
+
+                    // Paste the RTF header from the Clipboard into the Word document
+                    headerRange.Paste();
+
+                    // Restore original Clipboard data
+                    Clipboard.SetDataObject(originalData);
+
+                    // Put RTF footer text onto the Clipboard
+                    Clipboard.SetText(footerText, TextDataFormat.Rtf);
+
+                    // Paste the RTF footer from the Clipboard into the Word document
+                    footerRange.Paste();
+
+                    // Restore original Clipboard data
+                    Clipboard.SetDataObject(originalData);
+
+                    foreach (Section section in doc.Sections)
+                    {
+                        Range footerPageNumberRange = section.Footers[WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                        Field pageField = footerPageNumberRange.Fields.Add(footerPageNumberRange, WdFieldType.wdFieldPage);
+                        footerPageNumberRange.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+                        pageField.Update();
+                    }
+                }
+                catch (Exception e2)
+                {
+                    // Log or display the exception as needed
+                    Console.WriteLine(e2.ToString());
                 }
 
-                // Do the same for the footer.
-                if (!string.IsNullOrEmpty(footerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
-                {
-                    AddFooter(doc, footerText);
-                }
+                // Before trying to add a header, check if the headerText is not null or empty.
+                /*                if (!string.IsNullOrEmpty(headerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
+                                {
+                                    AddHeader(doc, headerText);
+                                }
+
+                                // Do the same for the footer.
+                                if (!string.IsNullOrEmpty(footerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
+                                {
+                                    AddFooter(doc, footerText);
+                                }*/
 
 
 
@@ -850,35 +975,58 @@ namespace LetterOfOffer.Tabs
                     doc.Application.Selection.InsertParagraphAfter();
                 }
 
-
-                // Show the save file dialog to choose the save location
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "PDF Document (*.pdf)|*.pdf";
-                saveFileDialog.Title = "Save PDF Document";
-                saveFileDialog.FileName = "document.pdf"; // Default file name
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    string filePath = saveFileDialog.FileName;
+                    // Show the save file dialog to choose the save location
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Filter = "PDF Document (*.pdf)|*.pdf|Word Document (*.docx)|*.docx";
+                    saveFileDialog.Title = "Save Document";
+                    saveFileDialog.FileName = "document"; // Default file name
 
-                    // Save the Word document as a PDF
-                    doc.SaveAs2(filePath, Microsoft.Office.Interop.Word.WdSaveFormat.wdFormatPDF);
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = saveFileDialog.FileName;
 
-                    // Show success message
-                    MessageBox.Show("The content has been exported to PDF successfully!");
+                        // Check the file extension to determine the format to save in
+                        string extension = Path.GetExtension(filePath).ToLower();
+                        if (extension == ".pdf")
+                        {
+                            // Save the Word document as a PDF
+                            doc.SaveAs2(filePath, Microsoft.Office.Interop.Word.WdSaveFormat.wdFormatPDF);
+
+                            // Show success message
+                            MessageBox.Show("The content has been exported to PDF successfully!");
+                        }
+                        else if (extension == ".docx")
+                        {
+                            // Save the Word document in DOCX format
+                            doc.SaveAs2(filePath, Microsoft.Office.Interop.Word.WdSaveFormat.wdFormatDocumentDefault);
+
+                            // Show success message
+                            MessageBox.Show("The content has been exported to Word successfully!");
+                        }
+                    }
                 }
 
-                // Close the Word document and release resources
-                if (doc != null)
+                catch (System.Runtime.InteropServices.COMException)
                 {
-                    doc.Close(SaveChanges: false);
-                    doc = null;
+                    // Show error message
+                    MessageBox.Show("Unable to save the document. Please ensure the file is not currently open.");
                 }
-
-                if (wordApp != null)
+                finally
                 {
-                    wordApp.Quit();
-                    wordApp = null;
+                    // Close the Word document and release resources
+                    if (doc != null)
+                    {
+                        doc.Close(SaveChanges: false);
+                        doc = null;
+                    }
+
+                    if (wordApp != null)
+                    {
+                        wordApp.Quit();
+                        wordApp = null;
+                    }
                 }
             }
             else
@@ -895,29 +1043,82 @@ namespace LetterOfOffer.Tabs
 
             string richTextSign = "";
 
-            using (var conn = new SQLiteConnection(connectionString))
+            try
             {
-                conn.Open();
-
-                string selectQuery = "SELECT richTextSign FROM signatures WHERE textBoxSign = @textBoxSign;";
-
-                using (var command = new SQLiteCommand(selectQuery, conn))
+                using (var conn = new SQLiteConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@textBoxSign", textBoxSign);
+                    conn.Open();
 
-                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    string selectQuery = "SELECT richTextSign FROM signatures WHERE textBoxSign = @textBoxSign;";
+
+                    using (var command = new SQLiteCommand(selectQuery, conn))
                     {
-                        if (reader.Read())
+                        command.Parameters.AddWithValue("@textBoxSign", textBoxSign);
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
                         {
-                            richTextSign = reader["richTextSign"].ToString();
+                            if (reader.Read())
+                            {
+                                richTextSign = reader["richTextSign"].ToString();
+                            }
                         }
                     }
                 }
             }
 
+            catch (SQLiteException ex)
+            {
+               
+            }
+
             return richTextSign;
         }
 
+        private string RetrieveRichTextSignatureForTextBoxAdvisor(string textBoxAdvisor)
+        {
+            string dbPath = settings.DbPath;
+
+            string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+            string richTextAdvisor = "";
+
+            try
+            {
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string selectQuery = "SELECT richTextAdvisor FROM advisor WHERE textBoxAdvisor = @textBoxAdvisor;";
+
+                    using (var command = new SQLiteCommand(selectQuery, conn))
+                    {
+                        command.Parameters.AddWithValue("@textBoxAdvisor", textBoxAdvisor);
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                richTextAdvisor = reader["richTextAdvisor"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                if (ex.ResultCode == SQLiteErrorCode.Error && ex.Message.Contains("no such table: advisor"))
+                {
+                    MessageBox.Show("Please create an Advisor from the settings first.");
+                }
+                else
+                {
+                    // Some other SQLite error occurred - handle as necessary
+                    MessageBox.Show("An unexpected error occurred: " + ex.Message);
+                }
+            }
+
+            return richTextAdvisor;
+        }
 
 
         private void AddHeader(Document doc, string headerText)
@@ -1158,5 +1359,206 @@ namespace LetterOfOffer.Tabs
         {
 
         }
+
+        private void button_Preview_Click(object sender, EventArgs e)
+        {
+
+            if (comboBox1.SelectedItem != null)
+            {
+                // Get the selected table name from comboBox1
+                string selectedTableName = comboBox1.SelectedItem.ToString();
+
+                // Remove the "template_" prefix from the selected table name
+                string tableNameWithoutPrefix = selectedTableName.StartsWith("template_")
+                    ? selectedTableName.Substring("template_".Length)
+                    : selectedTableName;
+
+                // Add the "template_" prefix to the table name
+                string tableNameWithPrefix = "template_" + tableNameWithoutPrefix;
+
+                // Retrieve the content from the selected table
+                List<string> contentList = RetrieveContentFromTable(tableNameWithPrefix);
+
+                // Replace placeholders with actual values
+                string fullName = fullName_FormBox.Text;
+                string ex = ex_FormBox.Text;
+                string sector = sector_FormBox.Text;
+                string position = position_FormBox.Text;
+                string startDate = startDate_FormBox.Text;
+                string language = language_FormBox.Text;
+                string salaryFrom = salaryFrom_FormBox.Text;
+                string salaryTo = salaryTo_FormBox.Text;
+                string hr = RetrieveRichTextSignatureForTextBoxAdvisor(hr_FormBox.Text);
+                string security = security_FormBox.Text;
+                string address = address_FormBox.Text;
+                string province = province_FormBox.Text;
+                string city = city_FormBox.Text;
+                string postal = postal_FormBox.Text;
+                string textBoxSign = signature_FormBox.Text;
+                string signature = RetrieveRichTextSignatureForTextBoxSign(signature_FormBox.Text);
+
+                string keyBoxName = RetrieveSpecificKeyValueFromTable("keys", "keyBoxName");
+                string keyBoxEX = RetrieveSpecificKeyValueFromTable("keys", "keyBoxEX");
+                string keyBoxSector = RetrieveSpecificKeyValueFromTable("keys", "keyBoxSector");
+                string keyBoxPosition = RetrieveSpecificKeyValueFromTable("keys", "keyBoxPosition");
+                string keyBoxStartDate = RetrieveSpecificKeyValueFromTable("keys", "keyBoxStartDate");
+                string keyBoxLanguage = RetrieveSpecificKeyValueFromTable("keys", "keyBoxLanguage");
+                string keyBoxSalaryFrom = RetrieveSpecificKeyValueFromTable("keys", "keyBoxSalaryFrom");
+                string keyBoxSalaryTo = RetrieveSpecificKeyValueFromTable("keys", "keyBoxSalaryTo");
+                string keyBoxHR = RetrieveSpecificKeyValueFromTable("keys", "keyBoxHR");
+                string keyBoxSecurity = RetrieveSpecificKeyValueFromTable("keys", "keyBoxSecurity");
+                string keyBoxProvince = RetrieveSpecificKeyValueFromTable("keys", "keyBoxProvince");
+                string keyBoxCity = RetrieveSpecificKeyValueFromTable("keys", "keyBoxCity");
+                string keyBoxPostal = RetrieveSpecificKeyValueFromTable("keys", "keyBoxPostal");
+                string keyBoxSignature = RetrieveSpecificKeyValueFromTable("keys", "keyBoxSignature");
+                string keyBoxAddress = RetrieveSpecificKeyValueFromTable("keys", "keyBoxAddress");
+
+                for (int i = 0; i < contentList.Count; i++)
+                {
+                    if (!string.IsNullOrEmpty(keyBoxName))
+                        contentList[i] = contentList[i].Replace(keyBoxName, fullName);
+                    if (!string.IsNullOrEmpty(keyBoxEX))
+                        contentList[i] = contentList[i].Replace(keyBoxEX, ex);
+                    if (!string.IsNullOrEmpty(keyBoxSector))
+                        contentList[i] = contentList[i].Replace(keyBoxSector, sector);
+                    if (!string.IsNullOrEmpty(keyBoxPosition))
+                        contentList[i] = contentList[i].Replace(keyBoxPosition, position);
+                    if (!string.IsNullOrEmpty(keyBoxStartDate))
+                        contentList[i] = contentList[i].Replace(keyBoxStartDate, startDate);
+                    if (!string.IsNullOrEmpty(keyBoxLanguage))
+                        contentList[i] = contentList[i].Replace(keyBoxLanguage, language);
+                    if (!string.IsNullOrEmpty(keyBoxSalaryFrom))
+                        contentList[i] = contentList[i].Replace(keyBoxSalaryFrom, salaryFrom);
+                    if (!string.IsNullOrEmpty(keyBoxSalaryTo))
+                        contentList[i] = contentList[i].Replace(keyBoxSalaryTo, salaryTo);
+                    if (!string.IsNullOrEmpty(keyBoxHR))
+                        contentList[i] = contentList[i].Replace(keyBoxHR, hr);
+                    if (!string.IsNullOrEmpty(keyBoxSecurity))
+                        contentList[i] = contentList[i].Replace(keyBoxSecurity, security);
+                    if (!string.IsNullOrEmpty(keyBoxAddress))
+                        contentList[i] = contentList[i].Replace(keyBoxAddress, address);
+                    if (!string.IsNullOrEmpty(keyBoxProvince))
+                        contentList[i] = contentList[i].Replace(keyBoxProvince, province);
+                    if (!string.IsNullOrEmpty(keyBoxCity))
+                        contentList[i] = contentList[i].Replace(keyBoxCity, city);
+                    if (!string.IsNullOrEmpty(keyBoxPostal))
+                        contentList[i] = contentList[i].Replace(keyBoxPostal, postal);
+                    if (!string.IsNullOrEmpty(keyBoxSignature))
+                        contentList[i] = contentList[i].Replace(keyBoxSignature, signature);
+                }
+
+
+                // Create a new Word document
+                Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+                Document doc = wordApp.Documents.Add();
+
+                try
+                {
+
+
+                    string headerText = RetrieveHeaderFooterContent("header");
+                    string footerText = RetrieveHeaderFooterContent("footer");
+
+                    //Add a header into the document
+                    Section firstSection = doc.Sections[1];
+                    firstSection.PageSetup.DifferentFirstPageHeaderFooter = -1; // true in Office.Interop
+
+                    // Add header to the first page
+                    HeadersFooters firstPageHeaders = firstSection.Headers;
+                    Range headerRange = firstPageHeaders[WdHeaderFooterIndex.wdHeaderFooterFirstPage].Range;
+
+                    HeadersFooters firstPageFooter = firstSection.Footers;
+                    Range footerRange = firstPageFooter[WdHeaderFooterIndex.wdHeaderFooterFirstPage].Range;
+
+                    // Save current Clipboard data
+                    IDataObject originalData = Clipboard.GetDataObject();
+
+                    // Put RTF header text onto the Clipboard
+                    Clipboard.SetText(headerText, TextDataFormat.Rtf);
+
+                    // Paste the RTF header from the Clipboard into the Word document
+                    headerRange.Paste();
+
+                    // Restore original Clipboard data
+                    Clipboard.SetDataObject(originalData);
+
+                    // Put RTF footer text onto the Clipboard
+                    Clipboard.SetText(footerText, TextDataFormat.Rtf);
+
+                    // Paste the RTF footer from the Clipboard into the Word document
+                    footerRange.Paste();
+
+                    // Restore original Clipboard data
+                    Clipboard.SetDataObject(originalData);
+
+                    foreach (Section section in doc.Sections)
+                    {
+                        Range footerPageNumberRange = section.Footers[WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                        Field pageField = footerPageNumberRange.Fields.Add(footerPageNumberRange, WdFieldType.wdFieldPage);
+                        footerPageNumberRange.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+                        pageField.Update();
+                    }
+                }
+                catch (Exception e2)
+                {
+                    // Log or display the exception as needed
+                    Console.WriteLine(e2.ToString());
+                }
+
+                // Before trying to add a header, check if the headerText is not null or empty.
+                /*                if (!string.IsNullOrEmpty(headerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
+                                {
+                                    AddHeader(doc, headerText);
+                                }
+
+                                // Do the same for the footer.
+                                if (!string.IsNullOrEmpty(footerText.Trim())) // Trim is used to remove leading or trailing whitespaces.
+                                {
+                                    AddFooter(doc, footerText);
+                                }*/
+
+
+
+                // Insert each content item into the Word document
+                foreach (string content in contentList)
+                {
+                    bool success = false;
+                    int retryCount = 0;
+
+                    while (!success && retryCount < 3)
+                    {
+                        try
+                        {
+                            Clipboard.SetText(content, TextDataFormat.Rtf);
+                            doc.Application.Selection.Paste();
+                            success = true;
+                        }
+                        catch (System.Runtime.InteropServices.COMException)
+                        {
+                            // The clipboard was unavailable or the paste operation failed. 
+                            // We'll retry a few times in case the issue is temporary.
+                            retryCount++;
+                            System.Threading.Thread.Sleep(100); // Wait for a short period before retrying.
+                        }
+                    }
+
+                    if (!success)
+                    {
+                        // The paste operation failed after several attempts. 
+                        // At this point, you'll have to decide how to handle the failure.
+                    }
+                    doc.Application.Selection.InsertParagraphAfter();
+
+                }
+                // Show Word to the user
+                wordApp.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Please select a table from the list.");
+            }
+
+        }
+
     }
 }

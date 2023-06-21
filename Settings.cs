@@ -331,7 +331,7 @@ namespace LetterOfOffer
                         string insertQuery = @"
                     INSERT OR IGNORE INTO signatures (id, textBoxSign, richTextSign)
                     VALUES (@id, '', '')
-                ";
+                     ";
 
                         using (var command = new SQLiteCommand(insertQuery, conn))
                         {
@@ -341,6 +341,42 @@ namespace LetterOfOffer
                             command.ExecuteNonQuery();
                         }
                     }
+
+                    // SQL query to create a table named 'advisor' if it does not exist
+                    string createAdvisorTableQuery = @"
+                    CREATE TABLE IF NOT EXISTS advisor (
+                        id TEXT PRIMARY KEY,
+                        textBoxAdvisor TEXT,
+                        richTextAdvisor TEXT
+                    )";
+
+                    // An array of ids for pre-filling the 'advisor' table
+                    string[] advisorIds = { "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10" };
+
+                    // Execute the create table SQL query
+                    using (var command = new SQLiteCommand(createAdvisorTableQuery, conn))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    // Iterate through the ids and pre-fill the 'advisor' table with empty records if they do not exist
+                    for (int i = 0; i < advisorIds.Length; i++)
+                    {
+                        string insertQuery = @"
+                    INSERT OR IGNORE INTO advisor (id, textBoxAdvisor, richTextAdvisor)
+                    VALUES (@id, '', '')
+                    ";
+
+                        using (var command = new SQLiteCommand(insertQuery, conn))
+                        {
+                            // Add the id parameter to the SQL query
+                            command.Parameters.AddWithValue("@id", advisorIds[i]);
+                            // Execute the insert query
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+
                 }
             }
             catch (Exception ex)
@@ -350,13 +386,10 @@ namespace LetterOfOffer
                 // Show a message box indicating that an error occurred while saving
                 MessageBox.Show("An error occurred while loading Settings.");
             }
+
+            CreateTextBoxAndRichText();
         }
 
-        /// <summary>
-        /// Retrieves all key-value pairs from the specified table in the SQLite database.
-        /// </summary>
-        /// <param name="tableName">The name of the SQLite table from which to retrieve the key-value pairs.</param>
-        /// <returns>A dictionary containing the key-value pairs.</returns>
         private Dictionary<string, string> RetrieveKeyValuesFromTable(string tableName)
         {
             // Initialize a new Dictionary to hold the key-value pairs
@@ -774,6 +807,53 @@ namespace LetterOfOffer
                 // Log or display the exception as needed
                 Console.WriteLine(ex.ToString());
             }
+
+            try
+            {
+                string dbPath = settings.DbPath;
+                Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+                string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string selectQuery = "SELECT * FROM advisor;";
+
+                    using (var command = new SQLiteCommand(selectQuery, conn))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            int i = 0;
+                            // As long as there are more rows and we haven't filled all the TextBoxes
+                            while (reader.Read() && i < 10)
+                            {
+                                // Find TextBox and RichTextBox by their names
+                                var textBox = this.Controls.Find("advisor" + i, true).FirstOrDefault() as TextBox;
+                                var richTextBox = this.Controls.Find("richTextAdvisor" + i, true).FirstOrDefault() as RichTextBox;
+
+                                // Ensure both TextBox and RichTextBox were found
+                                if (textBox != null && richTextBox != null)
+                                {
+                                    // Populate the TextBoxes and RichTextBoxes with the corresponding database fields
+                                    textBox.Text = reader["textBoxAdvisor"].ToString();
+                                    richTextBox.Rtf = reader["richTextAdvisor"].ToString();
+                                }
+
+                                i++;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception to the console
+                Console.WriteLine(ex.ToString());
+                // Notify the user if an error occurs during the load operation
+                MessageBox.Show("An error occurred while loading advisors.");
+            }
+
         }
 
 
@@ -877,5 +957,102 @@ namespace LetterOfOffer
 
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void CreateTextBoxAndRichText()
+        {
+            Label lbl = new Label();
+            lbl.Location = new Point(8, 14);
+            panel2.Controls.Add(lbl);
+
+            // Loop 10 times to create 10 pairs of TextBox and RichTextBox
+            for (int i = 0; i < 8; i++)
+            {
+                // Create new TextBox
+                TextBox txtBox = new TextBox();
+                txtBox.Location = new Point(8, lbl.Bottom + 10 + i * (26 + 104 + 35)); // Adjust these values to set location within Panel
+                txtBox.Name = "advisor" + i;
+                txtBox.Size = new Size(430, 26); // Set size as needed
+                txtBox.Font = new Font("Times New Roman", 12); // Set TextBox font to Times New Roman size 12
+
+                // Create new RichTextBox
+                RichTextBox rtxtBox = new RichTextBox();
+                rtxtBox.Location = new Point(8, txtBox.Bottom + 5); // Adjust these values to set location within Panel
+                rtxtBox.Name = "richTextAdvisor" + i;
+                rtxtBox.Size = new Size(430, 104); // Set size as needed
+
+                // Add TextBox and RichTextBox to the Panel
+                panel2.Controls.Add(txtBox);
+                panel2.Controls.Add(rtxtBox);
+            }
+        }
+
+        private void button_SaveAdvisor_Click(object sender, EventArgs e)
+        {
+            string dbPath = settings.DbPath;
+            Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+            string connectionString = "Data Source=" + dbPath + ";Version=3;";
+
+            try
+            {
+                using (var conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    // Loop through each advisor textbox
+                    for (int i = 0; i < 8; i++)
+                    {
+                        // Find TextBox and RichTextBox by their names
+                        var textBox = this.Controls.Find("advisor" + i, true).FirstOrDefault() as TextBox;
+                        var richTextBox = this.Controls.Find("richTextAdvisor" + i, true).FirstOrDefault() as RichTextBox;
+                        richTextBox.Font = new Font("Times New Roman", 12);
+                        //richTextBox.SelectionStart = 0;
+                        //richTextBox.SelectionLength = richTextBox.Text.Length;
+                        //richTextBox.SelectionColor = Color.Black;
+                        //richTextBox.DetectUrls = true;
+                        //richTextBox.LinkClicked += new LinkClickedEventHandler(richTextBox_LinkClicked);
+
+                        // Ensure both TextBox and RichTextBox were found
+                        if (textBox != null && richTextBox != null)
+                        {
+                            string updateQuery = @"
+                    UPDATE advisor 
+                    SET textBoxAdvisor = @textBoxAdvisor, richTextAdvisor = @richTextAdvisor
+                    WHERE id = @id
+                ";
+
+                            using (var command = new SQLiteCommand(updateQuery, conn))
+                            {
+                                // Bind the textbox and richtextbox contents to the command parameters
+                                command.Parameters.AddWithValue("@textBoxAdvisor", textBox.Text);
+                                command.Parameters.AddWithValue("@richTextAdvisor", richTextBox.Rtf);
+                                command.Parameters.AddWithValue("@id", "A" + (i + 1));  // IDs are A1, A2, ... A10
+
+                                // Execute the query
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
+                // Notify the user of successful save operation
+                MessageBox.Show("Advisors saved successfully!");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception to the console
+                Console.WriteLine(ex.ToString());
+                // Notify the user if an error occurs during the save operation
+                MessageBox.Show("An error occurred while saving advisors.");
+            }
+        }
+        // Event handler
+        private void richTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.LinkText);
+        }
     }
 }
